@@ -1,20 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_list.c                                       :+:      :+:    :+:   */
+/*   second_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:17:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/02/14 22:55:59 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/02/17 17:27:15 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push.h"
 
+int			ft_check_data(t_list *root_a)
+{
+	t_list *buff;
+
+	buff = root_a;
+	root_a = root_a->next;
+	while (root_a != NULL)
+	{
+		if (buff->value <= root_a->value)
+		{
+			buff = buff->next;
+			root_a = root_a->next;
+		}
+		else
+			return (0);
+	}
+	return (1);
+}
+
 int			make_sort(t_list *a, t_list *root_a, char *inst)
 {
 	int		i;
+	int		q;
 	t_list *b;
 	t_list *root_b;
 
@@ -23,21 +43,31 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 	root_b = b;
 	while (inst[i] != '\0')
 	{
-		while (inst[i] != '\n')
+		while (inst[i] != '\n' && inst[i] != '\0')
 		{
 			if (inst[i] == 'p' && inst[i + 1] == 'b')
-				push_in_b(&b, &a, &root_b, &root_a);
+				q = push_in_b(&b, &a, &root_b, &root_a);
 			else if (inst[i] == 'p' && inst[i + 1] == 'a')
-				push_in_a(&b, &a, &root_b, &root_a);
+				q = push_in_a(&b, &a, &root_b, &root_a);
 			else if (inst[i] == 's' && inst[i + 1] == 'b')
-				swap_in_b(&root_b, &b);
+				q = swap_in_b(&root_b, &b);
 			else if (inst[i] == 's' && inst[i + 1] == 'a')
-				swap_in_a(&root_a, &a);
+				q = swap_in_a(&root_a, &a);
 			else if (inst[i] == 's' && inst[i + 1] == 's')
-				swap(&a, &b, &root_a, &root_b);
+				q = swap(&a, &b, &root_a, &root_b);
 			else if (inst[i] == 'r' && inst[i + 1] == 'a')
-				rotate_in_a(&root_a, &a);
-			i++;
+				q = rotate_a(&root_a);
+			else if (inst[i] == 'r' && inst[i + 1] == 'b')
+				q = rotate_b(&root_b);
+			else if (inst[i] == 'r' && inst[i + 1] == 'r' && (!ft_isalpha(inst[i + 2])))
+				q = rotate(&root_a, &root_b);
+			else if (inst[i] == 'r' && inst[i + 1] == 'r' && inst[i + 2] == 'a')
+				q = reverse_a(&a, &root_a);
+			else if (inst[i] == 'r' && inst[i + 1] == 'r' && inst[i + 2] == 'b')
+				q = reverse_b(&b, &root_b);
+			else if (inst[i] == 'r' && inst[i + 1] == 'r' && inst[i + 2] == 'r')
+				q = reverse(&a, &b, &root_a, &root_b);
+			i += q;
 		}
 		i++;
 	}
@@ -45,14 +75,19 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 	b = root_b;
 	while(root_a != NULL)
 	{
-		printf ("first  -> %d\n", root_a->value);
+		printf ("FIRST  ->    %d\n", root_a->value);
 		root_a = root_a->next;
 	}
 	while(root_b != NULL)
 	{
-		printf ("second -> %d\n", root_b->value);
+		printf ("SECOND ->    %d\n", root_b->value);
 		root_b = root_b->next;
 	}
+	// if (root_b == NULL && ft_check_data(root_a))
+	// 	ft_putstr("OK");
+	// else
+	// 	ft_putstr("KO");
+	
 	return (0);
 }
 

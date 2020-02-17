@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   first_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/02/14 20:24:12 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/02/15 22:05:09 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ int		get_array(int argc, char **argv)
 		a->value = ft_atoi(argv[i]);
 	}
 	a->next = NULL;
-	// a = root_a;
 	check_instruction(argc, argv, a, root_a);
 	return (1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_a_b.c                                         :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 20:39:47 by acarlett          #+#    #+#             */
-/*   Updated: 2020/02/14 22:36:36 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/02/17 20:06:57 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,33 @@ int     push_in_b(t_list **b, t_list **a, t_list **root_b, t_list **root_a)
 	t_list *buff_root;
 
 	if ((*root_a) == (*a) && !(*a))
-		return (0);
+		return (2);
 	if((*root_b) == NULL)
 	{
-		write (1, "F_B\n", 4);
 		(*b) = malloc(sizeof(t_list));
 		(*root_b) = (*b);
 		(*b)->value = (*root_a)->value;
 		(*b)->next = NULL;
-		(*b) = (*b)->next;
+		// (*b) = (*b)->next;
 	}
 	else
 	{
-		write (1, "S_B\n", 4);
 		buff = malloc(sizeof(t_list));
 		buff_root = buff;
 		buff->value = (*root_a)->value;
 		buff->next = (*root_b);
 		(*root_b) = buff_root;
 	}
+	write (1, "push_in_b\n", 10);
 	buff = (*root_a);
 	(*root_a) = (*root_a)->next;
-	free(buff);
-	(*a) = NULL;
-	return(1);
+	while ((*a) != NULL && (*a)->next != NULL)
+		(*a) = (*a)->next;
+	if ((*root_b) == NULL)
+		free(buff);
+	if ((*root_a) == NULL)
+		(*a) = (*root_a);
+	return(2);
 }
 
 int     push_in_a(t_list **b, t_list **a, t_list **root_b, t_list **root_a)
@@ -50,18 +53,15 @@ int     push_in_a(t_list **b, t_list **a, t_list **root_b, t_list **root_a)
 	t_list *buff_root;
 
 	if ((*root_b) == (*b) && !(*b))
-		return (0);
+		return (2);
     if((*root_a) == NULL)	
 	{
-		write (1, "F_A\n", 4);
 		(*a) = malloc(sizeof(t_list));
 		(*a)->value = (*b)->value;
 		(*a)->next = NULL;
-		(*a) = (*a)->next;
 	}
 	else
 	{
-		write (1, "S_A\n", 4);
 		buff = malloc(sizeof(t_list));
 		buff_root = buff;
 		buff->value = (*root_b)->value;
@@ -70,7 +70,12 @@ int     push_in_a(t_list **b, t_list **a, t_list **root_b, t_list **root_a)
 	}
 	buff = *(root_b);
 	(*root_b) = (*root_b)->next;
-	free(buff);
-	(*b) = NULL;
-	return (1);
+		write (1, "push_in_a\n", 10);
+	while ((*b) != NULL && (*b)->next != NULL)
+		(*b) = (*b)->next;
+	if ((*root_a) == NULL)
+		free(buff);
+	if ((*root_b) == NULL)
+		(*b) = (*root_b);
+	return (2);
 }

@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_a_b.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/14 22:56:31 by acarlett          #+#    #+#             */
-/*   Updated: 2020/02/14 23:03:00 by acarlett         ###   ########.fr       */
+/*   Created: 2019/09/11 21:25:43 by acarlett          #+#    #+#             */
+/*   Updated: 2020/02/15 21:54:21 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push.h"
 
-int		rotate_a(t_list **root_a, t_list **a)
+int		ft_isalpha(char c)
 {
-	t_list *buff;
-	t_list *buff2;
-
-	if (*(root_a) == NULL)
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
+	else
 		return (0);
-	buff = malloc(sizeof(t_list));
-	buff2 = malloc(sizeof(t_list));
-	buff->value = 
 }
