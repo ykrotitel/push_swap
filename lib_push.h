@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/02/15 22:02:30 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/02/29 15:06:34 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,23 @@ typedef struct      slist
 	struct slist	*next;
 	int				value;
 }					t_list;
+
+typedef	struct		shelp
+{
+	int				min;
+	char			*minn;
+	char			*f_min;
+	int				mid;
+	char			*midd;
+	char			*f_mid;
+	int				max;
+	char			*maxx;
+	char			*f_max;
+	int				c;
+	int				tmp;
+	int				f;
+	int				sec_tmp;
+}					thelp;
 
 int                 first_check(char **argv, int argc);
 int					make_sort(t_list *a,t_list *root_a, char *inst);

@@ -6,11 +6,11 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 21:31:14 by acarlett          #+#    #+#             */
-/*   Updated: 2020/02/06 20:27:55 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/02/18 21:05:45 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_push.h"
+#include "../lib_push.h"
 
 static int		cherkes(const char *str)
 {
