@@ -6,22 +6,23 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 22:42:39 by acarlett          #+#    #+#             */
-/*   Updated: 2020/02/18 21:06:00 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/02 18:13:02 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib_push.h"
 
-void	ft_putstr(char const *s)
+int		ft_putstr(char const *s)
 {
 	int i;
 
 	i = 0;
 	if (!s)
-		return ;
+		return (0);
 	while (s[i])
 	{
 		write(1, &s[i], 1);
 		i++;
 	}
+	return (i);
 }

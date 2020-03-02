@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:17:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/02/17 17:27:15 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/02 23:12:17 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 	}
 	while(root_b != NULL)
 	{
-		printf ("SECOND ->    %d\n", root_b->value);
+		printf ("         SECOND ->    %d\n", root_b->value);
 		root_b = root_b->next;
 	}
 	// if (root_b == NULL && ft_check_data(root_a))

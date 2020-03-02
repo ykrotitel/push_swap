@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 22:56:31 by acarlett          #+#    #+#             */
-/*   Updated: 2020/02/15 22:15:42 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/02 20:22:07 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		rotate_a(t_list **root_a)
 	t_list	*f;
 	t_list 	*r;
 
-	write (1, "RT\n", 3);
+	// write (1, "RT\n", 3);
 	r = (*root_a);
 	if (*(root_a) == NULL)
 		return (0);
