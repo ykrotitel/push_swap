@@ -6,11 +6,31 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:17:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/02 23:12:17 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/03 19:49:19 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push.h"
+
+void		print_a(t_list *root_a)
+{
+	while (root_a != NULL)
+	{
+		printf ("A => %d\n", root_a->value);
+		root_a = root_a->next;
+	}
+	write(1, "\n\n", 2);
+}
+
+void		print_b(t_list 	*root_b)
+{
+	while (root_b != NULL)
+	{
+		printf("    b => %d\n", root_b->value);
+		root_b = root_b->next;
+	}
+	write(1, "\n\n", 2);
+}
 
 int			ft_check_data(t_list *root_a)
 {
@@ -18,15 +38,19 @@ int			ft_check_data(t_list *root_a)
 
 	buff = root_a;
 	root_a = root_a->next;
+	print_a(root_a);
 	while (root_a != NULL)
 	{
 		if (buff->value <= root_a->value)
 		{
-			buff = buff->next;
+			buff = root_a;
 			root_a = root_a->next;
 		}
 		else
+		{
+			printf ("buff -> %d and root -> %d\n", buff->value, root_a->value);
 			return (0);
+		}
 	}
 	return (1);
 }
@@ -46,9 +70,11 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 		while (inst[i] != '\n' && inst[i] != '\0')
 		{
 			if (inst[i] == 'p' && inst[i + 1] == 'b')
-				q = push_in_b(&b, &a, &root_b, &root_a);
+				// q = push_in_b(&b, &a, &root_b, &root_a);
+				q = push_in_b(&b, &a, &root_a, &root_b);
 			else if (inst[i] == 'p' && inst[i + 1] == 'a')
-				q = push_in_a(&b, &a, &root_b, &root_a);
+				q = push_in_a(&b, &a, &root_a, &root_b);
+				// q = push_in_a(&b, &a, &root_b, &root_a);
 			else if (inst[i] == 's' && inst[i + 1] == 'b')
 				q = swap_in_b(&root_b, &b);
 			else if (inst[i] == 's' && inst[i + 1] == 'a')
@@ -73,21 +99,23 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 	}
 	free(b);
 	b = root_b;
-	while(root_a != NULL)
-	{
-		printf ("FIRST  ->    %d\n", root_a->value);
-		root_a = root_a->next;
-	}
-	while(root_b != NULL)
-	{
-		printf ("         SECOND ->    %d\n", root_b->value);
-		root_b = root_b->next;
-	}
-	// if (root_b == NULL && ft_check_data(root_a))
-	// 	ft_putstr("OK");
-	// else
-	// 	ft_putstr("KO");
-	
+	// while(root_a != NULL)
+	// {
+	// 	// printf ("FIRST  ->    %d\n", root_a->value);
+	// 	root_a = root_a->next;
+	// }
+	// while(root_b != NULL)
+	// {
+	// 	// printf ("         SECOND ->    %d\n", root_b->value);
+	// 	root_b = root_b->next;
+	// }
+	print_b(root_b);
+	if (root_b == NULL && ft_check_data(root_a))
+		ft_putstr("OK");
+	else
+		ft_putstr("KO");
+	if (root_b == NULL)
+		printf ("this");
 	return (0);
 }
 

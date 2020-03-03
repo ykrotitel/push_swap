@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/02 18:28:36 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/03 19:38:40 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ int					ft_isalpha(char c);
 int					push_numbers_in_b(t_list *a, t_list *root_a, thelp *f);
 int					numbers_of_different_various(t_list *root, int max, int min);
 void				take_min_mid_max(t_list *a, t_list *root_a, int cc);
-t_list				*sort_stack_a(t_list *root_a, t_list *a, thelp *f);
+t_list				*sort_stack_a(t_list **root_a, t_list **a, thelp *f);
 t_list				*rewrite(t_list *buff);
+void				print_a(t_list *root_a);
 int					check_min_max(int value, thelp *f);
 
 #endif

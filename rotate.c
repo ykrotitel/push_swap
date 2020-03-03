@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 22:56:31 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/02 20:22:07 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/03 19:24:08 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		rotate_a(t_list **root_a)
 	t_list	*f;
 	t_list 	*r;
 
-	// write (1, "RT\n", 3);
+	// write (1, "ROTATE_A\n", 9);
 	r = (*root_a);
 	if (*(root_a) == NULL)
 		return (0);
@@ -35,6 +35,7 @@ int		rotate_a(t_list **root_a)
 	}
 	f->value = buff->value;
 	(*root_a) = r;
+	ft_putstr("ra\n");
 	return(2);
 }
 
@@ -44,6 +45,7 @@ int		rotate_b(t_list **root_b)
 	t_list	*f;
 	t_list 	*r;
 
+	// write (1, "ROTATE_B\n", 9);
 	r = (*root_b);
 	if (*(root_b) == NULL)
 		return (0);
@@ -60,6 +62,7 @@ int		rotate_b(t_list **root_b)
 	}
 	f->value = buff->value;
 	(*root_b) = r;
+	ft_putstr("rb\n");
 	return(2);
 }
 
