@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/03 19:38:40 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/07 22:03:26 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int					make_list_a(int argc, long long int arr[argc], char *inst);
 int					swap(t_list **a, t_list **b, t_list **root_a, t_list **root_b);
 int     			push_in_a(t_list **b, t_list **a, t_list **root_b, t_list **root_a);
 int     			push_in_b(t_list **b, t_list **a, t_list **root_b, t_list **root_a);
+int     			push_for_push_swap(t_list **b, t_list **a, t_list **root_b, t_list **root_a);
 int					reverse(t_list **a, t_list **b, t_list **root_a, t_list **root_b);
 int					reverse_a(t_list **a, t_list **root_a);
 int					reverse_b(t_list **b, t_list **root_b);
@@ -64,6 +65,9 @@ void				take_min_mid_max(t_list *a, t_list *root_a, int cc);
 t_list				*sort_stack_a(t_list **root_a, t_list **a, thelp *f);
 t_list				*rewrite(t_list *buff);
 void				print_a(t_list *root_a);
+void				print_b(t_list *root_b);
 int					check_min_max(int value, thelp *f);
+int					push_b(t_list **root_b, t_list **root_a);
+int					push_a(t_list **root_a, t_list **root_b);
 
 #endif

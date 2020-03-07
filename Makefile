@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/03/03 19:39:56 by acarlett         ###   ########.fr        #
+#    Updated: 2020/03/07 21:23:45 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ swap.c \
 reverse_rotate.c \
 push.c \
 make_A_take_MinMidMax.c \
+second_main.c \
 
 all:
 	@gcc -g -o checker $(FOR_CHECK) -I lib_push.h
@@ -39,6 +40,8 @@ fclean:
 
 main: all
 	./checker
+
+make a: all ps
 
 ps:
 	@gcc -g -o push_swap $(FOR_PUSH) -I lib_push.h

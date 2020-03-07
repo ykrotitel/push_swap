@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/02/15 22:05:09 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/07 21:34:03 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int     first_check(char **argv, int argc)
 
 int     display_error()
 {   
-	ft_putstr("Error\n");
+	ft_putstr("Error1\n");
 	return (0);
 }
 
@@ -76,7 +76,11 @@ int     check_instruction(int argc, char **argv, t_list *A, t_list *A_R)
 	
 	i = 0;
 	if (!(inst = malloc(sizeof(*inst) * 20000)))
-		return(display_error());
+	{
+		ft_putstr("Error2");
+		return 0;
+	}
+		// return(display_error());
 	while ((a = read(0, buff, 1)) > 0)
 	{
 		inst[i] = buff[0];
@@ -84,7 +88,11 @@ int     check_instruction(int argc, char **argv, t_list *A, t_list *A_R)
 	}
 	inst[i] = '\0';
 	if (!(check_each_inst(inst)))
-		return (display_error());
+	{
+		ft_putstr("Error3");
+		return 0;
+	}
+		// return (display_error());
 	make_sort(A, A_R, inst);
 	return (0);
 }
@@ -114,6 +122,10 @@ int		get_array(int argc, char **argv)
 int     main(int argc, char **argv)
 {
 	if (!(first_check(argv, argc)))
-		return (display_error());
+	{
+		ft_putstr("Error1");
+		return 0;
+	}
+		// return (display_error());
 	get_array(argc, argv);
 }

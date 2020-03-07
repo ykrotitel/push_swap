@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 18:25:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/03 19:55:31 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/07 22:06:27 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,6 @@ t_list		*sort_stack_a(t_list **root_a, t_list **a, thelp *f)
 	return (buff);
 }
 
-void		print_a(t_list *root_a)
-{
-	while (root_a != NULL)
-	{
-		printf ("A => %d\n", root_a->value);
-		root_a = root_a->next;
-	}
-	write(1, "\n\n", 2);
-}
-
-void		print_b(t_list 	*root_b)
-{
-	while (root_b != NULL)
-	{
-		printf("    b => %d\n", root_b->value);
-		root_b = root_b->next;
-	}
-	write(1, "\n\n", 2);
-}
-
 void		continue_sort(t_list *root_a, t_list *root_b, thelp *f)
 {
 	t_list	*buff;
@@ -113,17 +93,23 @@ void		continue_sort(t_list *root_a, t_list *root_b, thelp *f)
 		if(root_a->value < root_b->value)
 		{
 			rotate_a(&root_a);
-			push_in_b(&b, &a, &root_a, &root_b);
-			push_in_b(&b, &a, &root_b, &root_a);
+			// print_a(root_a);
+			// print_b(root_b);
+			// push_for_push_swap(&b, &a, &root_b, &root_a);
+			push_a(&root_a, &root_b);
 		}
 		else
 			reverse_a(&a, &root_a);
+		// print_a(root_a);
+		// print_b(root_b);
 		
 	}
 	while (f->min != root_a->value)
+	{
 		reverse_a(&a, &root_a);
-	// print_a(root_a);
-	// print_b(root_b);
+		// print_a(root_a);
+		// print_b(root_b);
+	}
 	return ;
 }
 
@@ -145,11 +131,10 @@ void		second_step(t_list *a, t_list *root_a, thelp *f)
 		{
 			c = buf->value;
 			while (root_a->value != c)
-			{
 				rotate_a(&root_a);
-			}
 			buf = root_a;
-			push_in_b(&b, &a, &root_b, &root_a);
+			// push_in_b(&b, &a, &root_b, &root_a);
+			push_b(&root_b, &root_a);
 		}
 		buf = buf->next;
 	}
@@ -164,13 +149,12 @@ void		second_step(t_list *a, t_list *root_a, thelp *f)
 				rotate_a(&root_a);
 			}
 			buf = root_a;
-			push_in_b(&b, &a, &root_b, &root_a);
+			// push_in_b(&b, &a, &root_b, &root_a);
+			push_b(&root_b, &root_a);		
 		}
 		buf = buf->next;
 	}
 	sort_stack_a(&root_a, &a, f);
-	// print_a(root_a);
-	// print_b(root_b);
 	continue_sort(root_a, root_b, f);
 	return ;
 }
@@ -199,9 +183,7 @@ void		take_min_mid_max(t_list *a, t_list *root_a, int cc)
 			f->min = buff->value;
 		buff = buff->next;
 	}
-	// printf ("min = %d and max = %d\n", f->min, f->max);
 	f->c = numbers_of_different_various(root_a, f->max, f->min);
-	// printf ("c = %d and cc = %d\n", f->c, f->cc);
 	if (f->c != f->cc)
 	{
 		ft_putstr("Errorrrr");
@@ -209,7 +191,6 @@ void		take_min_mid_max(t_list *a, t_list *root_a, int cc)
 	}
 	f->c -= 2;
 	f->c /= 2;
-	// printf ("counter ==  %d\n", f->c);
 	buff = root_a;
 	root_buff = root_a;
 	f->tmp = f->min;
@@ -248,13 +229,10 @@ void		take_min_mid_max(t_list *a, t_list *root_a, int cc)
 	buff = root_a;
 	if (f->midd == NULL && (f->midd = "r"))
 		f->mid = buff->value;
-	// printf ("min -> %d\nflag_min = %s\nmid -> %d\nflag_mid = %s\nmax -> %d\nflag_max = %s\n\n\n", f->min, f->minn, f->mid, f->midd, f->max, f->maxx);
 	f->f_min = f->minn;
 	f->f_mid = f->midd;
 	f->f_max = f->maxx;
 	second_step(a, root_a, f);
-	return ;
-	push_numbers_in_b(a, root_a, f);
 }
 
 int		main(int ac, char **av)

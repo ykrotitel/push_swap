@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:18:02 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/03 19:24:47 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/07 19:42:55 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		reverse_a(t_list **a, t_list **root_a)
 
 	
 	
-	// write (1, "reverse_a\n", 10);
 	buff = (*root_a);
 	tmp = (*root_a)->next;
 	while (tmp->next != NULL)
@@ -39,7 +38,6 @@ int		reverse_b(t_list **b, t_list **root_b)
 	t_list	*buff;
 
 	buff = (*root_b);
-	// write (1, "reverse_b\n", 10);	
 	while (buff != (*b))
 	{
 		if (buff->next == (*b))
