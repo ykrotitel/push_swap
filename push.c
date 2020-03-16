@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 20:39:47 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/07 22:08:56 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/16 18:30:27 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,35 +114,46 @@ int     push_for_push_swap(t_list **b, t_list **a, t_list **root_b, t_list **roo
 
 int		push_b(t_list **root_b, t_list **root_a)
 {
-	t_list *buff;
 	t_list *root_buff;
 
 	if ((*root_b) == NULL)
 	{
-		write (1, "RR", 2);
-		(*root_b) = malloc(sizeof(t_list));
+		// write(1, "pb_F\n", 5);
+		(*root_b) = (*root_a);
+		(*root_a) = (*root_a)->next;
 		(*root_b)->next = NULL;
 	}
-	(*root_a)->next = (*root_b);
-	(*root_b) = (*root_a);
-	(*root_a) = (*root_a)->next;
+	else
+	{
+		// write(1, "pb_S\n", 5);
+		root_buff = (*root_b);
+		(*root_b) = (*root_a);
+		(*root_a) = (*root_a)->next;
+		(*root_b)->next = root_buff;
+	}
 	ft_putstr("pb\n");
 	return (2);
 }
 
 int		push_a(t_list **root_a, t_list **root_b)
 {
-	t_list *buff;
 	t_list *root_buff;
 
 	if ((*root_a) == NULL)
 	{
-		(*root_a) = malloc(sizeof(t_list));
+		// write(1, "pa_F\n", 5);
+		(*root_a) = (*root_b);
+		(*root_b) = (*root_b)->next;
 		(*root_a)->next = NULL;
 	}
-	(*root_b)->next = (*root_a);
-	(*root_a) = (*root_b);
-	(*root_b) = (*root_b)->next;
+	else
+	{
+		// write(1, "pa_S\n", 5);
+		root_buff = (*root_a);
+		(*root_a) = (*root_b);
+		(*root_b) = (*root_b)->next;
+		(*root_a)->next = root_buff;
+	}
 	ft_putstr("pa\n");
 	return (2);
 }

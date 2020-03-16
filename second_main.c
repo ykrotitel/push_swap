@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:17:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/07 21:49:36 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/16 19:09:35 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,12 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 	{
 		while (inst[i] != '\n' && inst[i] != '\0')
 		{
-			// if (inst[i] == 'p' && inst[i + 1] == 'b')
 			if (inst[i] == 'p' && inst[i + 1] == 'a')
-				q = push_for_push_swap(&b, &a, &root_b, &root_a);
+				q = push_a(&root_a, &root_b);
+				// q = push_for_push_swap(&b, &a, &root_b, &root_a);
 			else if (inst[i] == 'p' && inst[i + 1] == 'b')
-				q = push_in_a(&b, &a, &root_b, &root_a);
+				q = push_b(&root_b, &root_a);
+				// q = push_in_a(&b, &a, &root_b, &root_a);
 			else if (inst[i] == 's' && inst[i + 1] == 'b')
 				q = swap_in_b(&root_b, &b);
 			else if (inst[i] == 's' && inst[i + 1] == 'a')
@@ -92,15 +93,15 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 			else if (inst[i] == 'r' && inst[i + 1] == 'r' && inst[i + 2] == 'r')
 				q = reverse(&a, &b, &root_a, &root_b);
 			i += q;
-		print_a(root_a);
-		print_b(root_b);
+		// print_a(root_a);
+		// print_b(root_b);
 		}
 		i++;
 	}
 	free(b);
 	b = root_b;
-	print_a(root_a);
-	print_b(root_b);
+	// print_a(root_a);
+	// print_b(root_b);
 	if (root_b == NULL && ft_check_data(root_a))
 		ft_putstr("OK");
 	else
