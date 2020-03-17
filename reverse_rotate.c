@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:18:02 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/07 19:42:55 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/16 20:52:13 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ int		reverse_a(t_list **a, t_list **root_a)
 	tmp->next = (*root_a);
 	buff->next = NULL;
 	(*root_a) = tmp;
+	(*a) = (*root_a);
+	while ((*a)->next != NULL)
+		(*a) = (*a)->next;
 	ft_putstr("rra\n");
 	return (3);
 }

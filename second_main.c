@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:17:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/16 19:09:35 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/16 21:17:07 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int			ft_check_data(t_list *root_a)
 		}
 		else
 		{
-			printf ("buff -> %d and root -> %d\n", buff->value, root_a->value);
 			return (0);
 		}
 	}
@@ -100,8 +99,8 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 	}
 	free(b);
 	b = root_b;
-	// print_a(root_a);
-	// print_b(root_b);
+	print_a(root_a);
+	print_b(root_b);
 	if (root_b == NULL && ft_check_data(root_a))
 		ft_putstr("OK");
 	else

@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 18:25:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/16 19:04:36 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/03/16 21:31:41 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ t_list		*sort_stack_a(t_list **root_a, t_list **a, thelp *f)
 		swap_in_a(root_a, a);
 	}
 	// write(1, "SORT\n", 5);
-	// print_a(*root_a);
 	return (buff);
 }
 
@@ -85,32 +84,52 @@ void		continue_sort(t_list *root_a, t_list *root_b, thelp *f)
 
 	b = root_b;
 	a = root_a;
-	while (b != NULL)
+	while (b->next != NULL)
 		b = b->next;
-	while (a != NULL)
+	while (a->next != NULL)
 		a = a->next;
+	// print_b(root_b);
 		reverse_a(&a, &root_a);
+	// print_a(root_a);
 	while (root_b != NULL)
 	{
-		buff = root_a->next;
-		if(root_a->value < root_b->value && buff->value > root_b->value)
+		// printf ("root_a %d and root_b = %d\n", root_a->value, root_b->value);
+		// print_a(root_a);
+		// print_b(root_b);
+		if (root_a->value > root_b->value && a->value > root_b->value)
+		{
+			reverse_a(&a, &root_a);
+			continue ;
+		}
+		else if (root_a->value < root_b->value)
 		{
 			rotate_a(&root_a);
-			// print_a(root_a);
-			// print_b(root_b);
-			push_a(&root_a, &root_b);
+			continue ;
 		}
-		else
-			reverse_a(&a, &root_a);
-		// print_a(root_a);
-		// print_b(root_b);
+			push_a(&root_a, &root_b);
 	}
 	while (f->min != root_a->value)
-	{
 		reverse_a(&a, &root_a);
-	}
-		// print_a(root_a);
-		// print_b(root_b);
+	// print_a(root_a);
+	// print_b(root_b);
+	return ;
+	// while (root_b != NULL)
+	// {
+	// 	buff = root_a->next;
+	// 	if(root_a->value < root_b->value)
+	// 	{
+	// 		rotate_a(&root_a);
+	// 		print_a(root_a);
+	// 		print_b(root_b);
+	// 		push_a(&root_a, &root_b);
+	// 	}
+	// 	else if (root_a->value > root_b->value)
+	// 		reverse_a(&a, &root_a);
+	// 	print_a(root_a);
+	// 	print_b(root_b);
+	// }
+		print_a(root_a);
+		print_b(root_b);
 	return ;
 }
 
@@ -239,7 +258,7 @@ void		take_min_mid_max(t_list *a, t_list *root_a, int cc)
 	f->f_min = f->minn;
 	f->f_mid = f->midd;
 	f->f_max = f->maxx;
-	// printf("min = %d\nmid = %d\nmax = %d\n", f->min, f->mid, f->max);
+	printf("min = %d\nmid = %d\nmax = %d\n", f->min, f->mid, f->max);
 	second_step(a, root_a, f);
 }
 
