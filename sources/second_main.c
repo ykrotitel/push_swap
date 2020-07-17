@@ -6,31 +6,11 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:17:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/16 21:17:07 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/17 15:09:50 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_push.h"
-
-void		print_a(t_list *root_a)
-{
-	while (root_a != NULL)
-	{
-		printf ("A ===> %d\n", root_a->value);
-		root_a = root_a->next;
-	}
-	// write(1, "\n\n", 2);
-}
-
-void		print_b(t_list 	*root_b)
-{
-	while (root_b != NULL)
-	{
-		printf("    b => %d\n", root_b->value);
-		root_b = root_b->next;
-	}
-	write(1, "\n\n", 2);
-}
+#include "../includes/lib_push.h"
 
 int			ft_check_data(t_list *root_a)
 {
@@ -69,10 +49,8 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 		{
 			if (inst[i] == 'p' && inst[i + 1] == 'a')
 				q = push_a(&root_a, &root_b);
-				// q = push_for_push_swap(&b, &a, &root_b, &root_a);
 			else if (inst[i] == 'p' && inst[i + 1] == 'b')
 				q = push_b(&root_b, &root_a);
-				// q = push_in_a(&b, &a, &root_b, &root_a);
 			else if (inst[i] == 's' && inst[i + 1] == 'b')
 				q = swap_in_b(&root_b, &b);
 			else if (inst[i] == 's' && inst[i + 1] == 'a')
@@ -92,8 +70,6 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 			else if (inst[i] == 'r' && inst[i + 1] == 'r' && inst[i + 2] == 'r')
 				q = reverse(&a, &b, &root_a, &root_b);
 			i += q;
-		// print_a(root_a);
-		// print_b(root_b);
 		}
 		i++;
 	}
@@ -105,8 +81,6 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 		ft_putstr("OK");
 	else
 		ft_putstr("KO");
-	// if (root_b == NULL)
-	// 	printf ("this");
 	return (0);
 }
 

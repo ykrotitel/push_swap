@@ -6,11 +6,11 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 21:28:37 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/07 19:43:00 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/17 15:00:13 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_push.h"
+#include "../includes/lib_push.h"
 
 int		swap_in_b(t_list **root_b, t_list **b)
 {

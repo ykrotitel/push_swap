@@ -6,37 +6,45 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/03/07 21:23:45 by acarlett         ###   ########.fr        #
+#    Updated: 2020/07/17 14:52:11 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FOR_CHECK =  first_main.c  \
-libft/ft_putstr.c \
-libft/ft_atoi.c \
-second_main.c \
-push.c \
-swap.c \
-rotate.c \
-reverse_rotate.c \
-libft/ft_isalpha.c
+FLAGS = -Wall -Werror -Wextra
 
-FOR_PUSH = push_swap.c \
-libft/ft_atoi.c \
-libft/ft_putstr.c \
-libft/ft_isalpha.c \
-rotate.c \
-swap.c \
-reverse_rotate.c \
-push.c \
-make_A_take_MinMidMax.c \
-second_main.c \
+SOURCES =		sources/push.c \
+				sources/rotate.c \
+				sources/reverse_rotate.c \
+				sources/second_main.c \
+				sources/swap.c \
 
-all:
-	@gcc -g -o checker $(FOR_CHECK) -I lib_push.h
+PUSH_SWAP = sources/make_A_take_MinMidMax.c
 
-fclean:
+CHECKER = sources/first_main.c
+
+INCLUDES = includes/lib_push.h \
+
+OBJECTS = $(patsubst %.c,%.o,$(SOURCES))
+
+
+
+all: $(OBJECTS)
+	@make -C libft re
+	@gcc -o push_swap $(SOURCES) $(PUSH_SWAP) -I $(INCLUDES) libft/libft.a
+	@gcc -o checker $(SOURCES) $(CHECKER) -I $(INCLUDES) libft/libft.a
+
+%.o: %.c $(INCLUDES)
+	
+clean:
+	@rm -rf $(OBJECTS)
+	@make -C libft clean
+
+fclean: clean
 	@rm -rf checker
 	@rm -rf push_swap
+	@make -C libft fclean
+
+re: fclean all
 
 main: all
 	./checker

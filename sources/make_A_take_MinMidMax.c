@@ -6,11 +6,11 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 18:25:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/16 21:31:41 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/17 15:13:28 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_push.h"
+#include "../includes/lib_push.h"
 
 int			numbers_of_different_various(t_list *root_a, int max, int min)
 {
@@ -29,8 +29,8 @@ int			numbers_of_different_various(t_list *root_a, int max, int min)
 			if (buff->value == min)
 			{
 				a++;
-			if (min == max)
-				return (a);
+				if (min == max)
+					return (a);
 			}
 			buff = buff->next;
 		}
@@ -48,7 +48,7 @@ int			numbers_of_different_various(t_list *root_a, int max, int min)
 	return (a);
 }
 
-t_list		*sort_stack_a(t_list **root_a, t_list **a, thelp *f)
+t_list		*sort_stack_a(t_list **root_a, t_list **a, t_help *f)
 {
 	t_list *tmp;
 	t_list *buff;
@@ -72,11 +72,10 @@ t_list		*sort_stack_a(t_list **root_a, t_list **a, thelp *f)
 		reverse_a(a, root_a);
 		swap_in_a(root_a, a);
 	}
-	// write(1, "SORT\n", 5);
 	return (buff);
 }
 
-void		continue_sort(t_list *root_a, t_list *root_b, thelp *f)
+void		continue_sort(t_list *root_a, t_list *root_b, t_help *f)
 {
 	t_list	*buff;
 	t_list	*b;
@@ -88,14 +87,9 @@ void		continue_sort(t_list *root_a, t_list *root_b, thelp *f)
 		b = b->next;
 	while (a->next != NULL)
 		a = a->next;
-	// print_b(root_b);
-		reverse_a(&a, &root_a);
-	// print_a(root_a);
+	reverse_a(&a, &root_a);
 	while (root_b != NULL)
 	{
-		// printf ("root_a %d and root_b = %d\n", root_a->value, root_b->value);
-		// print_a(root_a);
-		// print_b(root_b);
 		if (root_a->value > root_b->value && a->value > root_b->value)
 		{
 			reverse_a(&a, &root_a);
@@ -106,46 +100,26 @@ void		continue_sort(t_list *root_a, t_list *root_b, thelp *f)
 			rotate_a(&root_a);
 			continue ;
 		}
-			push_a(&root_a, &root_b);
+		push_a(&root_a, &root_b);
 	}
 	while (f->min != root_a->value)
 		reverse_a(&a, &root_a);
-	// print_a(root_a);
-	// print_b(root_b);
-	return ;
-	// while (root_b != NULL)
-	// {
-	// 	buff = root_a->next;
-	// 	if(root_a->value < root_b->value)
-	// 	{
-	// 		rotate_a(&root_a);
-	// 		print_a(root_a);
-	// 		print_b(root_b);
-	// 		push_a(&root_a, &root_b);
-	// 	}
-	// 	else if (root_a->value > root_b->value)
-	// 		reverse_a(&a, &root_a);
-	// 	print_a(root_a);
-	// 	print_b(root_b);
-	// }
-		print_a(root_a);
-		print_b(root_b);
 	return ;
 }
 
-void		second_step(t_list *a, t_list *root_a, thelp *f)
+void		second_step(t_list *a, t_list *root_a, t_help *f)
 {
-	t_list	*b;
-	t_list 	*buff;
-	t_list	*root_b;
-	int		c;
+	t_list		*b;
+	t_list 		*buff;
+	t_list		*root_b;
+	int			c;
 
 	b = NULL;
 	root_b = b;
 	buff = root_a;
 	while (buff != NULL)
 	{
-		if(buff->value > f->min  && buff->value < f->mid)
+		if (buff->value > f->min  && buff->value < f->mid)
 		{
 			c = buff->value;
 			while (root_a->value != c)
@@ -163,7 +137,7 @@ void		second_step(t_list *a, t_list *root_a, thelp *f)
 	buff = root_a;
 	while (buff != NULL)
 	{
-		if(buff->value > f->mid  && buff->value < f->max)
+		if (buff->value > f->mid  && buff->value < f->max)
 		{
 			c = buff->value;
 			while (root_a->value != c)
@@ -171,7 +145,7 @@ void		second_step(t_list *a, t_list *root_a, thelp *f)
 				rotate_a(&root_a);
 			}
 			buff = root_a;
-			push_b(&root_b, &root_a);		
+			push_b(&root_b, &root_a);
 		}
 		else
 		{
@@ -189,9 +163,9 @@ void		take_min_mid_max(t_list *a, t_list *root_a, int cc)
 {
 	t_list	*buff;
 	t_list	*root_buff;
-	thelp	*f;
+	t_help	*f;
 
-	f = malloc(sizeof(thelp));
+	f = malloc(sizeof(t_help));
 	f->mid = 0;
 	f->max = 0;
 	f->c = 0;
@@ -201,7 +175,7 @@ void		take_min_mid_max(t_list *a, t_list *root_a, int cc)
 	f->maxx = NULL;
 	buff = root_a;
 	f->min = buff->value;
-	while(buff != NULL)
+	while (buff != NULL)
 	{
 		if (buff->value >= f->max && (f->maxx = "r"))
 			f->max = buff->value;
@@ -258,7 +232,6 @@ void		take_min_mid_max(t_list *a, t_list *root_a, int cc)
 	f->f_min = f->minn;
 	f->f_mid = f->midd;
 	f->f_max = f->maxx;
-	printf("min = %d\nmid = %d\nmax = %d\n", f->min, f->mid, f->max);
 	second_step(a, root_a, f);
 }
 
@@ -266,16 +239,16 @@ int		main(int ac, char **av)
 {
 	t_list	*a;
 	t_list	*root_a;
-	thelp	*f;
+	t_help	*f;
 	int		i;
 
 	i = 1;
-	f = malloc(sizeof(thelp));
+	f = malloc(sizeof(t_help));
 	f->cc = 1;
 	a = malloc(sizeof(t_list));
 	root_a = a;
 	a->value = ft_atoi(av[i]);
-	while(i != (ac - 1))
+	while (i != (ac - 1))
 	{
 		i++;
 		a->next = malloc(sizeof(t_list));

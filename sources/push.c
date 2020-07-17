@@ -6,20 +6,18 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 20:39:47 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/16 18:30:27 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/17 15:08:45 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_push.h"
+#include "../includes/lib_push.h"
 
-int     push_in_b(t_list **b, t_list **a, t_list **root_b, t_list **root_a)
+int		push_in_b(t_list **b, t_list **a, t_list **root_b, t_list **root_a)
 {
 	t_list *buff;
 	t_list *buff_root;
 
-	// if ((*root_a) == (*a) && !(*a))
-	// 	return (2);
-	if((*root_b) == NULL)
+	if ((*root_b) == NULL)
 	{
 		(*b) = malloc(sizeof(t_list));
 		(*root_b) = (*b);
@@ -43,50 +41,17 @@ int     push_in_b(t_list **b, t_list **a, t_list **root_b, t_list **root_a)
 	if ((*root_a) == NULL)
 		(*a) = (*root_a);
 	ft_putstr("pa\n");
-	return(2);
-}
-
-int     push_in_a(t_list **b, t_list **a, t_list **root_b, t_list **root_a)
-{
-	t_list *buff;
-	t_list *buff_root;
-
-	if ((*root_b) == (*b) && !(*b))
-		return (2);
-    if((*root_a) == NULL)	
-	{
-		(*a) = malloc(sizeof(t_list));
-		(*a)->value = (*b)->value;
-		(*a)->next = NULL;
-	}
-	else
-	{
-		buff = malloc(sizeof(t_list));
-		buff_root = buff;
-		buff->value = (*root_b)->value;
-		buff->next = (*root_a);
-		(*root_a) = buff_root;
-	}
-	buff = *(root_b);
-	(*root_b) = (*root_b)->next;
-	while ((*b) != NULL && (*b)->next != NULL)
-		(*b) = (*b)->next;
-	if ((*root_a) == NULL)
-		free(buff);
-	if ((*root_b) == NULL)
-		(*b) = (*root_b);
-		ft_putstr("pb\n");
 	return (2);
 }
 
-int     push_for_push_swap(t_list **b, t_list **a, t_list **root_b, t_list **root_a)
+int		push_in_a(t_list **b, t_list **a, t_list **root_b, t_list **root_a)
 {
 	t_list *buff;
 	t_list *buff_root;
 
 	if ((*root_b) == (*b) && !(*b))
 		return (2);
-    if((*root_a) == NULL)	
+	if ((*root_a) == NULL)
 	{
 		(*a) = malloc(sizeof(t_list));
 		(*a)->value = (*b)->value;
@@ -108,7 +73,41 @@ int     push_for_push_swap(t_list **b, t_list **a, t_list **root_b, t_list **roo
 		free(buff);
 	if ((*root_b) == NULL)
 		(*b) = (*root_b);
-		ft_putstr("pa\n");
+	ft_putstr("pb\n");
+	return (2);
+}
+
+int		push_for_push_swap(t_list **b, t_list **a,
+t_list **root_b, t_list **root_a)
+{
+	t_list *buff;
+	t_list *buff_root;
+
+	if ((*root_b) == (*b) && !(*b))
+		return (2);
+	if ((*root_a) == NULL)
+	{
+		(*a) = malloc(sizeof(t_list));
+		(*a)->value = (*b)->value;
+		(*a)->next = NULL;
+	}
+	else
+	{
+		buff = malloc(sizeof(t_list));
+		buff_root = buff;
+		buff->value = (*root_b)->value;
+		buff->next = (*root_a);
+		(*root_a) = buff_root;
+	}
+	buff = *(root_b);
+	(*root_b) = (*root_b)->next;
+	while ((*b) != NULL && (*b)->next != NULL)
+		(*b) = (*b)->next;
+	if ((*root_a) == NULL)
+		free(buff);
+	if ((*root_b) == NULL)
+		(*b) = (*root_b);
+	ft_putstr("pa\n");
 	return (2);
 }
 
@@ -118,14 +117,12 @@ int		push_b(t_list **root_b, t_list **root_a)
 
 	if ((*root_b) == NULL)
 	{
-		// write(1, "pb_F\n", 5);
 		(*root_b) = (*root_a);
 		(*root_a) = (*root_a)->next;
 		(*root_b)->next = NULL;
 	}
 	else
 	{
-		// write(1, "pb_S\n", 5);
 		root_buff = (*root_b);
 		(*root_b) = (*root_a);
 		(*root_a) = (*root_a)->next;
@@ -141,14 +138,12 @@ int		push_a(t_list **root_a, t_list **root_b)
 
 	if ((*root_a) == NULL)
 	{
-		// write(1, "pa_F\n", 5);
 		(*root_a) = (*root_b);
 		(*root_b) = (*root_b)->next;
 		(*root_a)->next = NULL;
 	}
 	else
 	{
-		// write(1, "pa_S\n", 5);
 		root_buff = (*root_a);
 		(*root_a) = (*root_b);
 		(*root_b) = (*root_b)->next;

@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/13 22:42:39 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/17 13:20:39 by acarlett         ###   ########.fr       */
+/*   Created: 2020/07/17 13:18:43 by acarlett          #+#    #+#             */
+/*   Updated: 2020/07/17 14:53:30 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-int		ft_putstr(char const *s)
-{
-	int i;
+# include <libc.h>
 
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
-	return (i);
-}
+long long int	ft_atoi(const char *str);
+int				ft_isalpha(char c);
+int				ft_putstr(char const *s);
+
+#endif

@@ -6,19 +6,17 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:18:02 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/16 20:52:13 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/17 15:00:51 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_push.h"
+#include "../includes/lib_push.h"
 
 int		reverse_a(t_list **a, t_list **root_a)
 {
 	t_list	*buff;
 	t_list	*tmp;
 
-	
-	
 	buff = (*root_a);
 	tmp = (*root_a)->next;
 	while (tmp->next != NULL)
@@ -44,7 +42,7 @@ int		reverse_b(t_list **b, t_list **root_b)
 	while (buff != (*b))
 	{
 		if (buff->next == (*b))
-			break;
+			break ;
 		buff = buff->next;
 	}
 	buff->next = NULL;

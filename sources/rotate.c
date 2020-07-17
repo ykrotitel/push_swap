@@ -6,17 +6,17 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 22:56:31 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/07 19:42:52 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/17 14:59:29 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_push.h"
+#include "../includes/lib_push.h"
 
 int		rotate_a(t_list **root_a)
 {
-	t_list *buff;
+	t_list	*buff;
 	t_list	*f;
-	t_list 	*r;
+	t_list	*r;
 
 	r = (*root_a);
 	if (*(root_a) == NULL)
@@ -28,21 +28,21 @@ int		rotate_a(t_list **root_a)
 	{
 		(*root_a) = (*root_a)->next;
 		if ((*root_a) == NULL)
-			break;
+			break ;
 		f->value = (*root_a)->value;
 		f = f->next;
 	}
 	f->value = buff->value;
 	(*root_a) = r;
 	ft_putstr("ra\n");
-	return(2);
+	return (2);
 }
 
 int		rotate_b(t_list **root_b)
 {
-	t_list *buff;
+	t_list	*buff;
 	t_list	*f;
-	t_list 	*r;
+	t_list	*r;
 
 	r = (*root_b);
 	if (*(root_b) == NULL)
@@ -54,14 +54,14 @@ int		rotate_b(t_list **root_b)
 	{
 		(*root_b) = (*root_b)->next;
 		if ((*root_b) == NULL)
-			break;
+			break ;
 		f->value = (*root_b)->value;
 		f = f->next;
 	}
 	f->value = buff->value;
 	(*root_b) = r;
 	ft_putstr("rb\n");
-	return(2);
+	return (2);
 }
 
 int		rotate(t_list **root_a, t_list **root_b)

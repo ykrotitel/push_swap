@@ -6,13 +6,13 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/03/07 21:34:03 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/17 15:03:51 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_push.h"
+#include "../includes/lib_push.h"
 
-int     check_argv(char *s)
+int		check_argv(char *s)
 {
 	int i;
 
@@ -24,7 +24,7 @@ int     check_argv(char *s)
 	return (0);
 }
 
-int     first_check(char **argv, int argc)
+int		first_check(char **argv, int argc)
 {
 	int i;
 
@@ -36,8 +36,8 @@ int     first_check(char **argv, int argc)
 	return (0);
 }
 
-int     display_error()
-{   
+int		display_error(void)
+{
 	ft_putstr("Error1\n");
 	return (0);
 }
@@ -52,35 +52,34 @@ int		check_each_inst(char *inst)
 		while (inst[i] != '\n')
 		{
 			if (inst[i] == 'p' && (inst[i + 1] == 'a' || inst[i + 1] == 'b'))
-				i+=2;
+				i += 2;
 			else if (inst[i] == 'r' && inst[i + 1] == 'r' && (inst[i + 2] == 'a' || inst[i + 2] == 'b' || inst[i + 2] == 'r'))
-				i+=3;
+				i += 3;
 			else if (inst[i] == 's' && (inst[i + 1] == 'a' || inst[i + 1] == 'b' || inst[i + 1] == 's'))
-				i+=2;
+				i += 2;
 			else if (inst[i] == 'r' && (inst[i + 1] == 'a' || inst[i + 1] == 'b' || inst[i + 1] == 'r'))
-				i+=2;
+				i += 2;
 			else
-				return (0);	
+				return (0);
 		}
 		i++;
 	}
 	return (1);
 }
 
-int     check_instruction(int argc, char **argv, t_list *A, t_list *A_R)
+int		check_instruction(int argc, char **argv, t_list *A, t_list *A_R)
 {
 	char	*inst;
 	char	buff[1];
 	int		a;
 	int		i;
-	
+
 	i = 0;
 	if (!(inst = malloc(sizeof(*inst) * 20000)))
 	{
 		ft_putstr("Error2");
-		return 0;
+		return (0);
 	}
-		// return(display_error());
 	while ((a = read(0, buff, 1)) > 0)
 	{
 		inst[i] = buff[0];
@@ -90,9 +89,8 @@ int     check_instruction(int argc, char **argv, t_list *A, t_list *A_R)
 	if (!(check_each_inst(inst)))
 	{
 		ft_putstr("Error3");
-		return 0;
+		return (0);
 	}
-		// return (display_error());
 	make_sort(A, A_R, inst);
 	return (0);
 }
@@ -119,13 +117,12 @@ int		get_array(int argc, char **argv)
 	return (1);
 }
 
-int     main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	if (!(first_check(argv, argc)))
 	{
 		ft_putstr("Error1");
 		return 0;
 	}
-		// return (display_error());
 	get_array(argc, argv);
 }
