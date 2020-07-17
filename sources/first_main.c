@@ -6,23 +6,11 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/17 15:03:51 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/17 19:45:55 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
-
-int		check_argv(char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i] >= '0' && s[i] <= '9')
-		i++;
-	if (s[i] == '\0')
-		return (1);
-	return (0);
-}
 
 int		first_check(char **argv, int argc)
 {
@@ -36,28 +24,26 @@ int		first_check(char **argv, int argc)
 	return (0);
 }
 
-int		display_error(void)
-{
-	ft_putstr("Error1\n");
-	return (0);
-}
-
 int		check_each_inst(char *inst)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (inst[i] != '\0')
 	{
 		while (inst[i] != '\n')
 		{
-			if (inst[i] == 'p' && (inst[i + 1] == 'a' || inst[i + 1] == 'b'))
+			if (inst[i] == 'p' && (inst[i + 1] == 'a' ||
+			inst[i + 1] == 'b'))
 				i += 2;
-			else if (inst[i] == 'r' && inst[i + 1] == 'r' && (inst[i + 2] == 'a' || inst[i + 2] == 'b' || inst[i + 2] == 'r'))
+			else if (inst[i] == 'r' && inst[i + 1] == 'r' &&
+			(inst[i + 2] == 'a' || inst[i + 2] == 'b' || inst[i + 2] == 'r'))
 				i += 3;
-			else if (inst[i] == 's' && (inst[i + 1] == 'a' || inst[i + 1] == 'b' || inst[i + 1] == 's'))
+			else if (inst[i] == 's' && (inst[i + 1] == 'a' ||
+			inst[i + 1] == 'b' || inst[i + 1] == 's'))
 				i += 2;
-			else if (inst[i] == 'r' && (inst[i + 1] == 'a' || inst[i + 1] == 'b' || inst[i + 1] == 'r'))
+			else if (inst[i] == 'r' && (inst[i + 1] == 'a' ||
+			inst[i + 1] == 'b' || inst[i + 1] == 'r'))
 				i += 2;
 			else
 				return (0);
@@ -119,6 +105,8 @@ int		get_array(int argc, char **argv)
 
 int		main(int argc, char **argv)
 {
+	if (argc == 1)
+		return (0);
 	if (!(first_check(argv, argc)))
 	{
 		ft_putstr("Error1");

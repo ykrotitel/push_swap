@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/17 15:10:03 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/17 19:44:14 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct		s_list
 {
-	struct slist	*next;
+	struct s_list	*next;
 	int				value;
 }					t_list;
 
@@ -38,7 +38,16 @@ typedef	struct		s_help
 	int				tmp;
 	int				f;
 	int				ff;
+	int				fff;
 	int				sec_tmp;
+	char			*inst;
+	int				i;
+	int				q;
+	t_list			*a;
+	t_list			*b;
+	t_list			*root_a;
+	t_list			*root_b;
+	t_list			*t3;
 }					t_help;
 
 int					first_check(char **argv, int argc);
@@ -72,5 +81,27 @@ t_list				*rewrite(t_list *buff);
 int					check_min_max(int value, t_help *f);
 int					push_b(t_list **root_b, t_list **root_a);
 int					push_a(t_list **root_a, t_list **root_b);
+int					check_rb(t_list **root_b);
+int					check_ra(t_list **root_a);
+int					check_rrb(t_list **b, t_list **root_b);
+int					check_rra(t_list **a, t_list **root_a);
+int					swap_b_continue(t_list **root_b, t_list *root);
+int					swap_a_continue(void);
+int					check_argv(char *s);
+int					display_error(void);
+int					make_sort_continue(t_list *b, t_list *root_b,
+t_list *root_a);
+int					main_sort(t_help *p);
 
+int					checker_swap_a(t_list **root_a, t_list **a);
+int					checker_swap_b(t_list **root_b, t_list **b);
+int					checker_swap(t_list **a, t_list **b, t_list **root_a, t_list **root_b);
+int					checker_rotate_a(t_list **root_a);
+int					checker_rotate_b(t_list **root_b);
+int					checker_rotate(t_list **root_a, t_list **root_b);
+int					checker_push_a(t_list **root_a, t_list **root_b);
+int					checker_push_b(t_list **root_b, t_list **root_a);
+int					checker_reverse_a(t_list **a, t_list **root_a);
+int					checker_reverse_b(t_list **b, t_list **root_b);
+int					checker_reverse(t_list **a, t_list **b, t_list **root_a, t_list **root_b);
 #endif

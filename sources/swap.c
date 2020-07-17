@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 21:28:37 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/17 15:00:13 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/17 17:25:19 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ int		swap_in_b(t_list **root_b, t_list **b)
 		return (2);
 	if ((*root_b)->next)
 		check = (*root_b)->next;
-	else
-		return (2);
-	if ((*root_b)->next == NULL || check == NULL)
+	else if (!((*root_b)->next) || ((*root_b)->next == NULL || check == NULL))
 		return (2);
 	else
 	{
@@ -40,6 +38,11 @@ int		swap_in_b(t_list **root_b, t_list **b)
 		(*root_b)->value = buff->value;
 		free(buff);
 	}
+	return (swap_b_continue(root_b, root));
+}
+
+int		swap_b_continue(t_list **root_b, t_list *root)
+{
 	(*root_b) = root;
 	ft_putstr("sb\n");
 	return (2);
@@ -71,6 +74,11 @@ int		swap_in_a(t_list **root_a, t_list **a)
 		free(buff);
 	}
 	(*root_a) = root;
+	return (swap_a_continue());
+}
+
+int		swap_a_continue(void)
+{
 	ft_putstr("sa\n");
 	return (2);
 }

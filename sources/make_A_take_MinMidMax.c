@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 18:25:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/17 15:13:28 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/17 18:53:34 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,10 @@ void		continue_sort(t_list *root_a, t_list *root_b, t_help *f)
 
 	b = root_b;
 	a = root_a;
-	while (b->next != NULL)
+	while (b != NULL && b->next != NULL)
+	{
 		b = b->next;
+	}
 	while (a->next != NULL)
 		a = a->next;
 	reverse_a(&a, &root_a);
@@ -111,10 +113,16 @@ void		second_step(t_list *a, t_list *root_a, t_help *f)
 {
 	t_list		*b;
 	t_list 		*buff;
+	int			q;
+	int			w;
 	t_list		*root_b;
+	t_list		*test;
+	t_list		*test_a;
 	int			c;
 
 	b = NULL;
+	q = 0;
+	w = 0;
 	root_b = b;
 	buff = root_a;
 	while (buff != NULL)
@@ -122,8 +130,16 @@ void		second_step(t_list *a, t_list *root_a, t_help *f)
 		if (buff->value > f->min  && buff->value < f->mid)
 		{
 			c = buff->value;
+			test = root_a;
+			test_a = a;
 			while (root_a->value != c)
-				rotate_a(&root_a);
+				q += check_ra(&root_a);
+			root_a = test;
+			while (root_a->value != c)
+				w += check_rra(&a, &root_a);
+			root_a = test;
+			while (root_a->value != c)
+				(w > q ? reverse_a(&a, &root_a) : rotate_a(&root_a));
 			buff = root_a;
 			push_b(&root_b, &root_a);
 		}
@@ -243,6 +259,8 @@ int		main(int ac, char **av)
 	int		i;
 
 	i = 1;
+	if (ac == 1)
+		return (0);
 	f = malloc(sizeof(t_help));
 	f->cc = 1;
 	a = malloc(sizeof(t_list));

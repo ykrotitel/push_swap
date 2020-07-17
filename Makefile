@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/07/17 14:52:11 by acarlett         ###   ########.fr        #
+#    Updated: 2020/07/17 19:47:34 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,12 @@ SOURCES =		sources/push.c \
 				sources/reverse_rotate.c \
 				sources/second_main.c \
 				sources/swap.c \
+				sources/helper.c \
+				sources/second_helper.c \
 
 PUSH_SWAP = sources/make_A_take_MinMidMax.c
 
-CHECKER = sources/first_main.c
+CHECKER =	sources/first_main.c \
 
 INCLUDES = includes/lib_push.h \
 
@@ -30,7 +32,7 @@ OBJECTS = $(patsubst %.c,%.o,$(SOURCES))
 
 all: $(OBJECTS)
 	@make -C libft re
-	@gcc -o push_swap $(SOURCES) $(PUSH_SWAP) -I $(INCLUDES) libft/libft.a
+	@gcc -o push_swap $(PUSH_SWAP) $(SOURCES) -I $(INCLUDES) libft/libft.a
 	@gcc -o checker $(SOURCES) $(CHECKER) -I $(INCLUDES) libft/libft.a
 
 %.o: %.c $(INCLUDES)
