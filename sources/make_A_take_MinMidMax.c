@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 18:25:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/17 18:53:34 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/18 20:36:55 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,21 @@ t_list		*sort_stack_a(t_list **root_a, t_list **a, t_help *f)
 	buff = (*root_a);
 	if (f->max == (*root_a)->value)
 	{
-		rotate_a(root_a);
-		if (f->mid == (*root_a)->value)
+		rotate_a(root_a) && write(1, "ra\n", 3);
+		if (f->mid == (*root_a)->value && write(1, "sa\n", 3))
 			swap_in_a(root_a, a);
 	}
-	else if (f->mid == (*root_a)->value && f->max == tmp->value)
+	else if (f->mid == (*root_a)->value && f->max == tmp->value && write(1, "rra\n", 4))
 	{
 		reverse_a(a, root_a);
 	}
-	else if (f->mid == (*root_a)->value && f->min == tmp->value)
+	else if (f->mid == (*root_a)->value && f->min == tmp->value && write(1, "sa\n", 3))
 		swap_in_a(root_a, a);
-	else if (f->min == (*root_a)->value && f->max == tmp->value)
+	else if (f->min == (*root_a)->value && f->max == tmp->value && write(1, "rra\n", 4))
 	{
 		reverse_a(a, root_a);
 		swap_in_a(root_a, a);
+		write(1, "sa\n", 3);
 	}
 	return (buff);
 }
@@ -83,29 +84,40 @@ void		continue_sort(t_list *root_a, t_list *root_b, t_help *f)
 
 	b = root_b;
 	a = root_a;
+	f->q = 0;
+	f->w = 0;
 	while (b != NULL && b->next != NULL)
 	{
 		b = b->next;
 	}
 	while (a->next != NULL)
 		a = a->next;
-	reverse_a(&a, &root_a);
+	reverse_a(&a, &root_a) && write(1, "rra\n", 4);
 	while (root_b != NULL)
 	{
 		if (root_a->value > root_b->value && a->value > root_b->value)
 		{
-			reverse_a(&a, &root_a);
+			reverse_a(&a, &root_a) && write(1, "rra\n", 4);
 			continue ;
 		}
 		else if (root_a->value < root_b->value)
 		{
-			rotate_a(&root_a);
+			rotate_a(&root_a) && write(1, "ra\n", 3);
 			continue ;
 		}
-		push_a(&root_a, &root_b);
+		push_a(&root_a, &root_b) && write(1, "pa\n", 3);
 	}
+	buff = root_a;
+	while (f->min != buff->value)
+		f->q += check_ra(&buff);
+	buff = root_a;
+	while (f->min != buff->value)
+		f->w += check_rra(&a, &buff);
 	while (f->min != root_a->value)
-		reverse_a(&a, &root_a);
+	{
+		(f->w > f->q ? reverse_a(&a, &root_a) : rotate_a(&root_a));
+		(f->w > f->q ? write(1, "rra\n", 4) : write(1, "ra\n", 3));
+	}
 	return ;
 }
 
@@ -139,7 +151,10 @@ void		second_step(t_list *a, t_list *root_a, t_help *f)
 				w += check_rra(&a, &root_a);
 			root_a = test;
 			while (root_a->value != c)
+			{
 				(w > q ? reverse_a(&a, &root_a) : rotate_a(&root_a));
+				(w > q ? write(1, "rra\n", 4) : write(1, "ra\n", 3));
+			}
 			buff = root_a;
 			push_b(&root_b, &root_a);
 		}
@@ -156,12 +171,12 @@ void		second_step(t_list *a, t_list *root_a, t_help *f)
 		if (buff->value > f->mid  && buff->value < f->max)
 		{
 			c = buff->value;
-			while (root_a->value != c)
+			while (root_a->value != c && write(1, "ra\n", 3))
 			{
 				rotate_a(&root_a);
 			}
 			buff = root_a;
-			push_b(&root_b, &root_a);
+			push_b(&root_b, &root_a) && write(1, "pb\n", 3);
 		}
 		else
 		{

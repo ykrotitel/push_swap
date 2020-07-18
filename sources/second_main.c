@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:17:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/17 19:51:41 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/18 20:00:34 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,19 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 	p.a = a;
 	p.root_a = root_a;
 	p.fff = 0;
-	while (inst[p.i++] != '\0')
+	while (inst[p.i] != '\0')
+	{
 		while (inst[p.i] != '\n' && inst[p.i] != '\0')
 			p.i += main_sort(&p);
+		p.i++;
+	}
 	free(p.b);
 	return (make_sort_continue(p.b, p.root_b, root_a));
 }
 
 int			main_sort(t_help *p)
 {
-	if (p->inst[p->i] == 'p' && p->inst[p->i + 1] == 'a')   // ЧТОБЫ ЧЕКЕР НЕ ВЫВОДИЛ КОМАНДЫ,В КАЖДУЮ ФУНКЦИЮ ПУШ6 СВАП6 РОТЕЙТ И ТАК ДАЛЕЕ НАДО ПЕРЕДАТЬ УКАЗАТЕЛЬ t_help *p, И УЖЕ В ЭТИ ФУНКЦИЯХ ПРОВЕРЯТЬ ПЕРЕМЕННУЮ p->fff, ЕСЛИ ОНА НОЛЬ - НЕ ВЫВОДИМ, ИНАЧЕ ВЫВОДИМ КОМАНДУ
+	if (p->inst[p->i] == 'p' && p->inst[p->i + 1] == 'a')
 		p->q = push_a(&(p->root_a), &(p->root_b));
 	else if (p->inst[p->i] == 'p' && p->inst[p->i + 1] == 'b')
 		p->q = push_b(&(p->root_b), &(p->root_a));

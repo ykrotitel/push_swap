@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/17 19:45:55 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/18 20:39:42 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		check_instruction(int argc, char **argv, t_list *A, t_list *A_R)
 	inst[i] = '\0';
 	if (!(check_each_inst(inst)))
 	{
-		ft_putstr("Error3");
+		ft_putstr("Error  -->  Unreadble instruction\n");
 		return (0);
 	}
 	make_sort(A, A_R, inst);

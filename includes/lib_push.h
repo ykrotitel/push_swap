@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/17 19:44:14 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/18 20:08:24 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef	struct		s_help
 	char			*inst;
 	int				i;
 	int				q;
+	int				w;
 	t_list			*a;
 	t_list			*b;
 	t_list			*root_a;
@@ -55,12 +56,6 @@ int					make_sort(t_list *a, t_list *root_a, char *inst);
 int					make_list_a(int argc, long long int arr[argc], char *inst);
 int					swap(t_list **a, t_list **b,
 t_list **root_a, t_list **root_b);
-int					push_in_a(t_list **b, t_list **a, t_list**root_b,
-t_list **root_a);
-int					push_in_b(t_list **b, t_list **a,
-t_list **root_b, t_list **root_a);
-int					push_for_push_swap(t_list **b, t_list **a,
-t_list **root_b, t_list **root_a);
 int					reverse(t_list **a, t_list **b,
 t_list **root_a, t_list **root_b);
 int					reverse_a(t_list **a, t_list **root_a);
