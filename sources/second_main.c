@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:17:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/18 20:00:34 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/19 20:41:31 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 int			main_sort(t_help *p)
 {
 	if (p->inst[p->i] == 'p' && p->inst[p->i + 1] == 'a')
+		// p->q = push_b(&(p->root_a), &(p->root_b));
 		p->q = push_a(&(p->root_a), &(p->root_b));
 	else if (p->inst[p->i] == 'p' && p->inst[p->i + 1] == 'b')
 		p->q = push_b(&(p->root_b), &(p->root_a));

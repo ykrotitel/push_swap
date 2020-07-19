@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/18 20:08:24 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/19 20:26:53 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,6 @@ int					checker_push_b(t_list **root_b, t_list **root_a);
 int					checker_reverse_a(t_list **a, t_list **root_a);
 int					checker_reverse_b(t_list **b, t_list **root_b);
 int					checker_reverse(t_list **a, t_list **b, t_list **root_a, t_list **root_b);
+int					check_massive(t_list *root_a);
+int					check_stack_a(t_list *root_a);
 #endif

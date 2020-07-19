@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/18 20:39:42 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/19 20:26:23 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ int		get_array(int argc, char **argv)
 		a->value = ft_atoi(argv[i]);
 	}
 	a->next = NULL;
+	if (!check_massive(root_a))
+		return (display_error());
 	check_instruction(argc, argv, a, root_a);
 	return (1);
 }

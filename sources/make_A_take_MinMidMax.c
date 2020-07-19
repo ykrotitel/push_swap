@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 18:25:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/18 20:36:55 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/19 20:33:28 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,6 +290,10 @@ int		main(int ac, char **av)
 		f->cc++;
 	}
 	a->next = NULL;
+	if (!check_massive(root_a))
+		return (display_error());
+	if (!check_stack_a(root_a))
+		return (0);
 	take_min_mid_max(a, root_a, f->cc);
 	return (0);
 }
