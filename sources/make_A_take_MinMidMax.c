@@ -1,272 +1,117 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_A_take_MinMidMax.c                            :+:      :+:    :+:   */
+/*   make_a_take_minmidmax.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 18:25:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/19 20:33:28 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/22 20:46:56 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-int			numbers_of_different_various(t_list *root_a, int max, int min)
+void		free_list(t_list *root_a)
 {
-	t_list	*buff;
 	t_list	*tmp;
-	int		a;
-	int		m;
 
-	buff = root_a;
-	a = 0;
-	m = max;
-	while (min <= max)
+	while(root_a != NULL)
 	{
-		while (buff != NULL)
-		{
-			if (buff->value == min)
-			{
-				a++;
-				if (min == max)
-					return (a);
-			}
-			buff = buff->next;
-		}
-		buff = root_a;
-		while (buff != NULL)
-		{
-			if (buff->value < m && buff->value > min)
-				m = buff->value;
-			buff = buff->next;
-		}
-		min = m;
-		m = max;
-		buff = root_a;
+		tmp = root_a;
+		root_a = root_a->next;
+		free(tmp);
 	}
-	return (a);
-}
-
-t_list		*sort_stack_a(t_list **root_a, t_list **a, t_help *f)
-{
-	t_list *tmp;
-	t_list *buff;
-
-	tmp = (*root_a)->next;
-	buff = (*root_a);
-	if (f->max == (*root_a)->value)
-	{
-		rotate_a(root_a) && write(1, "ra\n", 3);
-		if (f->mid == (*root_a)->value && write(1, "sa\n", 3))
-			swap_in_a(root_a, a);
-	}
-	else if (f->mid == (*root_a)->value && f->max == tmp->value && write(1, "rra\n", 4))
-	{
-		reverse_a(a, root_a);
-	}
-	else if (f->mid == (*root_a)->value && f->min == tmp->value && write(1, "sa\n", 3))
-		swap_in_a(root_a, a);
-	else if (f->min == (*root_a)->value && f->max == tmp->value && write(1, "rra\n", 4))
-	{
-		reverse_a(a, root_a);
-		swap_in_a(root_a, a);
-		write(1, "sa\n", 3);
-	}
-	return (buff);
 }
 
 void		continue_sort(t_list *root_a, t_list *root_b, t_help *f)
 {
-	t_list	*buff;
 	t_list	*b;
 	t_list	*a;
 
 	b = root_b;
 	a = root_a;
-	f->q = 0;
-	f->w = 0;
+	for_make(&f);
 	while (b != NULL && b->next != NULL)
-	{
 		b = b->next;
-	}
 	while (a->next != NULL)
 		a = a->next;
-	reverse_a(&a, &root_a) && write(1, "rra\n", 4);
 	while (root_b != NULL)
 	{
 		if (root_a->value > root_b->value && a->value > root_b->value)
-		{
-			reverse_a(&a, &root_a) && write(1, "rra\n", 4);
-			continue ;
-		}
+			reverse_a(&a, &root_a, 0) && write(1, "rra\n", 4);
 		else if (root_a->value < root_b->value)
-		{
 			rotate_a(&root_a) && write(1, "ra\n", 3);
-			continue ;
-		}
-		push_a(&root_a, &root_b) && write(1, "pa\n", 3);
+		else
+			push_a(&root_a, &root_b) && write(1, "pa\n", 3);
 	}
-	buff = root_a;
-	while (f->min != buff->value)
-		f->q += check_ra(&buff);
-	buff = root_a;
-	while (f->min != buff->value)
-		f->w += check_rra(&a, &buff);
 	while (f->min != root_a->value)
 	{
-		(f->w > f->q ? reverse_a(&a, &root_a) : rotate_a(&root_a));
-		(f->w > f->q ? write(1, "rra\n", 4) : write(1, "ra\n", 3));
+		reverse_a(&a, &root_a, 0) && write(1, "rra\n", 4);
 	}
+	free_list(root_a);
+	free_list(root_b);
+	free(f);
 	return ;
 }
+
 
 void		second_step(t_list *a, t_list *root_a, t_help *f)
 {
 	t_list		*b;
-	t_list 		*buff;
-	int			q;
-	int			w;
 	t_list		*root_b;
-	t_list		*test;
-	t_list		*test_a;
-	int			c;
 
 	b = NULL;
-	q = 0;
-	w = 0;
+	for_make(&f);
 	root_b = b;
-	buff = root_a;
-	while (buff != NULL)
-	{
-		if (buff->value > f->min  && buff->value < f->mid)
-		{
-			c = buff->value;
-			test = root_a;
-			test_a = a;
-			while (root_a->value != c)
-				q += check_ra(&root_a);
-			root_a = test;
-			while (root_a->value != c)
-				w += check_rra(&a, &root_a);
-			root_a = test;
-			while (root_a->value != c)
-			{
-				(w > q ? reverse_a(&a, &root_a) : rotate_a(&root_a));
-				(w > q ? write(1, "rra\n", 4) : write(1, "ra\n", 3));
-			}
-			buff = root_a;
-			push_b(&root_b, &root_a);
-		}
-		else
-		{
-			buff = buff->next;
-			continue;
-		}
-		buff = root_a;
-	}
-	buff = root_a;
-	while (buff != NULL)
-	{
-		if (buff->value > f->mid  && buff->value < f->max)
-		{
-			c = buff->value;
-			while (root_a->value != c && write(1, "ra\n", 3))
-			{
-				rotate_a(&root_a);
-			}
-			buff = root_a;
-			push_b(&root_b, &root_a) && write(1, "pb\n", 3);
-		}
-		else
-		{
-			buff = buff->next;
-			continue;
-		}
-		buff = root_a;
-	}
+	second_step_while(&f, &root_a, &a, &root_b);
+	f->cc = 0;
+	second_step_secondwhile(&f, &root_a, &root_b);
 	sort_stack_a(&root_a, &a, f);
 	continue_sort(root_a, root_b, f);
 	return ;
 }
 
-void		take_min_mid_max(t_list *a, t_list *root_a, int cc)
+void		first_takeminmax(t_help **f, t_list *buff)
+{
+	(*f)->min = buff->value;
+	while (buff != NULL)
+	{
+		if (buff->value >= (*f)->max && ((*f)->maxx = "r"))
+			(*f)->max = buff->value;
+		if (buff->value <= (*f)->min && ((*f)->minn = "r"))
+			(*f)->min = buff->value;
+		buff = buff->next;
+	}
+	(*f)->cc -= 2;
+	(*f)->cc /= 2;
+	(*f)->tmp = (*f)->min;
+	(*f)->sec_tmp = (*f)->max;
+}
+
+void		take_min_mid_max(t_list *a, t_list *root_a, int cc, t_help *f)
 {
 	t_list	*buff;
 	t_list	*root_buff;
-	t_help	*f;
 
-	f = malloc(sizeof(t_help));
-	f->mid = 0;
-	f->max = 0;
-	f->c = 0;
-	f->cc = cc;
-	f->minn = NULL;
-	f->midd = NULL;
-	f->maxx = NULL;
+	for_take_mmm(&f, cc);
 	buff = root_a;
-	f->min = buff->value;
-	while (buff != NULL)
-	{
-		if (buff->value >= f->max && (f->maxx = "r"))
-			f->max = buff->value;
-		if (buff->value <= f->min && (f->minn = "r"))
-			f->min = buff->value;
-		buff = buff->next;
-	}
-	f->c = numbers_of_different_various(root_a, f->max, f->min);
-	if (f->c != f->cc)
-	{
-		ft_putstr("Errorrrr");
-		return ;
-	}
-	f->c -= 2;
-	f->c /= 2;
-	buff = root_a;
+	first_takeminmax(&f, root_a);
 	root_buff = root_a;
-	f->tmp = f->min;
-	f->sec_tmp = f->max;
-	if (f->c > 0)
-	{
-		while (f->c >= 0)
-		{
-			while (buff != NULL)
-			{
-				if (buff->value > f->tmp && buff->value < f->sec_tmp)
-					f->sec_tmp = buff->value;
-				buff = buff->next;
-			}
-			f->tmp = f->sec_tmp;
-			f->sec_tmp = f->max;
-			f->c--;
-			buff = root_buff;
-		}
-		f->mid = f->tmp;
-		f->midd = "r";
-	}
+	if (f->cc > 0)
+		make_first_if(&f, buff, root_buff);
 	else
-	{
-		buff = root_a;
-		while (buff->next != NULL)
-		{
-			if ((buff->value != f->min) && (buff->value != f->max))
-			{
-				f->midd = "r";
-				f->mid = buff->value;
-			}
-			buff = buff->next;
-		}
-	}
-	buff = root_a;
+		make_first_else(&f, root_a);
 	if (f->midd == NULL && (f->midd = "r"))
 		f->mid = buff->value;
 	f->f_min = f->minn;
 	f->f_mid = f->midd;
 	f->f_max = f->maxx;
+	f->cc = cc;
 	second_step(a, root_a, f);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_list	*a;
 	t_list	*root_a;
@@ -276,24 +121,23 @@ int		main(int ac, char **av)
 	i = 1;
 	if (ac == 1)
 		return (0);
+	if (!(first_check(av)))
+		return (display_error());
 	f = malloc(sizeof(t_help));
 	f->cc = 1;
 	a = malloc(sizeof(t_list));
 	root_a = a;
-	a->value = ft_atoi(av[i]);
-	while (i != (ac - 1))
+	i = help_main(av, i, &a);
+	while (i != (ac - 1) && av[i])
 	{
 		i++;
 		a->next = malloc(sizeof(t_list));
 		a = a->next;
-		a->value = ft_atoi(av[i]);
+		i = help_main(av, i, &a);
 		f->cc++;
 	}
 	a->next = NULL;
-	if (!check_massive(root_a))
-		return (display_error());
-	if (!check_stack_a(root_a))
-		return (0);
-	take_min_mid_max(a, root_a, f->cc);
+	print_a(root_a);
 	return (0);
+	main_continue(a, root_a, f);
 }

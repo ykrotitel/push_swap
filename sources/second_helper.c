@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 17:27:36 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/19 20:25:55 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/22 19:35:40 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		display_error(void)
 {
-	ft_putstr("Error1\n");
+	ft_putstr("Error\n");
 	return (0);
 }
 
@@ -30,8 +30,10 @@ int		check_massive(t_list *root_a)
 	{
 		while (root_a != NULL)
 		{
-			if (i == root_a->value)
+			if (i == root_a->value && buff->next != NULL)
+			{
 				return (0);
+			}
 			root_a = root_a->next;
 		}
 		i = buff->value;
@@ -54,4 +56,25 @@ int		check_stack_a(t_list *root_a)
 		root_a = root_a->next;
 	}
 	return (0);
+}
+
+int		ft_check_data(t_list *root_a)
+{
+	t_list *buff;
+
+	buff = root_a;
+	root_a = root_a->next;
+	while (root_a != NULL)
+	{
+		if (buff->value <= root_a->value)
+		{
+			buff = root_a;
+			root_a = root_a->next;
+		}
+		else
+		{
+			return (0);
+		}
+	}
+	return (1);
 }

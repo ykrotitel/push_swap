@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 16:57:05 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/17 17:27:01 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/20 16:45:43 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,28 +52,28 @@ int		check_rrb(t_list **b, t_list **root_b)
 	return (1);
 }
 
-int		check_ra(t_list **root_a)
+int		check_ra(t_list *root_a)
 {
 	t_list	*buff;
 	t_list	*f;
 	t_list	*r;
 
-	r = (*root_a);
-	if (*(root_a) == NULL)
+	r = root_a;
+	if (root_a == NULL)
 		return (0);
-	f = (*root_a);
+	f = root_a;
 	buff = malloc(sizeof(t_list));
-	buff->value = (*root_a)->value;
-	while ((*root_a) != NULL)
+	buff->value = root_a->value;
+	while (root_a != NULL)
 	{
-		(*root_a) = (*root_a)->next;
-		if ((*root_a) == NULL)
+		root_a = root_a->next;
+		if (root_a == NULL)
 			break ;
-		f->value = (*root_a)->value;
+		f->value = root_a->value;
 		f = f->next;
 	}
 	f->value = buff->value;
-	(*root_a) = r;
+	root_a = r;
 	return (1);
 }
 

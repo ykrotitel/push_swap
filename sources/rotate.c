@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 22:56:31 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/18 20:03:13 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/22 18:45:16 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int		rotate_a(t_list **root_a)
 
 	r = (*root_a);
 	if (*(root_a) == NULL)
-		return (0);
+	{
+		return (1);
+	}
 	f = (*root_a);
 	buff = malloc(sizeof(t_list));
 	buff->value = (*root_a)->value;
@@ -34,7 +36,7 @@ int		rotate_a(t_list **root_a)
 	}
 	f->value = buff->value;
 	(*root_a) = r;
-	// ft_putstr("ra\n");
+	free(buff);
 	return (2);
 }
 
@@ -46,7 +48,7 @@ int		rotate_b(t_list **root_b)
 
 	r = (*root_b);
 	if (*(root_b) == NULL)
-		return (0);
+		return (1);
 	f = (*root_b);
 	buff = malloc(sizeof(t_list));
 	buff->value = (*root_b)->value;
@@ -60,7 +62,6 @@ int		rotate_b(t_list **root_b)
 	}
 	f->value = buff->value;
 	(*root_b) = r;
-	// ft_putstr("rb\n");
 	return (2);
 }
 

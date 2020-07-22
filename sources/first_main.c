@@ -6,23 +6,11 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/19 20:26:23 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/21 17:57:22 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
-
-int		first_check(char **argv, int argc)
-{
-	int i;
-
-	i = 1;
-	while((i < argc) && (check_argv(argv[i]) == 1))
-		i++;
-	if (i == argc)
-		return (1);
-	return (0);
-}
 
 int		check_each_inst(char *inst)
 {
@@ -53,7 +41,7 @@ int		check_each_inst(char *inst)
 	return (1);
 }
 
-int		check_instruction(int argc, char **argv, t_list *A, t_list *A_R)
+int		check_instruction(t_list *aa, t_list *aa_r)
 {
 	char	*inst;
 	char	buff[1];
@@ -63,7 +51,7 @@ int		check_instruction(int argc, char **argv, t_list *A, t_list *A_R)
 	i = 0;
 	if (!(inst = malloc(sizeof(*inst) * 20000)))
 	{
-		ft_putstr("Error2");
+		ft_putstr("Error\n");
 		return (0);
 	}
 	while ((a = read(0, buff, 1)) > 0)
@@ -77,7 +65,7 @@ int		check_instruction(int argc, char **argv, t_list *A, t_list *A_R)
 		ft_putstr("Error  -->  Unreadble instruction\n");
 		return (0);
 	}
-	make_sort(A, A_R, inst);
+	make_sort(aa, aa_r, inst);
 	return (0);
 }
 
@@ -90,18 +78,18 @@ int		get_array(int argc, char **argv)
 	i = 1;
 	a = malloc(sizeof(t_list));
 	root_a = a;
-	a->value = ft_atoi(argv[i]);
-	while(i != (argc - 1))
+	i = help_main(argv, i, &a);
+	while (i != (argc - 1))
 	{
 		i++;
 		a->next = malloc(sizeof(t_list));
 		a = a->next;
-		a->value = ft_atoi(argv[i]);
+		i = help_main(argv, i, &a);
 	}
 	a->next = NULL;
 	if (!check_massive(root_a))
 		return (display_error());
-	check_instruction(argc, argv, a, root_a);
+	check_instruction(a, root_a);
 	return (1);
 }
 
@@ -109,10 +97,10 @@ int		main(int argc, char **argv)
 {
 	if (argc == 1)
 		return (0);
-	if (!(first_check(argv, argc)))
+	if (!(first_check(argv)))
 	{
-		ft_putstr("Error1");
-		return 0;
+		ft_putstr("Error\n");
+		return (0);
 	}
 	get_array(argc, argv);
 }

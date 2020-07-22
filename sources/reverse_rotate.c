@@ -6,39 +6,40 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:18:02 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/18 20:03:07 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/20 15:45:23 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-int		reverse_a(t_list **a, t_list **root_a)
+int		reverse_a(t_list **a, t_list **root_a, int t)
 {
 	t_list	*buff;
 	t_list	*tmp;
 
+	if ((*root_a) == NULL)
+		return (1);
 	buff = (*root_a);
 	tmp = (*root_a)->next;
 	while (tmp->next != NULL)
 	{
-		buff = buff->next;
 		tmp = tmp->next;
+		buff = buff->next;
 	}
 	tmp->next = (*root_a);
-	buff->next = NULL;
 	(*root_a) = tmp;
-	(*a) = (*root_a);
-	while ((*a)->next != NULL)
-		(*a) = (*a)->next;
-	// ft_putstr("rra\n");
-	return (3);
+	buff->next = NULL;
+	(*a) = buff;
+	return (t ? 1 : 3);
 }
 
-int		reverse_b(t_list **b, t_list **root_b)
+int		reverse_b(t_list **b, t_list **root_b, int t)
 {
 	t_list	*buff;
 
 	buff = (*root_b);
+	if ((*root_b) == NULL)
+		return (1);
 	while (buff != (*b))
 	{
 		if (buff->next == (*b))
@@ -50,13 +51,12 @@ int		reverse_b(t_list **b, t_list **root_b)
 	(*root_b) = (*b);
 	while ((*b)->next != NULL)
 		(*b) = (*b)->next;
-	// ft_putstr("rrb\n");
-	return (3);
+	return (t ? 2 : 3);
 }
 
 int		reverse(t_list **a, t_list **b, t_list **root_a, t_list **root_b)
 {
-	reverse_a(a, root_a);
-	reverse_b(b, root_b);
+	reverse_a(a, root_a, 1);
+	reverse_b(b, root_b, 1);
 	return (3);
 }

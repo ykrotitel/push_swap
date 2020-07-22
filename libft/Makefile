@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/17 13:21:03 by acarlett          #+#    #+#              #
-#    Updated: 2020/07/17 14:37:41 by acarlett         ###   ########.fr        #
+#    Updated: 2020/07/22 18:23:08 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ $(NAME): $(OBJ)
 		@ranlib $(NAME)
 
 %.o: %.c $(INCLUDES)
-		@gcc -Wall -Werror -Wextra $< -c -o $@
+		@gcc $< -c -o $@
 
 clean:
 		@rm -rf $(OBJ)
