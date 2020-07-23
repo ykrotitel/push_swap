@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/21 17:57:22 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/23 13:31:01 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int		main(int argc, char **argv)
 {
 	if (argc == 1)
 		return (0);
-	if (!(first_check(argv)))
+	if (!(first_check(argv, argc)))
 	{
 		ft_putstr("Error\n");
 		return (0);

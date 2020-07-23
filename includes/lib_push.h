@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/22 19:15:24 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/23 13:51:21 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # include <libc.h>
 # include "libft.h"
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
 
 typedef struct		s_list
 {
 	struct s_list	*next;
-	int				value;
+	long			value;
 }					t_list;
 
 typedef	struct		s_help
@@ -52,7 +54,7 @@ typedef	struct		s_help
 	t_list			*t3;
 }					t_help;
 
-int					first_check(char **argv);
+int					first_check(char **argv, int argc);
 int					make_sort(t_list *a, t_list *root_a, char *inst);
 int					make_list_a(int argc, long long int arr[argc], char *inst);
 int					swap(t_list **a, t_list **b,
@@ -122,5 +124,6 @@ t_list **root_b);
 void				print_b(t_list *root_b);
 void				print_a(t_list *root_a);
 void				free_list(t_list *root_a);
+int					is_overint(t_list *root_a);
 
 #endif

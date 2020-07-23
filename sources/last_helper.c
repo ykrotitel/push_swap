@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 17:26:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/22 21:08:25 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/23 14:03:55 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,7 @@ int			help_main(char **av, int i, t_list **a)
 	k = 0;
 	j = 1;
 	if (av[i][k] == '-'|| av[i][k] == '+')
-	{
 		k++;
-		printf ("av[i] = %s\n", av[i]);
-		av[i]++;
-		j = (av[i][k - 1] = '-' ? -1 : 1);
-	}
 	(*a)->value = ft_atoi(av[i]);
 	(*a)->value = (*a)->value * j;
 	while (av[i][k] == ' ' && av[i][k])
@@ -64,33 +59,63 @@ int			help_main(char **av, int i, t_list **a)
 	return (i);
 }
 
-int			first_check(char **argv)
+int			first_check(char **argv, int argc)
 {
 	int		i;
 	int		k;
 
 	i = 1;
 	k = 0;
-	while (argv[i])
+	while (argc - 1)
 	{
-		while (argv[i][k])
+		while (argv[i][k] != '\0')
 		{
-			if ((argv[i][k] < '0' || argv[i][k] > '9') &&
-			argv[i][k] != ' ' && argv[i][k] != '\t')
-			{
-				if (argv[i][k] == '-' || argv[i][k] == '+')
-				{
-					while (argv[i][k] < '0' || argv[i][k] > '9')
-						k++;
-					if (argv[i][k] == ' ' || argv[i][k] == '\t')
-						return (0);
-				}
-			}
-			else
+			while (argv[i][k] == ' ' || argv[i][k] == '\t' || argv[i][k] == '\n')
 				k++;
+			if ((argv[i][k] == '+' || argv[i][k] == '-') && (argv[i][k + 1] >= '0' && argv[i][k + 1] <= '9'))
+			{
+				k++;
+				while (argv[i][k] >= '0' && argv[i][k] <= '9')
+					k++;
+				if (argv[i][k] != ' ' && argv[i][k] != '\0' && argv[i][k] != 't' && argv[i][k] != '\n')
+					return (0);
+			}
+			else if((argv[i][k] == '+' || argv[i][k] == '-') && (argv[i][k + 1] < '0' || argv[i][k + 1] > '9'))
+				return (0);
+			else if (argv[i][k] >= '0' && argv[i][k] <= '9')
+			{
+				while (argv[i][k] >= '0' && argv[i][k] <= '9')
+					k++;
+				if (argv[i][k] != ' ' && argv[i][k] != '\t' && argv[i][k] != '\n' && argv[i][k] != '\0')
+					return (0);
+			}
+			else if (argv[i][k] < '0' || argv[i][k] > '9')
+				return (0);
 		}
-		k = 0;
 		i++;
+		k = 0;
+		argc--;
 	}
-	return (1);
+	return (4);
+	// while (argv[i])
+	// {
+	// 	while (argv[i][k])
+	// 	{
+	// 		if ((argv[i][k] < '0' || argv[i][k] > '9') &&
+	// 		argv[i][k] != ' ' && argv[i][k] != '\t')
+	// 		{
+	// 			if (argv[i][k] == '-' || argv[i][k] == '+')
+	// 			{
+	// 				while (argv[i][k] < '0' || argv[i][k] > '9')
+	// 					k++;
+	// 				if (argv[i][k] == ' ' || argv[i][k] == '\t')
+	// 					return (0);
+	// 			}
+	// 		}
+	// 		else
+	// 			k++;
+	// 	}
+	// 	k = 0;
+	// 	i++;
+	// }
 }

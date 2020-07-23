@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 18:25:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/22 20:46:56 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/23 13:51:41 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int			main(int ac, char **av)
 	i = 1;
 	if (ac == 1)
 		return (0);
-	if (!(first_check(av)))
+	if (!(first_check(av, ac)))
 		return (display_error());
 	f = malloc(sizeof(t_help));
 	f->cc = 1;
@@ -138,6 +138,18 @@ int			main(int ac, char **av)
 	}
 	a->next = NULL;
 	print_a(root_a);
-	return (0);
+	if (!(is_overint(root_a)))
+		return (display_error());
 	main_continue(a, root_a, f);
+}
+
+int			is_overint(t_list *root_a)
+{
+	while (root_a != NULL)
+	{
+		if (root_a->value > MAX_INT || root_a->value < MIN_INT)
+			return (0);
+		root_a = root_a->next;
+	}
+	return (1);
 }

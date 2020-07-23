@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 21:31:14 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/17 13:20:53 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/23 14:05:18 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,18 @@ static int		ft_check_minus(const char *str, long i)
 	return (1);
 }
 
-long long int	ft_atoi(const char *str)
+long long		ft_atoi(const char *str)
 {
 	long			i;
-	long long int	atoi;
+	long long   	atoi;
 	long			m;
 
 	i = -1;
 	atoi = 0;
 	i = cherkes(str);
 	if ((m = ft_check_minus(str, i)) == -1)
+		i++;
+	if (str[i] == '+')
 		i++;
 	while ((str[i] >= '0' && str[i] <= '9') && (str[i] != '\0'))
 	{
