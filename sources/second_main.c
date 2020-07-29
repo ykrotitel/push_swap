@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:17:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/20 16:56:10 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/29 18:12:08 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			make_sort(t_list *a, t_list *root_a, char *inst)
 			p.i += main_sort(&p);
 		p.i++;
 	}
-	free(p.b);
+	free(inst);
 	return (make_sort_continue(p.b, p.root_b, p.root_a));
 }
 
@@ -62,7 +62,7 @@ int			main_sort_second(t_help *p)
 {
 	if (p->inst[p->i] == 'r' && p->inst[p->i + 1] == 'r' &&
 	p->inst[p->i + 2] == 'b')
-		p->q = reverse_b(&p->b, &(p->root_b), 0);
+		p->q = reverse_a(&p->b, &(p->root_b), 0);
 	else if (p->inst[p->i] == 'r' && p->inst[p->i + 1] == 'r' &&
 	p->inst[p->i + 2] == 'r')
 		p->q = reverse(&(p->a), &(p->b), &(p->root_a), &(p->root_b));
@@ -76,6 +76,8 @@ int			make_sort_continue(t_list *b, t_list *root_b, t_list *root_a)
 		ft_putstr("OK\n");
 	else
 		ft_putstr("KO\n");
+	free_list(root_a);
+	free_list(root_b);
 	return (0);
 }
 

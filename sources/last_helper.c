@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 17:26:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/23 14:03:55 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/29 18:07:03 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int			help_main(char **av, int i, t_list **a)
 	(*a)->value = (*a)->value * j;
 	while (av[i][k] == ' ' && av[i][k])
 		k++;
-	while (av[i][k] >= '0' && av[i][k] <= '9' && av[i][k])
+	if (av[i][k] == '-' || av[i][k] == '+')
 		k++;
-	while ((av[i][k] < '0' || av[i][k] > '9') && av[i][k])
+	while (av[i][k] >= '0' && av[i][k] <= '9' && av[i][k])
 		k++;
 	if (av[i][k])
 	{
@@ -97,25 +97,27 @@ int			first_check(char **argv, int argc)
 		argc--;
 	}
 	return (4);
-	// while (argv[i])
-	// {
-	// 	while (argv[i][k])
-	// 	{
-	// 		if ((argv[i][k] < '0' || argv[i][k] > '9') &&
-	// 		argv[i][k] != ' ' && argv[i][k] != '\t')
-	// 		{
-	// 			if (argv[i][k] == '-' || argv[i][k] == '+')
-	// 			{
-	// 				while (argv[i][k] < '0' || argv[i][k] > '9')
-	// 					k++;
-	// 				if (argv[i][k] == ' ' || argv[i][k] == '\t')
-	// 					return (0);
-	// 			}
-	// 		}
-	// 		else
-	// 			k++;
-	// 	}
-	// 	k = 0;
-	// 	i++;
-	// }
+}
+
+void		free_list(t_list *root_a)
+{
+	t_list	*tmp;
+
+	while(root_a != NULL)
+	{
+		tmp = root_a;
+		root_a = root_a->next;
+		free(tmp);
+	}
+}
+
+int			is_overint(t_list *root_a)
+{
+	while (root_a != NULL)
+	{
+		if (root_a->value > MAX_INT || root_a->value < MIN_INT)
+			return (0);
+		root_a = root_a->next;
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/23 13:51:21 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/29 20:23:09 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,13 +114,13 @@ int					help_main(char **av, int i, t_list **a);
 void				print_a(t_list *root_a);
 void				print_b(t_list *root_b);
 int					main_continue(t_list *a, t_list *root_a, t_help *f);
-void				for_take_mmm(t_help **f, int cc);
+void				for_take_mmm(t_help **f, int cc, t_list *buff);
 void				make_first_if(t_help **f, t_list *buff, t_list *root_buff);
 void				make_first_else(t_help **f, t_list *buff);
 void				second_step_while(t_help **f, t_list **root_a,
 t_list **a, t_list **root_b);
 void				second_step_secondwhile(t_help **f, t_list **root_a,
-t_list **root_b);
+t_list **root_b, t_list **a);
 void				print_b(t_list *root_b);
 void				print_a(t_list *root_a);
 void				free_list(t_list *root_a);

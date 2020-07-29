@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/23 13:31:01 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/29 19:57:35 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,32 @@ int		check_each_inst(char *inst)
 	return (1);
 }
 
+int		each_check_inst(int i, char *inst)
+{
+	int j;
+
+	j = i;
+	j -= 2;
+	if (inst[j] == 'r' || inst[j] == 'b' || inst[j] == 'a')
+	{
+		if (inst[j - 1] == 'r' && inst[j - 2] == 'r' && (inst[j - 3] == '\n' || (j - 2) == 0))
+			return (1);
+	}
+	if (inst[j] == 'r' || inst[j] == 'a' || inst[j] == 'b')
+	{
+		if (inst[j - 1] == 'r' && (inst[j - 2] == '\n' || (j - 1) == 0))
+			return (1);
+	}
+	if (inst[j] == 'a' || inst[j] == 'b')
+	{
+		if ((inst[j - 1] == 's' || inst[j - 1] == 'p') && (inst[j - 2] == '\n' || (j - 1) == 0))
+			return (1);			
+	}
+	if (inst[j] == 's' && inst[j - 1] == 's' && (inst[j - 2] == '\n' || (j - 1) == 0))
+		return (1);
+	return (0);
+}
+
 int		check_instruction(t_list *aa, t_list *aa_r)
 {
 	char	*inst;
@@ -51,6 +77,7 @@ int		check_instruction(t_list *aa, t_list *aa_r)
 	i = 0;
 	if (!(inst = malloc(sizeof(*inst) * 20000)))
 	{
+		free_list(aa_r);
 		ft_putstr("Error\n");
 		return (0);
 	}
@@ -58,13 +85,18 @@ int		check_instruction(t_list *aa, t_list *aa_r)
 	{
 		inst[i] = buff[0];
 		i++;
+		if (buff[0] == '\n')
+		{
+			if ((each_check_inst(i, inst)) == 0)
+			{
+				free_list(aa_r);
+				free(inst);
+				ft_putstr("Error  -->  Unreadble instruction\n");
+		return (0);
+			}	
+		}
 	}
 	inst[i] = '\0';
-	if (!(check_each_inst(inst)))
-	{
-		ft_putstr("Error  -->  Unreadble instruction\n");
-		return (0);
-	}
 	make_sort(aa, aa_r, inst);
 	return (0);
 }
@@ -87,8 +119,11 @@ int		get_array(int argc, char **argv)
 		i = help_main(argv, i, &a);
 	}
 	a->next = NULL;
-	if (!check_massive(root_a))
+	if (!(is_overint(root_a)) || !(check_massive(root_a)))
+	{
+		free_list(root_a);
 		return (display_error());
+	}
 	check_instruction(a, root_a);
 	return (1);
 }

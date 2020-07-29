@@ -6,23 +6,11 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 18:25:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/23 13:51:41 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/29 20:34:56 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
-
-void		free_list(t_list *root_a)
-{
-	t_list	*tmp;
-
-	while(root_a != NULL)
-	{
-		tmp = root_a;
-		root_a = root_a->next;
-		free(tmp);
-	}
-}
 
 void		continue_sort(t_list *root_a, t_list *root_b, t_help *f)
 {
@@ -66,7 +54,7 @@ void		second_step(t_list *a, t_list *root_a, t_help *f)
 	root_b = b;
 	second_step_while(&f, &root_a, &a, &root_b);
 	f->cc = 0;
-	second_step_secondwhile(&f, &root_a, &root_b);
+	second_step_secondwhile(&f, &root_a, &root_b, &a);
 	sort_stack_a(&root_a, &a, f);
 	continue_sort(root_a, root_b, f);
 	return ;
@@ -94,8 +82,8 @@ void		take_min_mid_max(t_list *a, t_list *root_a, int cc, t_help *f)
 	t_list	*buff;
 	t_list	*root_buff;
 
-	for_take_mmm(&f, cc);
 	buff = root_a;
+	for_take_mmm(&f, cc, buff);
 	first_takeminmax(&f, root_a);
 	root_buff = root_a;
 	if (f->cc > 0)
@@ -137,19 +125,10 @@ int			main(int ac, char **av)
 		f->cc++;
 	}
 	a->next = NULL;
-	print_a(root_a);
 	if (!(is_overint(root_a)))
-		return (display_error());
-	main_continue(a, root_a, f);
-}
-
-int			is_overint(t_list *root_a)
-{
-	while (root_a != NULL)
 	{
-		if (root_a->value > MAX_INT || root_a->value < MIN_INT)
-			return (0);
-		root_a = root_a->next;
+		free_list(root_a);
+		return (display_error());
 	}
-	return (1);
+	main_continue(a, root_a, f);
 }

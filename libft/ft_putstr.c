@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 22:42:39 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/17 13:20:39 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/29 17:35:09 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_putstr(char const *s)
 		return (0);
 	while (s[i])
 	{
-		write(1, &s[i], 1);
+		write(2, &s[i], 1);
 		i++;
 	}
 	return (i);
