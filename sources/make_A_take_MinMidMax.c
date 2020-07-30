@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 18:25:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/29 20:34:56 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/30 18:06:05 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,9 @@ void		continue_sort(t_list *root_a, t_list *root_b, t_help *f)
 	{
 		reverse_a(&a, &root_a, 0) && write(1, "rra\n", 4);
 	}
-	free_list(root_a);
-	free_list(root_b);
+	all_free(root_a, root_b);
 	free(f);
-	return ;
 }
-
 
 void		second_step(t_list *a, t_list *root_a, t_help *f)
 {
@@ -110,7 +107,7 @@ int			main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	if (!(first_check(av, ac)))
-		return (display_error());
+		return (display_error(0));
 	f = malloc(sizeof(t_help));
 	f->cc = 1;
 	a = malloc(sizeof(t_list));
@@ -124,11 +121,12 @@ int			main(int ac, char **av)
 		i = help_main(av, i, &a);
 		f->cc++;
 	}
+	f->size = f->cc;
 	a->next = NULL;
 	if (!(is_overint(root_a)))
 	{
 		free_list(root_a);
-		return (display_error());
+		return (display_error(0));
 	}
 	main_continue(a, root_a, f);
 }

@@ -6,15 +6,18 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 17:27:36 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/22 19:35:40 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/30 18:03:38 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-int		display_error(void)
+int		display_error(int a)
 {
-	ft_putstr("Error\n");
+	if (!a)
+		ft_putstr("Error\n");
+	else
+		ft_putstr("Error  -->  Unreadble instruction\n");
 	return (0);
 }
 
@@ -77,4 +80,11 @@ int		ft_check_data(t_list *root_a)
 		}
 	}
 	return (1);
+}
+
+int		help_each_check(t_list *aa_r, char *inst)
+{
+	free_list(aa_r);
+	free(inst);
+	return (display_error(1));
 }

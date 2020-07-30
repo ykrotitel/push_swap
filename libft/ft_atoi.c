@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 21:31:14 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/23 14:05:18 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/30 17:41:38 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int		ft_check_minus(const char *str, long i)
 long long		ft_atoi(const char *str)
 {
 	long			i;
-	long long   	atoi;
+	long long		atoi;
 	long			m;
 
 	i = -1;

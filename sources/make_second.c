@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 16:08:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/29 17:44:02 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/30 18:01:43 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,19 @@ t_list		*sort_stack_a(t_list **root_a, t_list **a, t_help *f)
 	t_list *tmp;
 	t_list *buff;
 
-	tmp = (*root_a)->next;
 	buff = (*root_a);
-	if (f->max == (*root_a)->value)
-	{
-		if (f->mid == tmp->value && write(1, "sa\n", 3))
-			swap_in_a(root_a, a);
-	}
-	else if (f->mid == (*root_a)->value &&
-	f->max == tmp->value && write(1, "rra\n", 4))
-		reverse_a(a, root_a, 0);
-	else if (f->mid == (*root_a)->value &&
-	f->min == tmp->value && write(1, "sa\n", 3))
-		swap_in_a(root_a, a);
-	else if (f->min == (*root_a)->value &&
-	f->max == tmp->value)
+	tmp = (*root_a)->next;
+	if ((buff->value == f->min && tmp->value == f->mid) ||
+	(buff->value == f->max && tmp->value == f->mid))
+		reverse_a(a, root_a, 0) && write(1, "rra\n", 4);
+	else if ((buff->value == f->mid && tmp->value == f->min) ||
+	(buff->value == f->mid && tmp->value == f->max))
+		rotate_a(root_a) && write(1, "ra\n", 3);
+	buff = (*root_a);
+	tmp = buff->next;
+	buff = (*root_a);
+	tmp = buff->next;
+	if (buff->value == f->min && tmp->value == f->max)
 	{
 		swap_in_a(root_a, a);
 		write(1, "sa\n", 3);
@@ -45,7 +43,7 @@ int			main_continue(t_list *a, t_list *root_a, t_help *f)
 	{
 		free_list(root_a);
 		free(f);
-		return (display_error());
+		return (display_error(0));
 	}
 	if (!check_stack_a(root_a))
 	{

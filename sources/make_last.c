@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 16:10:49 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/29 20:37:26 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/30 17:47:55 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,7 @@ t_list **root_b, t_list **a)
 		{
 			c = buff->value;
 			while ((*root_a)->value != c)
-			{
-				(*f)->ccc = buff->value;
-				(*f)->q = help_rotate((*root_a), (*f)->ccc);
-				(*f)->w = (*f)->cc - (*f)->q;
-				while ((*root_a)->value != (*f)->ccc)
-					((*f)->w > (*f)->q ? reverse_a(a, root_a, 0) &&
-				write(1, "rra\n", 4) : rotate_a(root_a) && write(1, "ra\n", 3));
-			}
+				helper_while(&buff, f, root_a, a);
 			buff = (*root_a);
 			push_b(root_b, root_a) && write(1, "pb\n", 3);
 		}
@@ -74,4 +67,14 @@ t_list **root_b, t_list **a)
 		}
 		buff = (*root_a);
 	}
+}
+
+void		helper_while(t_list **buff, t_help **f, t_list **root_a, t_list **a)
+{
+	(*f)->ccc = (*buff)->value;
+	(*f)->q = help_rotate((*root_a), (*f)->ccc);
+	(*f)->w = (*f)->cc - (*f)->q;
+	while ((*root_a)->value != (*f)->ccc)
+		((*f)->w > (*f)->q ? reverse_a(a, root_a, 0) &&
+	write(1, "rra\n", 4) : rotate_a(root_a) && write(1, "ra\n", 3));
 }

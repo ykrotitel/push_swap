@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/29 19:57:35 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/30 18:03:41 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int		each_check_inst(int i, char *inst)
 	j -= 2;
 	if (inst[j] == 'r' || inst[j] == 'b' || inst[j] == 'a')
 	{
-		if (inst[j - 1] == 'r' && inst[j - 2] == 'r' && (inst[j - 3] == '\n' || (j - 2) == 0))
+		if (inst[j - 1] == 'r' && inst[j - 2] == 'r' &&
+		(inst[j - 3] == '\n' || (j - 2) == 0))
 			return (1);
 	}
 	if (inst[j] == 'r' || inst[j] == 'a' || inst[j] == 'b')
@@ -59,10 +60,12 @@ int		each_check_inst(int i, char *inst)
 	}
 	if (inst[j] == 'a' || inst[j] == 'b')
 	{
-		if ((inst[j - 1] == 's' || inst[j - 1] == 'p') && (inst[j - 2] == '\n' || (j - 1) == 0))
-			return (1);			
+		if ((inst[j - 1] == 's' || inst[j - 1] == 'p') &&
+		(inst[j - 2] == '\n' || (j - 1) == 0))
+			return (1);
 	}
-	if (inst[j] == 's' && inst[j - 1] == 's' && (inst[j - 2] == '\n' || (j - 1) == 0))
+	if (inst[j] == 's' && inst[j - 1] == 's' &&
+	(inst[j - 2] == '\n' || (j - 1) == 0))
 		return (1);
 	return (0);
 }
@@ -78,8 +81,7 @@ int		check_instruction(t_list *aa, t_list *aa_r)
 	if (!(inst = malloc(sizeof(*inst) * 20000)))
 	{
 		free_list(aa_r);
-		ft_putstr("Error\n");
-		return (0);
+		return (display_error(0));
 	}
 	while ((a = read(0, buff, 1)) > 0)
 	{
@@ -88,17 +90,11 @@ int		check_instruction(t_list *aa, t_list *aa_r)
 		if (buff[0] == '\n')
 		{
 			if ((each_check_inst(i, inst)) == 0)
-			{
-				free_list(aa_r);
-				free(inst);
-				ft_putstr("Error  -->  Unreadble instruction\n");
-		return (0);
-			}	
+				return (help_each_check(aa_r, inst));
 		}
 	}
 	inst[i] = '\0';
-	make_sort(aa, aa_r, inst);
-	return (0);
+	return (make_sort(aa, aa_r, inst));
 }
 
 int		get_array(int argc, char **argv)
@@ -122,7 +118,7 @@ int		get_array(int argc, char **argv)
 	if (!(is_overint(root_a)) || !(check_massive(root_a)))
 	{
 		free_list(root_a);
-		return (display_error());
+		return (display_error(0));
 	}
 	check_instruction(a, root_a);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 17:26:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/29 18:07:03 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/30 18:17:01 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,6 @@ int			help_rotate(t_list *tmp, int c)
 	return (i);
 }
 
-void		for_make(t_help **p)
-{
-	(*p)->q = 0;
-	(*p)->w = 0;
-	(*p)->c = 0;
-}
-
 int			help_main(char **av, int i, t_list **a)
 {
 	int k;
@@ -41,7 +34,7 @@ int			help_main(char **av, int i, t_list **a)
 
 	k = 0;
 	j = 1;
-	if (av[i][k] == '-'|| av[i][k] == '+')
+	if (av[i][k] == '-' || av[i][k] == '+')
 		k++;
 	(*a)->value = ft_atoi(av[i]);
 	(*a)->value = (*a)->value * j;
@@ -63,34 +56,19 @@ int			first_check(char **argv, int argc)
 {
 	int		i;
 	int		k;
+	int		g;
 
 	i = 1;
 	k = 0;
+	g = 0;
 	while (argc - 1)
 	{
 		while (argv[i][k] != '\0')
 		{
-			while (argv[i][k] == ' ' || argv[i][k] == '\t' || argv[i][k] == '\n')
-				k++;
-			if ((argv[i][k] == '+' || argv[i][k] == '-') && (argv[i][k + 1] >= '0' && argv[i][k + 1] <= '9'))
-			{
-				k++;
-				while (argv[i][k] >= '0' && argv[i][k] <= '9')
-					k++;
-				if (argv[i][k] != ' ' && argv[i][k] != '\0' && argv[i][k] != 't' && argv[i][k] != '\n')
-					return (0);
-			}
-			else if((argv[i][k] == '+' || argv[i][k] == '-') && (argv[i][k + 1] < '0' || argv[i][k + 1] > '9'))
+			if (!(g = help_first_check(argv, i, k)))
 				return (0);
-			else if (argv[i][k] >= '0' && argv[i][k] <= '9')
-			{
-				while (argv[i][k] >= '0' && argv[i][k] <= '9')
-					k++;
-				if (argv[i][k] != ' ' && argv[i][k] != '\t' && argv[i][k] != '\n' && argv[i][k] != '\0')
-					return (0);
-			}
-			else if (argv[i][k] < '0' || argv[i][k] > '9')
-				return (0);
+			else
+				k += g;
 		}
 		i++;
 		k = 0;
@@ -103,7 +81,7 @@ void		free_list(t_list *root_a)
 {
 	t_list	*tmp;
 
-	while(root_a != NULL)
+	while (root_a != NULL)
 	{
 		tmp = root_a;
 		root_a = root_a->next;

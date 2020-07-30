@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/29 20:23:09 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/30 18:11:48 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef	struct		s_help
 	t_list			*root_a;
 	t_list			*root_b;
 	t_list			*t3;
+	int				size;
 }					t_help;
 
 int					first_check(char **argv, int argc);
@@ -71,7 +72,8 @@ int					rotate(t_list **root_a, t_list **root_b);
 int					rotate_a(t_list **root_a);
 int					rotate_b(t_list **root_b);
 int					push_numbers_in_b(t_list *a, t_list *root_a, t_help *f);
-void				take_min_mid_max(t_list *a, t_list *root_a, int cc, t_help *f);
+void				take_min_mid_max(t_list *a, t_list *root_a,
+int cc, t_help *f);
 t_list				*sort_stack_a(t_list **root_a, t_list **a, t_help *f);
 t_list				*rewrite(t_list *buff);
 int					check_min_max(int value, t_help *f);
@@ -84,7 +86,7 @@ int					check_rra(t_list **a, t_list **root_a);
 int					swap_b_continue(t_list **root_b, t_list *root);
 int					swap_a_continue(void);
 int					check_argv(char *s);
-int					display_error(void);
+int					display_error(int a);
 int					make_sort_continue(t_list *b, t_list *root_b,
 t_list *root_a);
 int					main_sort(t_help *p);
@@ -121,9 +123,12 @@ void				second_step_while(t_help **f, t_list **root_a,
 t_list **a, t_list **root_b);
 void				second_step_secondwhile(t_help **f, t_list **root_a,
 t_list **root_b, t_list **a);
-void				print_b(t_list *root_b);
-void				print_a(t_list *root_a);
 void				free_list(t_list *root_a);
 int					is_overint(t_list *root_a);
-
+void				helper_while(t_list **buff, t_help **f,
+t_list **root_a, t_list **a);
+int					help_each_check(t_list *aa_r, char *inst);
+int					help_first_check(char **argv, int i, int k);
+void				all_free(t_list *root_a, t_list *root_b);
+void				for_make(t_help **p);
 #endif
