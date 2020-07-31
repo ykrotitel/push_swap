@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/30 18:11:48 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/31 16:28:50 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,11 @@ int					is_overint(t_list *root_a);
 void				helper_while(t_list **buff, t_help **f,
 t_list **root_a, t_list **a);
 int					help_each_check(t_list *aa_r, char *inst);
-int					help_first_check(char **argv, int i, int k);
+int					help_first_check(char **argv, int i, int k, int g);
 void				all_free(t_list *root_a, t_list *root_b);
 void				for_make(t_help **p);
+int					help_first_check_con(char **argv, int i, int k);
+int					main_for_norm(t_list *a, t_list *root_a, t_help *f);
+void				first_takeminmax(t_help **f, t_list *buff);
+
 #endif

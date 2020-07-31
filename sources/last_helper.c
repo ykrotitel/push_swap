@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 17:26:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/30 18:17:01 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/31 16:16:13 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int			first_check(char **argv, int argc)
 	{
 		while (argv[i][k] != '\0')
 		{
-			if (!(g = help_first_check(argv, i, k)))
+			if (!(g = help_first_check(argv, i, k, k)))
 				return (0);
 			else
 				k += g;

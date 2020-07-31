@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_a_take_minmidmax.c                            :+:      :+:    :+:   */
+/*   take_minmidmax.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/02 18:25:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/30 18:06:05 by acarlett         ###   ########.fr       */
+/*   Created: 2020/07/31 16:21:29 by acarlett          #+#    #+#             */
+/*   Updated: 2020/07/31 16:28:30 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,23 +57,6 @@ void		second_step(t_list *a, t_list *root_a, t_help *f)
 	return ;
 }
 
-void		first_takeminmax(t_help **f, t_list *buff)
-{
-	(*f)->min = buff->value;
-	while (buff != NULL)
-	{
-		if (buff->value >= (*f)->max && ((*f)->maxx = "r"))
-			(*f)->max = buff->value;
-		if (buff->value <= (*f)->min && ((*f)->minn = "r"))
-			(*f)->min = buff->value;
-		buff = buff->next;
-	}
-	(*f)->cc -= 2;
-	(*f)->cc /= 2;
-	(*f)->tmp = (*f)->min;
-	(*f)->sec_tmp = (*f)->max;
-}
-
 void		take_min_mid_max(t_list *a, t_list *root_a, int cc, t_help *f)
 {
 	t_list	*buff;
@@ -121,6 +104,11 @@ int			main(int ac, char **av)
 		i = help_main(av, i, &a);
 		f->cc++;
 	}
+	return (main_for_norm(a, root_a, f));
+}
+
+int			main_for_norm(t_list *a, t_list *root_a, t_help *f)
+{
 	f->size = f->cc;
 	a->next = NULL;
 	if (!(is_overint(root_a)))
@@ -128,5 +116,5 @@ int			main(int ac, char **av)
 		free_list(root_a);
 		return (display_error(0));
 	}
-	main_continue(a, root_a, f);
+	return (main_continue(a, root_a, f));
 }

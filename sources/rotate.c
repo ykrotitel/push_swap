@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 22:56:31 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/22 18:45:16 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/31 16:37:11 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int		rotate_b(t_list **root_b)
 	}
 	f->value = buff->value;
 	(*root_b) = r;
+	free(buff);
 	return (2);
 }
 

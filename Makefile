@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/07/30 18:12:09 by acarlett         ###   ########.fr        #
+#    Updated: 2020/07/31 16:51:22 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,24 +23,32 @@ SOURCES =		sources/push.c \
 				sources/make_last.c \
 				sources/mini.c \
 
-PUSH_SWAP = sources/make_a_take_minmidmax.c \
+PUSH_SWAP = sources/take_minmidmax.c \
 			sources/make_second.c \
 
 CHECKER =	sources/first_main.c \
 
 INCLUDES = includes/lib_push.h \
 
-OBJECTS = $(patsubst %.c,%.o,$(SOURCES))
+OBJECTS = $(patsubst %.c,%.o,$(SOURCES)$(PUSH_SWAP)$(CHECKER))
+
+NAME_P = push_swap
+
+NAME_C = checker
+
+all: $(NAME_P) $(NAME_C)
 
 
-
-all: $(OBJECTS)
+$(NAME_P): $(OBJECTS)
 	@make -C libft re
-	@gcc -o push_swap $(PUSH_SWAP) $(SOURCES) -I $(INCLUDES) libft/libft.a
-	@gcc -o checker $(SOURCES) $(CHECKER) -I $(INCLUDES) libft/libft.a
+	@cc $(FLAGS) -o $(NAME_P) $(PUSH_SWAP) $(SOURCES) -I $(INCLUDES) libft/libft.a
+
+$(NAME_C): $(OBJECTS)
+	@cc $(FLAGS) -o $(NAME_C) $(SOURCES) $(CHECKER) -I $(INCLUDES) libft/libft.a
 
 %.o: %.c $(INCLUDES)
-	
+	@cc $(FLAGS) -I $(INCLUDES) $< -c -o $@
+
 clean:
 	@rm -rf $(OBJECTS)
 	@make -C libft clean
