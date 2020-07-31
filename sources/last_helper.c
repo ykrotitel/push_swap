@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 17:26:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/31 16:16:13 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/31 19:08:15 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,21 @@ int			help_main(char **av, int i, t_list **a)
 	j = 1;
 	if (av[i][k] == '-' || av[i][k] == '+')
 		k++;
-	(*a)->value = ft_atoi(av[i]);
-	(*a)->value = (*a)->value * j;
-	while (av[i][k] == ' ' && av[i][k])
-		k++;
-	if (av[i][k] == '-' || av[i][k] == '+')
-		k++;
-	while (av[i][k] >= '0' && av[i][k] <= '9' && av[i][k])
-		k++;
-	if (av[i][k])
+	if ((check_line(av[i])))
 	{
-		av[i] += k;
-		i--;
+		(*a)->value = ft_atoi(av[i]);
+		(*a)->value = (*a)->value * j;
+		while (av[i][k] == ' ' && av[i][k])
+			k++;
+		if (av[i][k] == '-' || av[i][k] == '+')
+			k++;
+		while (av[i][k] >= '0' && av[i][k] <= '9' && av[i][k])
+			k++;
+		if (av[i][k])
+		{
+			av[i] += k;
+			i--;
+		}
 	}
 	return (i);
 }

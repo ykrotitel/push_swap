@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/31 16:28:50 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/31 19:10:33 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,12 @@ void				for_make(t_help **p);
 int					help_first_check_con(char **argv, int i, int k);
 int					main_for_norm(t_list *a, t_list *root_a, t_help *f);
 void				first_takeminmax(t_help **f, t_list *buff);
+void				sort_only_2_3(t_list **root_a, t_list **a, t_help *f);
+void				right_sort_3(t_list *buff, t_list **root_a,
+t_list **a, t_help *f);
+int					check_line(char *line);
+void				sort_only_2_3(t_list **root_a, t_list **a, t_help *f);
+void				right_sort_3(t_list *buff, t_list **root_a,
+t_list **a, t_help *f);
 
 #endif

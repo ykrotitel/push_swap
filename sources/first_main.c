@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/30 18:03:41 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/31 19:02:09 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ int		get_array(int argc, char **argv)
 	while (i != (argc - 1))
 	{
 		i++;
-		a->next = malloc(sizeof(t_list));
-		a = a->next;
+		if ((check_line(argv[i])) && (a->next = malloc(sizeof(t_list))))
+			a = a->next;
 		i = help_main(argv, i, &a);
 	}
 	a->next = NULL;

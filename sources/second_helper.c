@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 17:27:36 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/30 18:03:38 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/31 18:29:31 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ int		check_massive(t_list *root_a)
 	{
 		while (root_a != NULL)
 		{
-			if (i == root_a->value && buff->next != NULL)
-			{
+			if (i == root_a->value && buff != NULL)
 				return (0);
-			}
 			root_a = root_a->next;
 		}
 		i = buff->value;

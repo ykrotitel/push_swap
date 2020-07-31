@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/07/31 16:51:22 by acarlett         ###   ########.fr        #
+#    Updated: 2020/07/31 19:08:27 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SOURCES =		sources/push.c \
 				sources/last_helper.c \
 				sources/make_last.c \
 				sources/mini.c \
+				sources/another_mini.c \
 
 PUSH_SWAP = sources/take_minmidmax.c \
 			sources/make_second.c \

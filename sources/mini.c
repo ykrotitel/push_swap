@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 18:05:40 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/31 16:28:37 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/31 18:25:44 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			help_first_check(char **argv, int i, int k, int g)
 		if ((k = help_first_check_con(argv, i, k)) == 0)
 			return (0);
 	}
-	else if (argv[i][k] < '0' || argv[i][k] > '9')
+	else if ((argv[i][k] < '0' || argv[i][k] > '9') && argv[i][k] != '\0')
 		return (0);
 	return (k - g);
 }

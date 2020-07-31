@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 16:21:29 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/31 16:28:30 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/07/31 19:09:15 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,23 @@ void		second_step(t_list *a, t_list *root_a, t_help *f)
 	t_list		*b;
 	t_list		*root_b;
 
-	b = NULL;
-	for_make(&f);
-	root_b = b;
-	second_step_while(&f, &root_a, &a, &root_b);
-	f->cc = 0;
-	second_step_secondwhile(&f, &root_a, &root_b, &a);
-	sort_stack_a(&root_a, &a, f);
-	continue_sort(root_a, root_b, f);
+	if (f->size <= 3)
+	{
+		sort_only_2_3(&root_a, &a, f);
+		free_list(root_a);
+		free(f);
+	}
+	else
+	{
+		b = NULL;
+		for_make(&f);
+		root_b = b;
+		second_step_while(&f, &root_a, &a, &root_b);
+		f->cc = 0;
+		second_step_secondwhile(&f, &root_a, &root_b, &a);
+		sort_stack_a(&root_a, &a, f);
+		continue_sort(root_a, root_b, f);
+	}
 	return ;
 }
 
@@ -99,8 +108,8 @@ int			main(int ac, char **av)
 	while (i != (ac - 1) && av[i])
 	{
 		i++;
-		a->next = malloc(sizeof(t_list));
-		a = a->next;
+		if ((check_line(av[i])) && (a->next = malloc(sizeof(t_list))))
+			a = a->next;
 		i = help_main(av, i, &a);
 		f->cc++;
 	}
