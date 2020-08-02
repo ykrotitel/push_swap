@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:17:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/29 18:12:08 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/02 19:06:54 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ int			make_sort_continue(t_list *b, t_list *root_b, t_list *root_a)
 		ft_putstr("OK\n");
 	else
 		ft_putstr("KO\n");
-	free_list(root_a);
-	free_list(root_b);
+	all_free(root_a, root_b);
 	return (0);
 }
 

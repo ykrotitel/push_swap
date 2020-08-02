@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 16:21:29 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/31 19:09:15 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/02 19:02:21 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,14 @@ int			main(int ac, char **av)
 	a = malloc(sizeof(t_list));
 	root_a = a;
 	i = help_main(av, i, &a);
-	while (i != (ac - 1) && av[i])
+	while (i != (ac - 1) && av[++i])
 	{
-		i++;
 		if ((check_line(av[i])) && (a->next = malloc(sizeof(t_list))))
+		{
 			a = a->next;
+			f->cc++;
+		}
 		i = help_main(av, i, &a);
-		f->cc++;
 	}
 	return (main_for_norm(a, root_a, f));
 }
@@ -122,6 +123,7 @@ int			main_for_norm(t_list *a, t_list *root_a, t_help *f)
 	a->next = NULL;
 	if (!(is_overint(root_a)))
 	{
+		free(f);
 		free_list(root_a);
 		return (display_error(0));
 	}

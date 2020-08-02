@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/07/31 19:08:27 by acarlett         ###   ########.fr        #
+#    Updated: 2020/08/02 17:24:29 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,10 @@ SOURCES =		sources/push.c \
 				sources/mini.c \
 				sources/another_mini.c \
 
+SOURCES_LIB = 	libft/ft_atoi.c \
+				libft/ft_isalpha.c \
+				libft/ft_putstr.c \
+
 PUSH_SWAP = sources/take_minmidmax.c \
 			sources/make_second.c \
 
@@ -31,7 +35,9 @@ CHECKER =	sources/first_main.c \
 
 INCLUDES = includes/lib_push.h \
 
-OBJECTS = $(patsubst %.c,%.o,$(SOURCES)$(PUSH_SWAP)$(CHECKER))
+INCLUDES_LIB = includes/libft.h \
+
+OBJECTS = $(patsubst %.c,%.o,$(SOURCES)$(PUSH_SWAP)$(CHECKER)$(SOURCES_LIB))
 
 NAME_P = push_swap
 
@@ -47,7 +53,7 @@ $(NAME_P): $(OBJECTS)
 $(NAME_C): $(OBJECTS)
 	@cc $(FLAGS) -o $(NAME_C) $(SOURCES) $(CHECKER) -I $(INCLUDES) libft/libft.a
 
-%.o: %.c $(INCLUDES)
+%.o: %.c $(INCLUDES) $(INCLUDES_LIB)
 	@cc $(FLAGS) -I $(INCLUDES) $< -c -o $@
 
 clean:
