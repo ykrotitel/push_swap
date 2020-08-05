@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/31 19:02:09 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/05 17:25:45 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,22 @@ int		each_check_inst(int i, char *inst)
 	if (inst[j] == 'r' || inst[j] == 'b' || inst[j] == 'a')
 	{
 		if (inst[j - 1] == 'r' && inst[j - 2] == 'r' &&
-		(inst[j - 3] == '\n' || (j - 2) == 0))
+		((j - 2) == 0 || inst[j - 3] == '\n'))
 			return (1);
 	}
 	if (inst[j] == 'r' || inst[j] == 'a' || inst[j] == 'b')
 	{
-		if (inst[j - 1] == 'r' && (inst[j - 2] == '\n' || (j - 1) == 0))
+		if (inst[j - 1] == 'r' && ((j - 1) == 0 || inst[j - 2] == '\n'))
 			return (1);
 	}
 	if (inst[j] == 'a' || inst[j] == 'b')
 	{
 		if ((inst[j - 1] == 's' || inst[j - 1] == 'p') &&
-		(inst[j - 2] == '\n' || (j - 1) == 0))
+		((j - 1) == 0 || inst[j - 2] == '\n'))
 			return (1);
 	}
 	if (inst[j] == 's' && inst[j - 1] == 's' &&
-	(inst[j - 2] == '\n' || (j - 1) == 0))
+	((j - 1) == 0 || inst[j - 2] == '\n'))
 		return (1);
 	return (0);
 }
@@ -73,7 +73,7 @@ int		each_check_inst(int i, char *inst)
 int		check_instruction(t_list *aa, t_list *aa_r)
 {
 	char	*inst;
-	char	buff[1];
+	char	buff;
 	int		a;
 	int		i;
 
@@ -83,11 +83,11 @@ int		check_instruction(t_list *aa, t_list *aa_r)
 		free_list(aa_r);
 		return (display_error(0));
 	}
-	while ((a = read(0, buff, 1)) > 0)
+	while ((a = read(0, &buff, 1)) > 0)
 	{
-		inst[i] = buff[0];
+		inst[i] = buff;
 		i++;
-		if (buff[0] == '\n')
+		if (buff == '\n')
 		{
 			if ((each_check_inst(i, inst)) == 0)
 				return (help_each_check(aa_r, inst));
