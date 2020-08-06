@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/08/05 17:10:20 by acarlett         ###   ########.fr        #
+#    Updated: 2020/08/06 20:30:38 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,9 +49,11 @@ all: $(NAME_P) $(NAME_C)
 $(NAME_P): $(OBJECTS)
 	@make -C libft re
 	@cc -g $(FLAGS) -o $(NAME_P) $(PUSH_SWAP) $(SOURCES) -I $(INCLUDES) libft/libft.a
+	@rm -rf push_swap.dSYM
 
 $(NAME_C): $(OBJECTS)
 	@cc -g $(FLAGS) -o $(NAME_C) $(SOURCES) $(CHECKER) -I $(INCLUDES) libft/libft.a
+	@rm -rf checker.dSYM
 
 %.o: %.c $(INCLUDES) $(INCLUDES_LIB)
 	@cc $(FLAGS) -I $(INCLUDES) $< -c -o $@ -g
