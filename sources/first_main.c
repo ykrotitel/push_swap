@@ -6,40 +6,11 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/07 14:58:46 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/07 17:38:51 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
-
-int		check_each_inst(char *inst)
-{
-	int	i;
-
-	i = 0;
-	while (inst[i] != '\0')
-	{
-		while (inst[i] != '\n')
-		{
-			if (inst[i] == 'p' && (inst[i + 1] == 'a' ||
-			inst[i + 1] == 'b'))
-				i += 2;
-			else if (inst[i] == 'r' && inst[i + 1] == 'r' &&
-			(inst[i + 2] == 'a' || inst[i + 2] == 'b' || inst[i + 2] == 'r'))
-				i += 3;
-			else if (inst[i] == 's' && (inst[i + 1] == 'a' ||
-			inst[i + 1] == 'b' || inst[i + 1] == 's'))
-				i += 2;
-			else if (inst[i] == 'r' && (inst[i + 1] == 'a' ||
-			inst[i + 1] == 'b' || inst[i + 1] == 'r'))
-				i += 2;
-			else
-				return (0);
-		}
-		i++;
-	}
-	return (1);
-}
 
 int		each_check_inst(int i, char *inst)
 {
@@ -97,20 +68,28 @@ int		check_instruction(t_list *aa, t_list *aa_r)
 	return (make_sort(aa, aa_r, inst));
 }
 
+int		another_check(t_list *root_a, t_help *f, t_list *a)
+{
+	if (root_a == NULL)
+	{
+		free(f);
+		return (0);
+	}
+	if (!(is_overint(root_a)) || !(check_massive(root_a)))
+	{
+		free_list(root_a);
+		return (display_error(0));
+	}
+	return (check_instruction(a, root_a));
+}
+
 int		get_array(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*root_a;
 	t_help	*f;
 
-	if (argc == 1)
-		return (0);
-	if (!(first_check(argv, argc)))
-		return (display_error(0));
-	f = malloc(sizeof(t_help));
-	f->i = 1;
-	f->cc = 1;
-	f->ccc = 0;
+	for_f(&f);
 	root_a = NULL;
 	if (check_line(argv[f->i]))
 	{
@@ -123,22 +102,13 @@ int		get_array(int argc, char **argv)
 	f->i = help_main(argv, &a, &f, &root_a);
 	while (f->i != (argc - 1) && argv[++(f->i)])
 	{
-		if ((check_line(argv[f->i])) && f->ccc && (a->next = malloc(sizeof(t_list))) && (f->cc++))
+		if ((check_line(argv[f->i])) && f->ccc &&
+		(a->next = malloc(sizeof(t_list))) && (f->cc++))
 			a = a->next;
 		f->i = help_main(argv, &a, &f, &root_a);
 	}
 	f->size = f->cc;
-	if (root_a == NULL)
-	{
-		free(f);
-		return (0);
-	}
-	if (!(is_overint(root_a)) || !(check_massive(root_a)))
-	{
-		free_list(root_a);
-		return (display_error(0));
-	}
-	check_instruction(a, root_a);
+	another_check(root_a, f, a);
 	return (1);
 }
 
@@ -151,5 +121,9 @@ int		main(int argc, char **argv)
 		ft_putstr("Error\n");
 		return (0);
 	}
+	if (argc == 1)
+		return (0);
+	if (!(first_check(argv, argc)))
+		return (display_error(0));
 	get_array(argc, argv);
 }

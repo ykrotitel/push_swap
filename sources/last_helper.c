@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 17:26:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/07 14:46:27 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/07 17:30:35 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,11 @@ int			help_main(char **av, t_list **a, t_help **f, t_list **root_a)
 	int k;
 	int j;
 
-	k = 0;
 	j = 1;
-	if (av[(*f)->i][k] == '-' || av[(*f)->i][k] == '+')
-		k++;
+	k = help_for_help_k(av, f);
 	if ((check_line(av[(*f)->i])))
 	{
-		if ((*f)->ccc == 0)
-		{
-			(*a) = malloc(sizeof(t_list));
-			(*f)->ccc = 1;
-			(*root_a) = (*a);
-		}
+		help_for_help(a, f, root_a);
 		(*a)->value = ft_atoi(av[(*f)->i]);
 		(*a)->value = (*a)->value * j;
 		while (av[(*f)->i][k] == ' ' && av[(*f)->i][k])
@@ -57,7 +50,7 @@ int			help_main(char **av, t_list **a, t_help **f, t_list **root_a)
 			av[(*f)->i] += k;
 			((*f)->i)--;
 		}
-	(*a)->next = NULL;
+		(*a)->next = NULL;
 	}
 	return ((*f)->i);
 }

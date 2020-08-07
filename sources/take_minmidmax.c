@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 16:21:29 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/07 15:13:02 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/07 17:42:37 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void		take_min_mid_max(t_list *a, t_list *root_a, int cc, t_help *f)
 	second_step(a, root_a, f);
 }
 
-
 int			main(int ac, char **av)
 {
 	t_list	*a;
@@ -99,20 +98,15 @@ int			main(int ac, char **av)
 		return (0);
 	if (!(first_check(av, ac)))
 		return (display_error(0));
-	for_r(&f);
+	for_f(&f);
 	root_a = NULL;
-	if (check_line(av[f->i]))
-	{
-		a = malloc(sizeof(t_list));
-		a->value = 0;
-		root_a = a;
-		f->ccc = 1;
-		a->next = NULL;
-	}
+	if (check_line(av[f->i]) && (a = malloc(sizeof(t_list))))
+		help_for_ps_main(&root_a, &a, &f);
 	f->i = help_main(av, &a, &f, &root_a);
 	while (f->i != (ac - 1) && av[++(f->i)])
 	{
-		if ((check_line(av[f->i])) && f->ccc && (a->next = malloc(sizeof(t_list))) && (f->cc++))
+		if ((check_line(av[f->i])) && f->ccc &&
+		(a->next = malloc(sizeof(t_list))) && (f->cc++))
 			a = a->next;
 		f->i = help_main(av, &a, &f, &root_a);
 	}
