@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 17:26:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/02 16:59:52 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/07 14:46:27 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,39 @@ int			help_rotate(t_list *tmp, int c)
 	return (i);
 }
 
-int			help_main(char **av, int i, t_list **a)
+int			help_main(char **av, t_list **a, t_help **f, t_list **root_a)
 {
 	int k;
 	int j;
 
 	k = 0;
 	j = 1;
-	if (av[i][k] == '-' || av[i][k] == '+')
+	if (av[(*f)->i][k] == '-' || av[(*f)->i][k] == '+')
 		k++;
-	if ((check_line(av[i])))
+	if ((check_line(av[(*f)->i])))
 	{
-		(*a)->value = ft_atoi(av[i]);
-		(*a)->value = (*a)->value * j;
-		while (av[i][k] == ' ' && av[i][k])
-			k++;
-		if (av[i][k] == '-' || av[i][k] == '+')
-			k++;
-		while (av[i][k] >= '0' && av[i][k] <= '9' && av[i][k])
-			k++;
-		if (av[i][k])
+		if ((*f)->ccc == 0)
 		{
-			av[i] += k;
-			i--;
+			(*a) = malloc(sizeof(t_list));
+			(*f)->ccc = 1;
+			(*root_a) = (*a);
 		}
+		(*a)->value = ft_atoi(av[(*f)->i]);
+		(*a)->value = (*a)->value * j;
+		while (av[(*f)->i][k] == ' ' && av[(*f)->i][k])
+			k++;
+		if (av[(*f)->i][k] == '-' || av[(*f)->i][k] == '+')
+			k++;
+		while (av[(*f)->i][k] >= '0' && av[(*f)->i][k] <= '9' && av[(*f)->i][k])
+			k++;
+		if (av[(*f)->i][k])
+		{
+			av[(*f)->i] += k;
+			((*f)->i)--;
+		}
+	(*a)->next = NULL;
 	}
-	return (i);
+	return ((*f)->i);
 }
 
 int			first_check(char **argv, int argc)

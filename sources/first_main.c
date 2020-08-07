@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/06 20:28:09 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/07 14:58:46 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,21 +101,38 @@ int		get_array(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*root_a;
-	int		i;
+	t_help	*f;
 
-	i = 1;
-	a = malloc(sizeof(t_list));
-	root_a = a;
-	a->value = 0;
-	i = help_main(argv, i, &a);
-	while (i != (argc - 1))
+	if (argc == 1)
+		return (0);
+	if (!(first_check(argv, argc)))
+		return (display_error(0));
+	f = malloc(sizeof(t_help));
+	f->i = 1;
+	f->cc = 1;
+	f->ccc = 0;
+	root_a = NULL;
+	if (check_line(argv[f->i]))
 	{
-		i++;
-		if ((check_line(argv[i])) && (a->next = malloc(sizeof(t_list))))
-			a = a->next;
-		i = help_main(argv, i, &a);
+		a = malloc(sizeof(t_list));
+		a->value = 0;
+		root_a = a;
+		f->ccc = 1;
+		a->next = NULL;
 	}
-	a->next = NULL;
+	f->i = help_main(argv, &a, &f, &root_a);
+	while (f->i != (argc - 1) && argv[++(f->i)])
+	{
+		if ((check_line(argv[f->i])) && f->ccc && (a->next = malloc(sizeof(t_list))) && (f->cc++))
+			a = a->next;
+		f->i = help_main(argv, &a, &f, &root_a);
+	}
+	f->size = f->cc;
+	if (root_a == NULL)
+	{
+		free(f);
+		return (0);
+	}
 	if (!(is_overint(root_a)) || !(check_massive(root_a)))
 	{
 		free_list(root_a);

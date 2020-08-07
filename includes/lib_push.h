@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/02 17:18:08 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/07 15:13:14 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void				print_a(t_list *root_a);
 void				print_b(t_list *root_b);
 int					help_rotate(t_list *tmp, int c);
 void				for_make(t_help **p);
-int					help_main(char **av, int i, t_list **a);
+int					help_main(char **av, t_list **a, t_help **f, t_list **root_a);
 void				print_a(t_list *root_a);
 void				print_b(t_list *root_b);
 int					main_continue(t_list *a, t_list *root_a, t_help *f);
@@ -141,5 +141,7 @@ int					check_line(char *line);
 void				sort_only_2_3(t_list **root_a, t_list **a, t_help *f);
 void				right_sort_3(t_list *buff, t_list **root_a,
 t_list **a, t_help *f);
+void		print_a(t_list *root_a);
+void				for_r(t_help **f);
 
 #endif
