@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/07 17:38:51 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/07 18:59:48 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		check_instruction(t_list *aa, t_list *aa_r)
 	int		i;
 
 	i = 0;
-	if (!(inst = malloc(sizeof(*inst) * 20000)))
+	if (!(inst = malloc(sizeof(char) * 20000)))
 	{
 		free_list(aa_r);
 		return (display_error(0));
@@ -77,9 +77,11 @@ int		another_check(t_list *root_a, t_help *f, t_list *a)
 	}
 	if (!(is_overint(root_a)) || !(check_massive(root_a)))
 	{
+		free(f);
 		free_list(root_a);
 		return (display_error(0));
 	}
+	free(f);
 	return (check_instruction(a, root_a));
 }
 
@@ -89,8 +91,8 @@ int		get_array(int argc, char **argv)
 	t_list	*root_a;
 	t_help	*f;
 
-	for_f(&f);
-	root_a = NULL;
+	f = malloc(sizeof(t_help));
+	for_f(&f, &root_a);
 	if (check_line(argv[f->i]))
 	{
 		a = malloc(sizeof(t_list));
@@ -108,19 +110,11 @@ int		get_array(int argc, char **argv)
 		f->i = help_main(argv, &a, &f, &root_a);
 	}
 	f->size = f->cc;
-	another_check(root_a, f, a);
-	return (1);
+	return (another_check(root_a, f, a));
 }
 
 int		main(int argc, char **argv)
 {
-	if (argc == 1)
-		return (0);
-	if (!(first_check(argv, argc)))
-	{
-		ft_putstr("Error\n");
-		return (0);
-	}
 	if (argc == 1)
 		return (0);
 	if (!(first_check(argv, argc)))

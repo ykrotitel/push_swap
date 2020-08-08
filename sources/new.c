@@ -6,18 +6,18 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 15:12:47 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/07 17:43:06 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/07 18:34:14 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-void		for_f(t_help **f)
+void		for_f(t_help **f, t_list **root_a)
 {
-	(*f) = malloc(sizeof(t_help));
 	(*f)->i = 1;
 	(*f)->cc = 1;
 	(*f)->ccc = 0;
+	(*root_a) = NULL;
 }
 
 int			help_for_help_k(char **av, t_help **f)

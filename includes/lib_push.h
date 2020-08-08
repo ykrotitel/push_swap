@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/07 17:42:51 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/07 18:33:58 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,7 @@ int					check_line(char *line);
 void				sort_only_2_3(t_list **root_a, t_list **a, t_help *f);
 void				right_sort_3(t_list *buff, t_list **root_a,
 t_list **a, t_help *f);
-void				print_a(t_list *root_a);
-void				for_f(t_help **f);
+void				for_f(t_help **f, t_list **root_a);
 void				help_for_help(t_list **a, t_help **f, t_list **root_a);
 int					help_for_help_k(char **av, t_help **f);
 int					check_each_inst(char *inst);

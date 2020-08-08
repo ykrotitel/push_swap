@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/08/07 17:31:47 by acarlett         ###   ########.fr        #
+#    Updated: 2020/08/07 18:53:00 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,8 @@ $(NAME_C): $(OBJECTS)
 	@cc $(FLAGS) -I $(INCLUDES) $< -c -o $@ -g
 
 clean:
+	@rm -rf push_swap.dSYM
+	@rm -rf checker.dSYM
 	@rm -rf $(OBJECTS)
 	@make -C libft clean
 

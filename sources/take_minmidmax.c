@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 16:21:29 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/07 17:42:37 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/07 18:33:41 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ int			main(int ac, char **av)
 		return (0);
 	if (!(first_check(av, ac)))
 		return (display_error(0));
-	for_f(&f);
-	root_a = NULL;
+	f = malloc(sizeof(t_help));
+	for_f(&f, &root_a);
 	if (check_line(av[f->i]) && (a = malloc(sizeof(t_list))))
 		help_for_ps_main(&root_a, &a, &f);
 	f->i = help_main(av, &a, &f, &root_a);
