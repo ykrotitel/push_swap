@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 17:26:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/07 17:30:35 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/09 20:08:34 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			help_rotate(t_list *tmp, int c)
 	return (i);
 }
 
-int			help_main(char **av, t_list **a, t_help **f, t_list **root_a)
+int			help_main(char **av, t_lst **a, t_help **f, t_lst **root_a)
 {
 	int k;
 	int j;
@@ -80,19 +80,7 @@ int			first_check(char **argv, int argc)
 	return (4);
 }
 
-void		free_list(t_list *root_a)
-{
-	t_list	*tmp;
-
-	while (root_a != NULL)
-	{
-		tmp = root_a;
-		root_a = root_a->next;
-		free(tmp);
-	}
-}
-
-int			is_overint(t_list *root_a)
+int			is_overint(t_lst *root_a)
 {
 	while (root_a != NULL)
 	{

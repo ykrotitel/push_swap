@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 17:27:36 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/31 18:29:31 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/09 20:18:30 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int		display_error(int a)
 	return (0);
 }
 
-int		check_massive(t_list *root_a)
+int		check_massive(t_lst *root_a)
 {
 	int		i;
-	t_list	*buff;
+	t_lst	*buff;
 
 	i = root_a->value;
 	root_a = root_a->next;
@@ -78,11 +78,4 @@ int		ft_check_data(t_list *root_a)
 		}
 	}
 	return (1);
-}
-
-int		help_each_check(t_list *aa_r, char *inst)
-{
-	free_list(aa_r);
-	free(inst);
-	return (display_error(1));
 }

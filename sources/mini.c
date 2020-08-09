@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 18:05:40 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/31 18:25:44 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/09 20:12:20 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void		all_free(t_list *root_a, t_list *root_b)
 {
-	free_list(root_a);
-	free_list(root_b);
+	free_list1(root_a);
+	free_list1(root_b);
 }
 
 void		for_make(t_help **p)

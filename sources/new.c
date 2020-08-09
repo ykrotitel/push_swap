@@ -6,13 +6,13 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 15:12:47 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/07 18:34:14 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/09 19:51:23 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-void		for_f(t_help **f, t_list **root_a)
+void		for_f(t_help **f, t_lst **root_a)
 {
 	(*f)->i = 1;
 	(*f)->cc = 1;
@@ -27,11 +27,11 @@ int			help_for_help_k(char **av, t_help **f)
 	return (0);
 }
 
-void		help_for_help(t_list **a, t_help **f, t_list **root_a)
+void		help_for_help(t_lst **a, t_help **f, t_lst **root_a)
 {
 	if ((*f)->ccc == 0)
 	{
-		(*a) = malloc(sizeof(t_list));
+		(*a) = malloc(sizeof(t_lst));
 		(*f)->ccc = 1;
 		(*root_a) = (*a);
 	}
@@ -66,7 +66,7 @@ int			check_each_inst(char *inst)
 	return (1);
 }
 
-void		help_for_ps_main(t_list **root_a, t_list **a, t_help **f)
+void		help_for_ps_main(t_lst **root_a, t_lst **a, t_help **f)
 {
 	(*a)->value = 0;
 	(*root_a) = (*a);

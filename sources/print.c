@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_main.c                                       :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/16 20:59:03 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/09 20:36:40 by acarlett         ###   ########.fr       */
+/*   Created: 2020/08/09 18:28:44 by acarlett          #+#    #+#             */
+/*   Updated: 2020/08/09 20:02:06 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-int		another_check(t_lst *root_a, t_help *f, t_lst *a)
+void				print_a(t_lst *root_a)
 {
-	if (root_a == NULL)
+	while (root_a != NULL)
 	{
-		free(f);
-		return (0);
+		printf ("A ===> %ld\n", root_a->value);
+		root_a = root_a->next;
 	}
-	if (!(is_overint(root_a)) || !(check_massive(root_a)))
+}
+
+void				print_b(t_lst 	*root_b)
+{
+	while (root_b != NULL)
 	{
-		free(f);
-		free_list2(root_a);
-		return (display_error(0));
+		printf("    b => %ld\n", root_b->value);
+		root_b = root_b->next;
 	}
-	free(f);
-	make_TwoWay_list(root_a, f, 1);
-	return (0);
+	write(1, "\n\n", 2);
+}
+
+void				print(t_list *root_a)
+{
+	while (root_a != NULL)
+	{
+		printf ("	A ===> %d\n", root_a->value);
+		root_a = root_a->next;
+	}
 }

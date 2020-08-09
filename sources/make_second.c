@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 16:08:48 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/02 16:45:13 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/09 20:44:13 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,13 @@ t_list		*sort_stack_a(t_list **root_a, t_list **a, t_help *f)
 
 int			main_continue(t_list *a, t_list *root_a, t_help *f)
 {
-	if (!check_massive(root_a))
-	{
-		free_list(root_a);
-		free(f);
-		return (display_error(0));
-	}
 	if (!check_stack_a(root_a))
 	{
-		free_list(root_a);
+		free_list1(root_a);
 		free(f);
 		return (0);
 	}
-	take_min_mid_max(a, root_a, f->cc, f);
-	return (0);
+	return (find_chunk(f, a, root_a));
 }
 
 void		for_take_mmm(t_help **f, int cc, t_list *buff)

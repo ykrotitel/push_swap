@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/08/07 18:53:00 by acarlett         ###   ########.fr        #
+#    Updated: 2020/08/09 20:46:21 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,15 +24,22 @@ SOURCES =		sources/push.c \
 				sources/mini.c \
 				sources/another_mini.c \
 				sources/new.c \
+				sources/two_way_list.c \
+				sources/chunk_sort.c \
+				sources/print.c \
+				sources/free.c \
+				sources/min_and_max.c \
+				sources/chunk.c \
+				sources/make_second.c \
+				sources/first_main.c \
 
 SOURCES_LIB = 	libft/ft_atoi.c \
 				libft/ft_isalpha.c \
 				libft/ft_putstr.c \
 
-PUSH_SWAP = sources/take_minmidmax.c \
-			sources/make_second.c \
+PUSH_SWAP = 	sources/main_ps.c \
 
-CHECKER =	sources/first_main.c \
+CHECKER =		sources/main_ch.c \
 
 INCLUDES = includes/lib_push.h \
 
@@ -49,15 +56,15 @@ all: $(NAME_P) $(NAME_C)
 
 $(NAME_P): $(OBJECTS)
 	@make -C libft re
-	@cc -g $(FLAGS) -o $(NAME_P) $(PUSH_SWAP) $(SOURCES) -I $(INCLUDES) libft/libft.a
+	@cc -g  -o $(NAME_P) $(PUSH_SWAP) $(SOURCES) -I $(INCLUDES) libft/libft.a
 	@rm -rf push_swap.dSYM
 
 $(NAME_C): $(OBJECTS)
-	@cc -g $(FLAGS) -o $(NAME_C) $(SOURCES) $(CHECKER) -I $(INCLUDES) libft/libft.a
+	@cc -g  -o $(NAME_C) $(SOURCES) $(CHECKER) -I $(INCLUDES) libft/libft.a
 	@rm -rf checker.dSYM
 
 %.o: %.c $(INCLUDES) $(INCLUDES_LIB)
-	@cc $(FLAGS) -I $(INCLUDES) $< -c -o $@ -g
+	@cc  -I $(INCLUDES) $< -c -o $@ -g
 
 clean:
 	@rm -rf push_swap.dSYM
