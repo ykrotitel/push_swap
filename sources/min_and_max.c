@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_minmidmax.c                                   :+:      :+:    :+:   */
+/*   min_and_max.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 16:21:29 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/09 20:45:42 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/10 20:58:14 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ void		continue_sort(t_list *root_a, t_list *root_b, t_help *f)
 
 void		second_step(t_list *a, t_list *root_a, t_help *f)
 {
-	t_list		*b;
-	t_list		*root_b;
-
 	if (f->size <= 3)
 	{
 		sort_only_2_3(&root_a, &a, f);
@@ -54,11 +51,11 @@ void		second_step(t_list *a, t_list *root_a, t_help *f)
 	}
 	else
 	{
-		b = NULL;
-		root_b = b;
 		for_make(&f);
-		// first_sort_chunk(b, root_b, f, root_a);
+		MainSortChunk(f, root_a, a);
 	}
+	free(f);
+	free_list1(root_a);
 	return ;
 }
 

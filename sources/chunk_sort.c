@@ -6,69 +6,50 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 17:13:50 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/09 20:58:08 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/10 21:34:45 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-int		take_numberOperation_up(t_list *root_a, int min, int max)
-{
-	t_list	*buff;
-	int		i;
-
-	buff = root_a;
-	i = 0;
-	while (buff->next != NULL)
-	{
-		if (buff->value >= min && buff->value <= max)
-			return (i);
-		buff = buff->next;
-		i++;
-	}
-	return(i);
-}
-
-int			take_numberOperation_down(t_list *root_a, int min, int max)
-{
-	t_list	*buff;
-	int		i;
-	int		s;
-
-	i = 0;
-	buff = root_a;
-	while (buff->next != NULL)
-		buff = buff->next;
-	while (buff != NULL)
-	{
-		if (buff->value >= min && buff->value <= max)
-			return (i);
-		i++;
-		buff = buff->prev;
-	}
-	return (i);
-}
-
-void		find_min_number_of_chunk(t_list *b, t_list *root_b, t_help *f, t_list *root_a)
+void		FindMinNumberOfChunkA(t_help **f, t_list **root_a, t_list **a, t_list **root_b)
 {
 	int min;
 	int max;
 
-	min = f->min;
-	max = f->min + f->chunk_size;
-	f->q = take_numberOperation_up(root_a, min, max);
-	f->w = take_numberOperation_down(root_a, min, max);
-	printf ("q = %d\nw = %d\n", f->q, f->w);
+	min = (*f)->min;
+	max = (*f)->min + (*f)->chunk_size;
+	(*f)->up = TakeNumberOperationUp((*root_a), min, max); 
+	/* 				^
+					|
+		Ищем элемент певрого чанка сверху 
+	*/
+	(*f)->down = TakeNumberOperationDown((*root_a), min, max);
+	/*				^
+					|
+		Ищем первый элемент чанка снизу
+	*/
+	if ((*f)->up < (*f)->down)
+		MakeMoreRotatePush(root_b, f, root_a);
+	else
+		MakeMoreReversePush(root_b, f, root_a, a);
 }
 
-void		first_sort_chunk(t_list *b, t_list *root_b, t_help *f, t_list *root_a)
+void		MainSortChunk(t_help *f, t_list *root_a, t_list *a)
 {
-	int		count;
+	int		first_min;
+	t_list	*root_b;
 
-	count = 0;
-	while (count != f->chunk_size)
+	first_min = f->min;
+	root_b = NULL;
+	while (f->min != (first_min + f->chunk_size))
 	{
-		find_min_number_of_chunk(b, root_b, f, root_a);
-		count++;
+		/* работаем пока минимальный элемент в стеке А
+				не станет равен верхней границе чанка */
+		FindMinNumberOfChunkA(&f, &root_a, &a, &root_b);
+		/* 
+			take_min_max_stackA(); 
+		*/
 	}
 }
+

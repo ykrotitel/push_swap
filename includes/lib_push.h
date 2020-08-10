@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/09 20:36:46 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/10 21:30:06 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ typedef	struct		s_help
 	t_list			*t3;
 	int				size;
 	int				chunk_size;
+	int				up;
+	int				down;
+	int				max_b;
 }					t_help;
 
 int					first_check(char **argv, int argc);
@@ -152,9 +155,6 @@ void				help_for_help(t_lst **a, t_help **f, t_lst **root_a);
 int					help_for_help_k(char **av, t_help **f);
 int					check_each_inst(char *inst);
 void				help_for_ps_main(t_lst **root_a, t_lst **a, t_help **f);
-int					find_chunk(t_help *f, t_list *a, t_list *root_a);
-int					make_TwoWay_list(t_lst *root_buff, t_help *f, int t);
-void				first_sort_chunk(t_list *b, t_list *root_b, t_help *f, t_list *root_a);
 void				print(t_list *root_a);
 int					main_continue(t_list *a, t_list *root_a, t_help *f);
 void				free_list1(t_list *root_a);
@@ -162,4 +162,17 @@ void				free_list2(t_lst *root_a);
 int					check_instruction(t_list *aa, t_list *aa_r);
 int					each_check_inst(int i, char *inst);
 int					another_check(t_lst *root_a, t_help *f, t_lst *a);
+
+/* NEW ALGHORITM */
+int					make_TwoWay_list(t_lst *root_buff, t_help *f, int t);
+int					find_chunk(t_help *f, t_list *a, t_list *root_a);
+void				MainSortChunk(t_help *f, t_list *root_a, t_list *a);
+int					TakeNumberOperationUp(t_list *root_a, int min, int max);
+int					TakeNumberOperationDown(t_list *root_a, int min, int max);
+void				MakeMoreRotatePush(t_list **root_b, t_help **f, t_list **root_a);
+void				MakeMoreReversePush(t_list **root_b, t_help **f, t_list **root_a, t_list **a);
+int					TakeNumberOperationUpB(t_list *root_b, int value, t_help *f);
+int					TakeNumberOperationDownB(t_list *root_b, int value, t_help *f);
+int					CaseBiggerRoot(t_list *root_b, int value, t_help *f);
+int					CaseBiggerValue(t_list *root_b, int value, t_help *f);
 #endif
