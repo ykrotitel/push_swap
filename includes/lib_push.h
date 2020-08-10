@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/10 22:00:10 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/10 22:49:36 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef	struct		s_help
 	int				chunk_size;
 	int				up;
 	int				down;
-	int				max_b;
 }					t_help;
 
 int					first_check(char **argv, int argc);
@@ -77,10 +76,6 @@ int					swap_in_a(t_list **root_a, t_list **a);
 int					rotate(t_list **root_a, t_list **root_b);
 int					rotate_a(t_list **root_a);
 int					rotate_b(t_list **root_b);
-int					push_numbers_in_b(t_list *a, t_list *root_a, t_help *f);
-t_list				*sort_stack_a(t_list **root_a, t_list **a, t_help *f);
-t_list				*rewrite(t_list *buff);
-int					check_min_max(int value, t_help *f);
 int					push_b(t_list **root_b, t_list **root_a);
 int					push_a(t_list **root_a, t_list **root_b);
 int					check_rb(t_list **root_b);
@@ -135,7 +130,6 @@ void				all_free(t_list *root_a, t_list *root_b);
 void				for_make(t_help **p);
 int					help_first_check_con(char **argv, int i, int k);
 int					main_for_norm(t_lst *a, t_lst *root_a, t_help *f);
-void				first_takeminmax(t_help **f, t_list *buff);
 void				sort_only_2_3(t_list **root_a, t_list **a, t_help *f);
 void				right_sort_3(t_list *buff, t_list **root_a,
 t_list **a, t_help *f);
@@ -160,6 +154,7 @@ void				second_step(t_list *a, t_list *root_a, t_help *f);
 /* NEW ALGHORITM */
 int					make_TwoWay_list(t_lst *root_buff, t_help *f, int t);
 int					find_chunk(t_help *f, t_list *a, t_list *root_a);
+void				TakeMinMaxValue(t_list *a, t_list *root_a, t_help **f);
 void				MainSortChunk(t_help *f, t_list *root_a, t_list *a);
 int					TakeNumberOperationUp(t_list *root_a, int min, int max);
 int					TakeNumberOperationDown(t_list *root_a, int min, int max);
@@ -169,4 +164,5 @@ int					TakeNumberOperationUpB(t_list *root_b, int value, t_help *f);
 int					TakeNumberOperationDownB(t_list *root_b, int value, t_help *f);
 int					CaseBiggerRoot(t_list *root_b, int value, t_help *f);
 int					CaseBiggerValue(t_list *root_b, int value, t_help *f);
+
 #endif

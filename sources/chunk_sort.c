@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 17:13:50 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/10 21:34:45 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/10 22:43:37 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ void		MainSortChunk(t_help *f, t_list *root_a, t_list *a)
 		/* работаем пока минимальный элемент в стеке А
 				не станет равен верхней границе чанка */
 		FindMinNumberOfChunkA(&f, &root_a, &a, &root_b);
-		/* 
-			take_min_max_stackA(); 
-		*/
+		TakeMinMaxValue(a, root_a, &f);
 	}
 }
 

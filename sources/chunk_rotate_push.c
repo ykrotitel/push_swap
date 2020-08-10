@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 17:02:42 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/10 21:43:21 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/10 22:07:20 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		OnlyPushB(t_list **root_a, t_list **root_b, t_help **f)
 			rotate_b(root_b);/*	до необходимого места	*/
 	else
 		while ((down--) >= 0)
-			reverse_b(&b, root_b, 0);/*REVERSE_B пока не дойдем до необходимого места*/
+			reverse_b(&b, root_b, 0);/* REVERSE_B пока не дойдем до необходимого места */
 	// push_b();
 }
 

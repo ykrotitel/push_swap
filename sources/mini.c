@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 18:05:40 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/09 20:12:20 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/10 22:46:02 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,4 @@ int			help_first_check_con(char **argv, int i, int k)
 	argv[i][k] != '\n' && argv[i][k] != '\0')
 		return (0);
 	return (k);
-}
-
-void		first_takeminmax(t_help **f, t_list *buff)
-{
-	(*f)->min = buff->value;
-	while (buff != NULL)
-	{
-		if (buff->value >= (*f)->max && ((*f)->maxx = "r"))
-			(*f)->max = buff->value;
-		if (buff->value <= (*f)->min && ((*f)->minn = "r"))
-			(*f)->min = buff->value;
-		buff = buff->next;
-	}
-	(*f)->cc -= 2;
-	(*f)->cc /= 2;
-	(*f)->tmp = (*f)->min;
-	(*f)->sec_tmp = (*f)->max;
 }
