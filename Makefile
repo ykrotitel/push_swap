@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/08/10 23:07:35 by acarlett         ###   ########.fr        #
+#    Updated: 2020/08/10 23:13:39 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ SOURCES =		sources/push.c \
 				sources/min_and_max.c \
 				sources/chunk.c \
 				sources/make_second.c \
-				sources/first_main.c \
 				sources/take_number_operation.c \
 				sources/case_find_place.c \
 				sources/chunk_rotate_push.c \

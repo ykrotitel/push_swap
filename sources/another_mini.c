@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 19:07:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/02 16:50:19 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/10 23:13:25 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,24 @@ int			check_line(char *line)
 	if (line[i] == '\0')
 		return (0);
 	return (1);
+}
+
+int		another_check(t_lst *root_a, t_help *f, t_lst *a)
+{
+	if (root_a == NULL)
+	{
+		free(f);
+		return (0);
+	}
+	if (!(is_overint(root_a)) || !(check_massive(root_a)))
+	{
+		free(f);
+		free_list2(root_a);
+		return (display_error(0));
+	}
+	free(f);
+	make_TwoWay_list(root_a, f, 1);
+	return (0);
 }
 
 void		right_sort_3(t_list *buff, t_list **root_a, t_list **a, t_help *f)
