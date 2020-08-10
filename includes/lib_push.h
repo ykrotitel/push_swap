@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/10 21:30:06 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/10 22:00:10 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,9 @@ typedef struct		s_lst
 typedef	struct		s_help
 {
 	int				min;
-	char			*minn;
-	char			*f_min;
-	int				mid;
-	char			*midd;
-	char			*f_mid;
+	int				min_b;
 	int				max;
-	char			*maxx;
-	char			*f_max;
+	int				max_b;
 	int				c;
 	int				cc;
 	int				ccc;
@@ -83,8 +78,6 @@ int					rotate(t_list **root_a, t_list **root_b);
 int					rotate_a(t_list **root_a);
 int					rotate_b(t_list **root_b);
 int					push_numbers_in_b(t_list *a, t_list *root_a, t_help *f);
-void				take_min_mid_max(t_list *a, t_list *root_a,
-int cc, t_help *f);
 t_list				*sort_stack_a(t_list **root_a, t_list **a, t_help *f);
 t_list				*rewrite(t_list *buff);
 int					check_min_max(int value, t_help *f);
@@ -162,6 +155,7 @@ void				free_list2(t_lst *root_a);
 int					check_instruction(t_list *aa, t_list *aa_r);
 int					each_check_inst(int i, char *inst);
 int					another_check(t_lst *root_a, t_help *f, t_lst *a);
+void				second_step(t_list *a, t_list *root_a, t_help *f);
 
 /* NEW ALGHORITM */
 int					make_TwoWay_list(t_lst *root_buff, t_help *f, int t);

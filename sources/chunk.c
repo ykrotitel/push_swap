@@ -6,11 +6,30 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 17:18:52 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/10 16:50:21 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/10 21:59:34 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
+
+int		TakeMinMaxValue(t_list *a, t_list *root_a, t_help *f)
+{
+	t_list	*buff;
+
+	buff = root_a;
+	f->min = root_a->value;
+	f->max = root_a->value;
+	while (buff->next != NULL)
+	{
+		if (buff->value < f->min)
+			f->min = buff->value;
+		if (buff->value > f->max)
+			f->max = buff->value;
+		buff = buff->next;
+	}
+	second_step(a, root_a, f);
+	return (0);
+}
 
 int		find_chunk(t_help *f, t_list *a, t_list *root_a)
 {
@@ -28,6 +47,6 @@ int		find_chunk(t_help *f, t_list *a, t_list *root_a)
 		f->chunk_size = 45;
 	else if (f->size >= 500)
 		f->chunk_size = 50;	
-	take_min_mid_max(a, root_a, f->cc, f);
-	return (0);
+	return (TakeMinMaxValue(a, root_a, f));
+	// take_min_mid_max(a, root_a, f->cc, f);
 }
