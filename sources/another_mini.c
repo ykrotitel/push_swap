@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 19:07:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/10 23:13:25 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/11 18:59:32 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		another_check(t_lst *root_a, t_help *f, t_lst *a)
 		return (display_error(0));
 	}
 	free(f);
-	make_TwoWay_list(root_a, f, 1);
+	MakeTwoWayList(root_a, f, 1);
 	return (0);
 }
 

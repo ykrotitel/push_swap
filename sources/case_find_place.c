@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:30:24 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/10 21:43:47 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/11 18:53:35 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int			CaseBiggerValue(t_list *root_b, int value, t_help *f)
 
 	count = 0;
 	buff = root_b;
-	while (buff->value < value)
+	while ((buff->next != NULL) && (buff->value < value))
 	{
 		count++;
 		buff = buff->next;
 	}
-	while (buff->value > value)
+	while ((buff->next != NULL) && (buff->value > value))
 	{
 		if (buff->value == f->max_b && buff->value > f->max_b)
 			return (count);
@@ -40,7 +40,7 @@ int			CaseBiggerRoot(t_list *root_b, int value, t_help *f)
 	int		count;
 
 	count = 0;
-	while (buff->value > value)
+	while ((buff->next != NULL) && (buff->value > value))
 	{
 		if (buff->value == f->max_b && buff->value > f->max_b)
 			return (count);

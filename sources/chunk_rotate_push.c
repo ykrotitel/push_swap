@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 17:02:42 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/10 22:07:20 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/11 18:59:12 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,33 @@ void		OnlyPushB(t_list **root_a, t_list **root_b, t_help **f)
 							|
 		Расстояние до подходящего места снизу в стеке B
 	*/
-	if (up < down)
+	if (up <= down)
 		while ((up--) >= 0) /*	ROTATE_B пока не дойдем	*/
 			rotate_b(root_b);/*	до необходимого места	*/
 	else
 		while ((down--) >= 0)
 			reverse_b(&b, root_b, 0);/* REVERSE_B пока не дойдем до необходимого места */
-	// push_b();
+	new_push(root_a, root_b);
+	write (1, "pb\n", 3);
 }
 
 void		CheckGoodPlaceToPush(t_list **root_a, t_list **root_b, t_help **f, int ff)
 {
 	if ((*root_b) != NULL)
-	if ((CheckSortStackB((*root_b), (*root_a)->value)))/* Если стек отсортирован в убывающем порядке*/
-		OnlyPushB(root_a, root_b, f); /*Просто находим для него место и пушим туда*/
-	// else /*
-	// 		Иначе Сортируем стек В, находим подходящее
-	// 			место для root_a->value и пушим
-	// 	*/
-	// 		// SortingB_Push();
+	{
+		if ((CheckSortStackB((*root_b), (*root_a)->value)))/* Если стек отсортирован в убывающем порядке*/
+			OnlyPushB(root_a, root_b, f); /*Просто находим для него место и пушим туда*/
+		// else /*
+		// 		Иначе Сортируем стек В, находим подходящее
+		// 			место для root_a->value и пушим
+		// 	*/
+		// 		// SortingB_Push();
+	}
+	else
+	{
+		new_push(root_a, root_b);
+		write (1, "pb\n", 3);
+	}
 	return ;
 }
 
@@ -85,13 +93,11 @@ void		MakeMoreRotatePush(t_list **root_b, t_help **f, t_list **root_a)
 	while ((*root_a) != NULL)
 	{
 		if ((*root_a)->value >= (*f)->min && (*root_a)->value <= (*f)->max)
-		{
 			CheckGoodPlaceToPush(root_a, root_b, f, 0); 
 			/*
 				При нахождении первого элемента чанка
 				ищем для него место в стеке В и пушим
 			*/
-		}
 		else
 		{
 			/*
@@ -115,8 +121,11 @@ void		MakeMoreReversePush(t_list **root_b, t_help **f, t_list **root_a, t_list *
 	{
 		if ((*root_a)->value >= min && (*root_a)->value <= max)
 			CheckGoodPlaceToPush(root_a, root_b, f, 1);
-		reverse_a(a, root_a, 0);
-		write (1, "rra\n", 4);
+		else
+		{
+			reverse_a(a, root_a, 0);
+			write (1, "rra\n", 4);
+		}
 	}
 	return ;
 }

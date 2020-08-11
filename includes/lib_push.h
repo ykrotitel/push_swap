@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/10 22:49:36 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/11 18:57:55 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ int					another_check(t_lst *root_a, t_help *f, t_lst *a);
 void				second_step(t_list *a, t_list *root_a, t_help *f);
 
 /* NEW ALGHORITM */
-int					make_TwoWay_list(t_lst *root_buff, t_help *f, int t);
+int					MakeTwoWayList(t_lst *root_buff, t_help *f, int t);
 int					find_chunk(t_help *f, t_list *a, t_list *root_a);
 void				TakeMinMaxValue(t_list *a, t_list *root_a, t_help **f);
 void				MainSortChunk(t_help *f, t_list *root_a, t_list *a);
@@ -164,5 +164,6 @@ int					TakeNumberOperationUpB(t_list *root_b, int value, t_help *f);
 int					TakeNumberOperationDownB(t_list *root_b, int value, t_help *f);
 int					CaseBiggerRoot(t_list *root_b, int value, t_help *f);
 int					CaseBiggerValue(t_list *root_b, int value, t_help *f);
+int					new_push(t_list **root_src, t_list **root_dest);
 
 #endif

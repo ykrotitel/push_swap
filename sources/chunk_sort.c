@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 17:13:50 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/10 22:43:37 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/11 18:56:37 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		FindMinNumberOfChunkA(t_help **f, t_list **root_a, t_list **a, t_list **ro
 					|
 		Ищем первый элемент чанка снизу
 	*/
-	if ((*f)->up < (*f)->down)
+	if ((*f)->up <= (*f)->down)
 		MakeMoreRotatePush(root_b, f, root_a);
 	else
 		MakeMoreReversePush(root_b, f, root_a, a);
@@ -42,10 +42,12 @@ void		MainSortChunk(t_help *f, t_list *root_a, t_list *a)
 
 	first_min = f->min;
 	root_b = NULL;
-	while (f->min != (first_min + f->chunk_size))
+	while (f->min < (first_min + f->chunk_size))
 	{
-		/* работаем пока минимальный элемент в стеке А
-				не станет равен верхней границе чанка */
+		/* 
+			Работаем пока минимальный элемент в стеке А
+			не станет равен верхней границе чанка 	
+		*/
 		FindMinNumberOfChunkA(&f, &root_a, &a, &root_b);
 		TakeMinMaxValue(a, root_a, &f);
 	}
