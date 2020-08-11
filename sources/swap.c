@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 21:28:37 by acarlett          #+#    #+#             */
-/*   Updated: 2020/07/31 20:15:14 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/11 23:23:37 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,21 @@ int		swap(t_list **a, t_list **b, t_list **root_a, t_list **root_b)
 {
 	swap_in_a(root_a, a);
 	swap_in_b(root_b, b);
+	return (2);
+}
+
+int		new_swap(t_list **stack)
+{
+	t_list	*buff;
+
+	if ((*stack) == NULL || (*stack)->next == NULL)
+		return (2);
+	buff = (*stack);
+	buff = buff->next;
+	buff->prev = NULL;
+	buff->next = (*stack);
+	(*stack)->prev = buff;
+	(*stack)->next = buff->next;
+	(*stack) = buff;
 	return (2);
 }

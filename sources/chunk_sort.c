@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 17:13:50 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/11 18:56:37 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/11 23:24:06 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,11 @@
 
 void		FindMinNumberOfChunkA(t_help **f, t_list **root_a, t_list **a, t_list **root_b)
 {
-	int min;
-	int max;
-
-	min = (*f)->min;
-	max = (*f)->min + (*f)->chunk_size;
-	(*f)->up = TakeNumberOperationUp((*root_a), min, max); 
-	/* 				^
-					|
-		Ищем элемент певрого чанка сверху 
-	*/
-	(*f)->down = TakeNumberOperationDown((*root_a), min, max);
-	/*				^
-					|
-		Ищем первый элемент чанка снизу
-	*/
+	(*f)->local_min = (*f)->min;
+	(*f)->local_max = (*f)->min + (*f)->chunk_size;
+	(*f)->up = TakeNumberOperationUp((*root_a), (*f)->local_min, (*f)->local_max);
+	(*f)->down = TakeNumberOperationDown((*root_a), (*f)->local_min, (*f)->local_max);
+	printf ("up = %d, down - %d\n", (*f)->up, (*f)->down);
 	if ((*f)->up <= (*f)->down)
 		MakeMoreRotatePush(root_b, f, root_a);
 	else
@@ -42,14 +32,17 @@ void		MainSortChunk(t_help *f, t_list *root_a, t_list *a)
 
 	first_min = f->min;
 	root_b = NULL;
-	while (f->min < (first_min + f->chunk_size))
+	int cccc = 10;
+	while (cccc && f->min < (first_min + f->chunk_size))
 	{
+		cccc--;
 		/* 
 			Работаем пока минимальный элемент в стеке А
 			не станет равен верхней границе чанка 	
 		*/
+	printf ("min = %d and chunk_min = %d\n", f->min, (first_min + f->chunk_size));
 		FindMinNumberOfChunkA(&f, &root_a, &a, &root_b);
-		TakeMinMaxValue(a, root_a, &f);
+		TakeMinMaxValue(root_a, &f);
 	}
 }
 

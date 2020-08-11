@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:17:56 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/10 20:50:01 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/11 22:24:30 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int			TakeNumberOperationDown(t_list *root_a, int min, int max)
 	int		i;
 	int		s;
 
-	i = 0;
+	i = 1;
 	buff = root_a;
 	while (buff->next != NULL)
 		buff = buff->next;
@@ -107,4 +107,13 @@ int			TakeNumberOperationDownB(t_list *root_b, int value, t_help *f)
 			1
 			10
 
+
+delta = max - min;
+
+if (f->size (50, 150))
+	chunk_size = delta / 5;
+else if (f->size (150; 300))
+	chunk_size = delta / 7;
+else if (f->size (300; +-))
+	chunk_size = delta / 11;
 */

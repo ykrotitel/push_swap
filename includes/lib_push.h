@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/11 18:57:55 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/11 23:22:01 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ typedef	struct		s_help
 {
 	int				min;
 	int				min_b;
+	int				local_min;
 	int				max;
 	int				max_b;
+	int				local_max;
 	int				c;
 	int				cc;
 	int				ccc;
@@ -154,7 +156,8 @@ void				second_step(t_list *a, t_list *root_a, t_help *f);
 /* NEW ALGHORITM */
 int					MakeTwoWayList(t_lst *root_buff, t_help *f, int t);
 int					find_chunk(t_help *f, t_list *a, t_list *root_a);
-void				TakeMinMaxValue(t_list *a, t_list *root_a, t_help **f);
+void				TakeMinMaxValue(t_list *root_a, t_help **f);
+void				TakeMinMaxValueB(t_list *root_a, t_help **f);
 void				MainSortChunk(t_help *f, t_list *root_a, t_list *a);
 int					TakeNumberOperationUp(t_list *root_a, int min, int max);
 int					TakeNumberOperationDown(t_list *root_a, int min, int max);
@@ -164,6 +167,10 @@ int					TakeNumberOperationUpB(t_list *root_b, int value, t_help *f);
 int					TakeNumberOperationDownB(t_list *root_b, int value, t_help *f);
 int					CaseBiggerRoot(t_list *root_b, int value, t_help *f);
 int					CaseBiggerValue(t_list *root_b, int value, t_help *f);
+void				SortingB_Push(t_list **root_a, t_list **root_b, t_help **f);
 int					new_push(t_list **root_src, t_list **root_dest);
+int					new_rotate(t_list **stack);
+int					new_reverse(t_list **stack);
+int					new_swap(t_list **stack);
 
 #endif
