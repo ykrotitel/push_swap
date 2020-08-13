@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 17:18:52 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/11 23:29:36 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/13 02:41:46 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void		TakeMinMaxValueB(t_list *stack, t_help **f)
 	buff = stack;
 	(*f)->min_b = stack->value;
 	(*f)->max_b = stack->value;
-	printf ("root_b = %d\n", buff->value);
 	while (buff->next != NULL)
 	{
 		if (buff->value < (*f)->min_b)
@@ -80,6 +79,16 @@ int			find_chunk(t_help *f, t_list *a, t_list *root_a)
 	return (0);
 }
 
+int			test_function(t_help *f, t_list *root_a)
+{
+	write (1, "ok!\n", 4);
+	print_a(root_a);
+	new_swap(&root_a);
+	write (1, "\nSA\n", 4);
+	print_a(root_a);
+	return (1);
+}
+
 int			main_continue(t_list *a, t_list *root_a, t_help *f)
 {
 	if (!check_stack_a(root_a))
@@ -88,5 +97,8 @@ int			main_continue(t_list *a, t_list *root_a, t_help *f)
 		free(f);
 		return (0);
 	}
+
+	// return (test_function(f, root_a));
+
 	return (find_chunk(f, a, root_a));
 }

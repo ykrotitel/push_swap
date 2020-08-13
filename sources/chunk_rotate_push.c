@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 17:02:42 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/11 23:37:15 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/13 03:43:13 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,18 @@ void		OnlyPushB(t_list **root_a, t_list **root_b, t_help **f)
 		b = b->next;
 	up = TakeNumberOperationUpB((*root_b), (*root_a)->value, (*f));
 	down = TakeNumberOperationDownB((*root_b), (*root_a)->value, (*f));
+	write (1, "GOV", 3);
+	printf ("up_B - %d, down_B - %d\n", up, down);
+	write (1, "NO\n", 3);
 	if (up <= down)
-		while ((up--) >= 0) 	/*	ROTATE_B пока не дойдем	*/
+		while ((up--) > 0) 	/*	ROTATE_B пока не дойдем	*/
 			new_rotate(root_b) && write (1, "rb\n", 3);	/*	до необходимого места	*/
 	else
-		while ((down--) >= 0)
+		while ((down--) > 0)
 			new_reverse(root_b) && write (1, "rrb\n", 4);/* REVERSE_B пока не дойдем до необходимого места */
-	new_push(root_a, root_b);
-	write (1, "pb\n", 3);
+	print_b((*root_b));
+	new_push(root_a, root_b) && write (1, "pb\n", 3);
+	print_b((*root_b));
 }
 
 void		CheckGoodPlaceToPush(t_list **root_a, t_list **root_b, t_help **f, int ff)
@@ -65,14 +69,22 @@ void		CheckGoodPlaceToPush(t_list **root_a, t_list **root_b, t_help **f, int ff)
 	if ((*root_b) != NULL)
 	{
 		TakeMinMaxValueB((*root_b), f);
-		print((*root_b));
-		if ((CheckSortStackB((*root_b), (*root_a)->value)))/* Если стек отсортирован в убывающем порядке*/
-			OnlyPushB(root_a, root_b, f); /*Просто находим для него место и пушим туда*/
+		if ((CheckSortStackB((*root_b), (*root_a)->value)))
+		{
+			printf ("root_a->value = %d\n", (*root_a)->value);
+			OnlyPushB(root_a, root_b, f);
+		}
 		else
-			new_swap(root_b) && write (1, "sa\n", 3);
+		{
+			new_swap(root_b) && write (1, "sb\n", 3);
+			print_b((*root_b));
+		}
 	}
 	else
+	{
 		new_push(root_a, root_b) && write (1, "pb\n", 3);
+		print_b((*root_b));
+	}
 	return ;
 }
 
@@ -80,25 +92,13 @@ void		MakeMoreRotatePush(t_list **root_b, t_help **f, t_list **root_a)
 {
 	while ((*root_a) != NULL)
 	{
-		write (1, "HERE1\n", 6);
 		if ((*root_a)->value >= (*f)->local_min && (*root_a)->value <= (*f)->local_max)
 		{
-			write (1, "HERE2\n", 6);
 			CheckGoodPlaceToPush(root_a, root_b, f, 0);
 			return ;
 		}
-			/*
-				При нахождении первого элемента чанка
-				ищем для него место в стеке В и пушим
-			*/
 		else
-		{
-			/*
-				Иначе делаем ROTATE_A пока не найдем нужный элемент
-			*/
-			new_rotate(root_a);
-			write (1, "ra\n", 3);
-		}
+			new_rotate(root_a) && write (1, "ra\n", 3);
 	}
 	return ;
 }
@@ -120,3 +120,12 @@ void		MakeMoreReversePush(t_list **root_b, t_help **f, t_list **root_a, t_list *
 	}
 	return ;
 }
+
+/*
+			0
+2  (rrb)	3 
+1			2
+3			1
+
+
+*/

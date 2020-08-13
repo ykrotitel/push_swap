@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/11 23:22:01 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/13 03:08:23 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,6 @@ int					check_massive(t_lst *root_a);
 int					check_stack_a(t_list *root_a);
 int					main_sort_second(t_help *p);
 int					ft_check_data(t_list *root_a);
-void				print_a(t_lst *root_a);
-void				print_b(t_lst *root_b);
 int					help_rotate(t_list *tmp, int c);
 void				for_make(t_help **p);
 int					help_main(char **av, t_lst **a,
@@ -144,7 +142,8 @@ void				help_for_help(t_lst **a, t_help **f, t_lst **root_a);
 int					help_for_help_k(char **av, t_help **f);
 int					check_each_inst(char *inst);
 void				help_for_ps_main(t_lst **root_a, t_lst **a, t_help **f);
-void				print(t_list *root_a);
+void				print_b(t_list 	*root_b);
+void				print_a(t_list 	*root_a);
 int					main_continue(t_list *a, t_list *root_a, t_help *f);
 void				free_list1(t_list *root_a);
 void				free_list2(t_lst *root_a);
@@ -172,5 +171,6 @@ int					new_push(t_list **root_src, t_list **root_dest);
 int					new_rotate(t_list **stack);
 int					new_reverse(t_list **stack);
 int					new_swap(t_list **stack);
+void				CheckGoodPlaceToPush(t_list **root_a, t_list **root_b, t_help **f, int ff);
 
 #endif
