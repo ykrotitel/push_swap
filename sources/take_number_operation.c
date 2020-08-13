@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:17:56 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/11 22:24:30 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/13 06:07:31 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,10 @@ else if (f->size (150; 300))
 	chunk_size = delta / 7;
 else if (f->size (300; +-))
 	chunk_size = delta / 11;
+
+
+2	0
+1
+3
+
 */

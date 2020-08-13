@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 17:18:52 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/13 02:41:46 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/13 06:31:52 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		TakeMinMaxValueB(t_list *stack, t_help **f)
 	buff = stack;
 	(*f)->min_b = stack->value;
 	(*f)->max_b = stack->value;
-	while (buff->next != NULL)
+	while (buff != NULL)
 	{
 		if (buff->value < (*f)->min_b)
 			(*f)->min_b = buff->value;

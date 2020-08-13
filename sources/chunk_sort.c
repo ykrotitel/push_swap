@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 17:13:50 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/13 03:41:17 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/13 07:55:40 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 void		FindMinNumberOfChunkA(t_help **f, t_list **root_a, t_list **a, t_list **root_b)
 {
+	write(1, "		FINDMINNUMBEROF\n", 24);
+	TakeMinMaxValue((*root_a), f);
 	(*f)->local_min = (*f)->min;
 	(*f)->local_max = (*f)->min + (*f)->chunk_size;
+	// print_a((*root_a));
+	// printf ("MINI = %d\n", (*f)->min);
 	(*f)->up = TakeNumberOperationUp((*root_a), (*f)->local_min, (*f)->local_max);
 	(*f)->down = TakeNumberOperationDown((*root_a), (*f)->local_min, (*f)->local_max);
-	printf ("up_A = %d, down_A - %d\n", (*f)->up, (*f)->down);
 	if ((*f)->up <= (*f)->down)
 		MakeMoreRotatePush(root_b, f, root_a);
 	else
@@ -32,12 +35,17 @@ void		MainSortChunk(t_help *f, t_list *root_a, t_list *a)
 
 	first_min = f->min;
 	root_b = NULL;
-	int cccc = 9;
+	int cccc = 33;
+	// while (root_a->next != NULL)	
 	while (cccc && f->min < (first_min + f->chunk_size))
 	{
+		write (1, "MAINSORTCHUNK\n", 14);
 		cccc--;
 		FindMinNumberOfChunkA(&f, &root_a, &a, &root_b);
-		TakeMinMaxValue(root_a, &f);
+		print_a(root_a);
+		if ((first_min + f->chunk_size) > f->min)
+		first_min = f->min;
 	}
+	printf("min = %d      min+chunk = %d cccc  =%d\n", f->min, (first_min + f->chunk_size), cccc);
 }
 
