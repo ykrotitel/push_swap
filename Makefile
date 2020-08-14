@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/08/13 06:45:01 by acarlett         ###   ########.fr        #
+#    Updated: 2020/08/14 20:29:07 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ SOURCES =		sources/push.c \
 				sources/take_number_operation.c \
 				sources/case_find_place.c \
 				sources/chunk_rotate_push.c \
-				sources/sorting_b.c \
 
 SOURCES_LIB = 	libft/ft_atoi.c \
 				libft/ft_isalpha.c \
@@ -61,14 +60,14 @@ $(NAME_P): $(OBJECTS)
 	@echo
 	@echo "\033[0;93m     LIBFT COMPILATION ---> \033[1;92mSUCCESS !!!\033[0m"
 	@echo
-	@cc -g  -o $(NAME_P) $(PUSH_SWAP) $(SOURCES) -I $(INCLUDES) libft/libft.a
+	@cc -o $(NAME_P) $(PUSH_SWAP) $(SOURCES) -I $(INCLUDES) libft/libft.a -g
 	@rm -rf push_swap.dSYM
 	@echo "\033[0;93m   PUSH_SWAR COMPILATION ---> \033[1;92mSUCCESS !!!\033[0m"
 	@echo
 
 
 $(NAME_C): $(OBJECTS)
-	@cc -g  -o $(NAME_C) $(SOURCES) $(CHECKER) -I $(INCLUDES) libft/libft.a
+	@cc -o $(NAME_C) $(SOURCES) $(CHECKER) -I $(INCLUDES) libft/libft.a -g
 	@rm -rf checker.dSYM
 	@echo "\033[0;93m    CHECKER COMPILATION ---> \033[1;92mSUCCESS !!!\033[0m"
 	@echo

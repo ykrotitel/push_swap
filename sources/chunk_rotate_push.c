@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 17:02:42 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/13 08:05:34 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/14 19:42:17 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,30 @@ void		OnlyPushB(t_list **root_a, t_list **root_b, t_help **f)
 		b = b->next;
 	up = TakeNumberOperationUpB((*root_b), (*root_a)->value, (*f));
 	down = TakeNumberOperationDownB((*root_b), (*root_a)->value, (*f));
-	// printf ("up_B - %d, down_B - %d\n", up, down);
 	if (up <= down)
 		while (up > 0)
 		{
 			up--;
-			new_rotate(root_b) && write (1, "rb\n", 3);	/*	до необходимого места	*/
+			new_rotate(root_b) && write (1, "rb\n", 3);
 		}
 	else
 		while (down > 0)
 		{
 			down--;
-			new_reverse(root_b) && write (1, "rrb\n", 4);/* REVERSE_B пока не дойдем до необходимого места */
+			new_reverse(root_b) && write (1, "rrb\n", 4);
 		}
-	// print_b((*root_b));
-	printf ("root_a->value = %d min = %d  AND MIN+CHUNK = %d\n", (*root_a)->value, (*f)->local_min, (*f)->local_max);
 	new_push(root_a, root_b) && write (1, "pb\n", 3);
-	print_b((*root_b));
+	TakeMinMaxValue((*root_a), f);
+	if ((*f)->local_max < (*f)->min)
+	{
+		(*f)->local_min = (*f)->min;
+		(*f)->local_max = (*f)->min + (*f)->chunk_size;
+	}
+
 }
 
 void		CheckGoodPlaceToPush(t_list **root_a, t_list **root_b, t_help **f, int ff)
 {
-	write (1, "				CHECKGOODPLACE\n", 21);
 	if ((*root_b) != NULL)
 	{
 		TakeMinMaxValueB((*root_b), f);
@@ -82,23 +84,33 @@ void		CheckGoodPlaceToPush(t_list **root_a, t_list **root_b, t_help **f, int ff)
 		else
 		{
 			new_swap(root_b) && write (1, "sb\n", 3);
-			// print_b((*root_b));
 		}
 	}
 	else
 	{
 		new_push(root_a, root_b) && write (1, "pb\n", 3);
-		// print_b((*root_b));
+		TakeMinMaxValue((*root_a), f);
+		if ((*f)->local_max < (*f)->min)
+		{
+			(*f)->local_min = (*f)->min;
+			(*f)->local_max = (*f)->min + (*f)->chunk_size;
+		}
+
 	}
 	return ;
 }
 
 void		MakeMoreRotatePush(t_list **root_b, t_help **f, t_list **root_a)
 {
-	write (1, "			ROTATEPUSH\n", 15);
 	while ((*root_a) != NULL)
 	{
-		write (1, "			ROTATEPUSH\n", 15);
+		if (((*f)->min + (*f)->chunk_size) < (*f)->min)
+		{
+			TakeMinMaxValue((*root_a), f);
+			(*f)->local_min = (*f)->min;
+			(*f)->local_max = (*f)->min + (*f)->chunk_size;
+
+		}
 		if ((*root_a)->value >= (*f)->local_min && (*root_a)->value <= (*f)->local_max)
 		{
 			CheckGoodPlaceToPush(root_a, root_b, f, 0);
@@ -110,21 +122,23 @@ void		MakeMoreRotatePush(t_list **root_b, t_help **f, t_list **root_a)
 	return ;
 }
 
-void		MakeMoreReversePush(t_list **root_b, t_help **f, t_list **root_a, t_list **a)
+void		MakeMoreReversePush(t_list **root_b, t_help **f, t_list **root_a)
 {
-	int min;
-
-	min = (*f)->min;
-	write (1, "			REVERSEPUSH\n", 16);
 	while ((*root_a) != NULL)
 	{
-		write (1, "			REVERSEPUSH\n", 16);
+		if (((*f)->min + (*f)->chunk_size) < (*f)->min)
+		{
+			TakeMinMaxValue((*root_a), f);
+			(*f)->local_min = (*f)->min;
+			(*f)->local_max = (*f)->min + (*f)->chunk_size;
+		
+		}
 		if ((*root_a)->value >= (*f)->local_min && (*root_a)->value <= (*f)->local_max)
 			CheckGoodPlaceToPush(root_a, root_b, f, 1);
 		else
 		{
-			reverse_a(a, root_a, 0);
-			// write (1, "rra\n", 4);
+			new_reverse(root_a);
+			write (1, "rra\n", 4);
 		}
 	}
 	return ;

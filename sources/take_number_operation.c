@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:17:56 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/13 06:07:31 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/14 17:08:16 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,54 +72,3 @@ int			TakeNumberOperationDownB(t_list *root_b, int value, t_help *f)
 	}
 	return (size - i);
 }
-
-
-/*
-
-70			5
-	 		4
-	 		3
-	 		2
-	 		1	==>		DownB return ->1 TIMES REVERSE_B / UpB return -> 8 TIMES ROTATE_B
-	 		10
-	 		9
-	 		8
-	 		6
-
-70			1
-			10
-			9
-			8
-			6 ==>		4 TIMES	ROTATE_B / 5 TIMES REVERSE_B
-			5
-	 		4
-	 		3
-			2
-
-
-7			9
-			8
-			6
-			5
-			4 ==>		2 TIMES ROTATE_B / 7 TIMES REVERSE_B
-			3
-			2
-			1
-			10
-
-
-delta = max - min;
-
-if (f->size (50, 150))
-	chunk_size = delta / 5;
-else if (f->size (150; 300))
-	chunk_size = delta / 7;
-else if (f->size (300; +-))
-	chunk_size = delta / 11;
-
-
-2	0
-1
-3
-
-*/

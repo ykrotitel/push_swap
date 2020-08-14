@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 17:18:52 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/13 06:31:52 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/14 20:03:17 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ void		TakeMinMaxValue(t_list *root_a, t_help **f)
 {
 	t_list	*buff;
 
+	if (root_a == NULL)
+		return ;
 	buff = root_a;
 	(*f)->min = root_a->value;
 	(*f)->max = root_a->value;
-	while (buff->next != NULL)
+	while (buff != NULL)
 	{
 		if (buff->value < (*f)->min)
 			(*f)->min = buff->value;
@@ -48,7 +50,7 @@ void		TakeMinMaxValueB(t_list *stack, t_help **f)
 	return ;
 }
 
-int			find_chunk(t_help *f, t_list *a, t_list *root_a)
+int			find_chunk(t_help *f, t_list *root_a)
 {
 	int delta;
 
@@ -60,36 +62,11 @@ int			find_chunk(t_help *f, t_list *a, t_list *root_a)
 		f->chunk_size = delta / 7;
 	else if (f->size >= 300)
 		f->chunk_size = delta / 10;
-	// if (f->size <= 50)
-	// 	f->chunk_size = 10;
-	// else if (f->size > 50 && f->size < 100)
-	// 	f->chunk_size = 15;
-	// else if (f->size >= 100 && f->size < 200)
-	// 	f->chunk_size = 20;
-	// else if (f->size >= 200 && f->size < 300)
-	// 	f->chunk_size = 30;
-	// else if (f->size >= 300 && f->size < 400)
-	// 	f->chunk_size = 40;
-	// else if (f->size >= 400 && f->size < 500)
-	// 	f->chunk_size = 45;
-	// else if (f->size >= 500)
-	// 	f->chunk_size = 50;	
-	printf ("min  = %d   max = %d   chunk_size = %d   f->cc = %d\n", f->min, f->max, f->chunk_size, f->cc);
-	second_step(a, root_a, f);
+	second_step(root_a, f);
 	return (0);
 }
 
-int			test_function(t_help *f, t_list *root_a)
-{
-	write (1, "ok!\n", 4);
-	print_a(root_a);
-	new_swap(&root_a);
-	write (1, "\nSA\n", 4);
-	print_a(root_a);
-	return (1);
-}
-
-int			main_continue(t_list *a, t_list *root_a, t_help *f)
+int			main_continue(t_list *root_a, t_help *f)
 {
 	if (!check_stack_a(root_a))
 	{
@@ -97,8 +74,5 @@ int			main_continue(t_list *a, t_list *root_a, t_help *f)
 		free(f);
 		return (0);
 	}
-
-	// return (test_function(f, root_a));
-
-	return (find_chunk(f, a, root_a));
+	return (find_chunk(f, root_a));
 }
