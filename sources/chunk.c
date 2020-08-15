@@ -6,13 +6,13 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 17:18:52 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/14 20:03:17 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:30:07 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-void		TakeMinMaxValue(t_list *root_a, t_help **f)
+void		takeminmaxvalue(t_list *root_a, t_help **f)
 {
 	t_list	*buff;
 
@@ -32,7 +32,7 @@ void		TakeMinMaxValue(t_list *root_a, t_help **f)
 	return ;
 }
 
-void		TakeMinMaxValueB(t_list *stack, t_help **f)
+void		takeminmaxvalueb(t_list *stack, t_help **f)
 {
 	t_list	*buff;
 
@@ -54,7 +54,7 @@ int			find_chunk(t_help *f, t_list *root_a)
 {
 	int delta;
 
-	TakeMinMaxValue(root_a, &f);
+	takeminmaxvalue(root_a, &f);
 	delta = f->max - f->min;
 	if (f->size >= 0 && f->size < 150)
 		f->chunk_size = delta / 5;

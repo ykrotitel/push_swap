@@ -6,25 +6,13 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 19:07:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/14 19:26:47 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 17:07:42 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-int			check_line(char *line)
-{
-	int i;
-
-	i = 0;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	if (line[i] == '\0')
-		return (0);
-	return (1);
-}
-
-int		another_check(t_lst *root_a, t_help *f, t_lst *a)
+int			another_check(t_lst *root_a, t_help *f, t_lst *a)
 {
 	if (root_a == NULL)
 	{
@@ -37,7 +25,7 @@ int		another_check(t_lst *root_a, t_help *f, t_lst *a)
 		free_list2(root_a);
 		return (display_error(0));
 	}
-	MakeTwoWayList(root_a, f, 1);
+	maketwowaylist(root_a, f, 1);
 	return (0);
 }
 
@@ -68,9 +56,9 @@ void		right_sort_3(t_list *buff, t_list **root_a, t_help *f)
 
 void		help_for_sort_4_5(t_list **root_a, t_help **f, t_list **root_b)
 {
-	TakeMinMaxValue((*root_a), f);
-	(*f)->up = TakeNumberOperationUp((*root_a), (*f)->min, (*f)->min);
-	(*f)->down = TakeNumberOperationDown((*root_a), (*f)->min, (*f)->min);
+	takeminmaxvalue((*root_a), f);
+	(*f)->up = takenumberoperationup((*root_a), (*f)->min, (*f)->min);
+	(*f)->down = takenumberoperationdown((*root_a), (*f)->min, (*f)->min);
 	if ((*f)->up <= (*f)->down)
 		while ((*root_a)->value != (*f)->min)
 			new_rotate(root_a) && write(1, "ra\n", 3);
@@ -88,7 +76,7 @@ void		sort_4_5(t_list **root_a, t_help *f)
 	new_push(root_a, &root_b) && write(1, "pb\n", 3);
 	help_for_sort_4_5(root_a, &f, &root_b);
 	new_push(root_a, &root_b) && write(1, "pb\n", 3);
-	f->size-=2;
+	f->size -= 2;
 	sort_only_2_3_5(root_a, f);
 	new_push(&root_b, root_a) && write(1, "pa\n", 3);
 	new_push(&root_b, root_a) && write(1, "pa\n", 3);

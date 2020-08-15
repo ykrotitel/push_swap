@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/08/14 20:29:07 by acarlett         ###   ########.fr        #
+#    Updated: 2020/08/15 17:18:08 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,11 @@ SOURCES =		sources/push.c \
 				sources/helper.c \
 				sources/second_helper.c \
 				sources/last_helper.c \
-				sources/make_last.c \
 				sources/mini.c \
 				sources/another_mini.c \
 				sources/new.c \
 				sources/two_way_list.c \
 				sources/chunk_sort.c \
-				sources/print.c \
 				sources/free.c \
 				sources/min_and_max.c \
 				sources/chunk.c \

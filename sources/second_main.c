@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:17:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/14 20:16:51 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 17:15:39 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void		all_sort(char *inst, t_help **f, t_list **root_a, t_list **root_b)
 {
 	if (inst[(*f)->i] == 'p')
 	{
-		(inst[((*f)->i + 1)] == 'a' ? new_push(root_b, root_a) : new_push(root_a, root_b));
+		(inst[((*f)->i + 1)] == 'a' ? new_push(root_b, root_a)
+		: new_push(root_a, root_b));
 	}
 	else if (inst[(*f)->i] == 's')
 	{
@@ -25,9 +26,11 @@ void		all_sort(char *inst, t_help **f, t_list **root_a, t_list **root_b)
 	else if (inst[(*f)->i] == 'r')
 	{
 		if (inst[((*f)->i + 1)] == 'r')
-			(inst[((*f)->i + 2)] == 'a' ? new_reverse(root_a) : new_reverse(root_b));
+			(inst[((*f)->i + 2)] == 'a' ?
+			new_reverse(root_a) : new_reverse(root_b));
 		else if (inst[((*f)->i + 1)] == 'a' || inst[((*f)->i + 1)] == 'b')
-			(inst[((*f)->i + 1)] == 'a' ? new_rotate(root_a) : new_rotate(root_b));
+			(inst[((*f)->i + 1)] == 'a' ?
+			new_rotate(root_a) : new_rotate(root_b));
 	}
 }
 
@@ -41,9 +44,9 @@ int			make_sort(t_list *a, t_list *root_a, char *inst, t_help *f)
 	{
 		all_sort(inst, &f, &root_a, &root_b);
 		if (inst[(f->i + 2)] == '\n')
-			f->i+=3;
-		else if(inst[(f->i + 3)] == '\n')
-			f->i+=4;
+			f->i += 3;
+		else if (inst[(f->i + 3)] == '\n')
+			f->i += 4;
 	}
 	free(inst);
 	free(f);

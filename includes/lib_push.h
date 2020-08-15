@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/14 20:19:23 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 17:18:18 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,6 @@ int					swap(t_list **a, t_list **b,
 t_list **root_a, t_list **root_b);
 int					reverse(t_list **a, t_list **b,
 t_list **root_a, t_list **root_b);
-int					reverse_a(t_list **a, t_list **root_a, int t);
-int					reverse_b(t_list **b, t_list **root_b, int t);
-int					swap(t_list **a, t_list **b, t_list **root_a,
-t_list **root_b);
-int					swap_in_b(t_list **root_b, t_list **b);
-int					swap_in_a(t_list **root_a, t_list **a);
-int					rotate(t_list **root_a, t_list **root_b);
-int					rotate_a(t_list **root_a);
-int					rotate_b(t_list **root_b);
-int					push_b(t_list **root_b, t_list **root_a);
-int					push_a(t_list **root_a, t_list **root_b);
-int					check_rb(t_list **root_b);
-int					check_ra(t_list *root_a);
-int					check_rrb(t_list **b, t_list **root_b);
-int					check_rra(t_list **a, t_list **root_a);
-int					swap_b_continue(t_list **root_b, t_list *root);
-int					swap_a_continue(void);
 int					check_argv(char *s);
 int					display_error(int a);
 int					make_sort_continue(t_list *root_b, t_list *root_a);
@@ -137,8 +120,6 @@ void				help_for_help(t_lst **a, t_help **f, t_lst **root_a);
 int					help_for_help_k(char **av, t_help **f);
 int					check_each_inst(char *inst);
 void				help_for_ps_main(t_lst **root_a, t_lst **a, t_help **f);
-void				print_b(t_list 	*root_b);
-void				print_a(t_list 	*root_a);
 int					main_continue(t_list *root_a, t_help *f);
 void				free_list1(t_list *root_a);
 void				free_list2(t_lst *root_a);
@@ -146,25 +127,29 @@ int					check_instruction(t_list *aa, t_list *aa_r, t_help *f);
 int					each_check_inst(int i, char *inst);
 int					another_check(t_lst *root_a, t_help *f, t_lst *a);
 void				second_step(t_list *root_a, t_help *f);
-
-/* NEW ALGHORITM */
-int					MakeTwoWayList(t_lst *root_buff, t_help *f, int t);
+int					maketwowaylist(t_lst *root_buff, t_help *f, int t);
 int					find_chunk(t_help *f, t_list *root_a);
-void				TakeMinMaxValue(t_list *root_a, t_help **f);
-void				TakeMinMaxValueB(t_list *root_a, t_help **f);
-void				MainSortChunk(t_help *f, t_list **root_a);
-int					TakeNumberOperationUp(t_list *root_a, int min, int max);
-int					TakeNumberOperationDown(t_list *root_a, int min, int max);
-void				MakeMoreRotatePush(t_list **root_b, t_help **f, t_list **root_a);
-void				MakeMoreReversePush(t_list **root_b, t_help **f, t_list **root_a);
-int					TakeNumberOperationUpB(t_list *root_b, int value, t_help *f);
-int					TakeNumberOperationDownB(t_list *root_b, int value, t_help *f);
-int					CaseBiggerRoot(t_list *root_b, int value, t_help *f);
-int					CaseBiggerValue(t_list *root_b, int value, t_help *f);
+void				takeminmaxvalue(t_list *root_a, t_help **f);
+void				takeminmaxvalueb(t_list *root_a, t_help **f);
+void				mainsortchunk(t_help *f, t_list **root_a);
+int					takenumberoperationup(t_list *root_a, int min, int max);
+int					takenumberoperationdown(t_list *root_a, int min, int max);
+void				makemorerotatepush(t_list **root_b, t_help **f,
+t_list **root_a);
+void				makemorereversepush(t_list **root_b, t_help **f,
+t_list **root_a);
+int					takenumberoperationupb(t_list *root_b,
+int value, t_help *f);
+int					takenumberoperationdownb(t_list *root_b, int value,
+t_help *f);
+int					casebiggerroot(t_list *root_b, int value, t_help *f);
+int					casebiggervalue(t_list *root_b, int value, t_help *f);
 int					new_push(t_list **root_src, t_list **root_dest);
 int					new_rotate(t_list **stack);
 int					new_reverse(t_list **stack);
 int					new_swap(t_list **stack);
-void				CheckGoodPlaceToPush(t_list **root_a, t_list **root_b, t_help **f, int ff);
+void				checkgoodplacetopush(t_list **root_a, t_list **root_b,
+t_help **f, int ff);
+int					check_line(char *line);
 
 #endif

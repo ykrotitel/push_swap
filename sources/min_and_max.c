@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 16:21:29 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/14 20:08:16 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:34:52 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		second_step(t_list *root_a, t_help *f)
 	else
 	{
 		for_make(&f);
-		MainSortChunk(f, &root_a);
+		mainsortchunk(f, &root_a);
 	}
 	free(f);
 	free_list1(root_a);

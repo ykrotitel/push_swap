@@ -6,13 +6,13 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:17:56 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/14 17:08:16 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 17:10:35 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-int		TakeNumberOperationUp(t_list *root_a, int min, int max)
+int			takenumberoperationup(t_list *root_a, int min, int max)
 {
 	t_list	*buff;
 	int		i;
@@ -26,10 +26,10 @@ int		TakeNumberOperationUp(t_list *root_a, int min, int max)
 		buff = buff->next;
 		i++;
 	}
-	return(i);
+	return (i);
 }
 
-int			TakeNumberOperationDown(t_list *root_a, int min, int max)
+int			takenumberoperationdown(t_list *root_a, int min, int max)
 {
 	t_list	*buff;
 	int		i;
@@ -49,14 +49,14 @@ int			TakeNumberOperationDown(t_list *root_a, int min, int max)
 	return (i);
 }
 
-int			TakeNumberOperationUpB(t_list *root_b, int value, t_help *f)
+int			takenumberoperationupb(t_list *root_b, int value, t_help *f)
 {
 	if (value > root_b->value)
-		return (CaseBiggerValue(root_b, value, f));
-	return (CaseBiggerRoot(root_b, value, f));
+		return (casebiggervalue(root_b, value, f));
+	return (casebiggerroot(root_b, value, f));
 }
 
-int			TakeNumberOperationDownB(t_list *root_b, int value, t_help *f)
+int			takenumberoperationdownb(t_list *root_b, int value, t_help *f)
 {
 	int		i;
 	int		size;
@@ -64,7 +64,7 @@ int			TakeNumberOperationDownB(t_list *root_b, int value, t_help *f)
 
 	buff = root_b;
 	size = 0;
-	i = TakeNumberOperationUpB(root_b, value, f);
+	i = takenumberoperationupb(root_b, value, f);
 	while (root_b != NULL)
 	{
 		root_b = root_b->next;

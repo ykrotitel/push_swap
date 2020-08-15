@@ -6,13 +6,13 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:30:24 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/13 06:45:49 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 17:00:53 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-int			CaseBiggerValue(t_list *root_b, int value, t_help *f)
+int			casebiggervalue(t_list *root_b, int value, t_help *f)
 {
 	t_list	*buff;
 	int		count;
@@ -40,7 +40,7 @@ int			CaseBiggerValue(t_list *root_b, int value, t_help *f)
 	return (count);
 }
 
-int			CaseBiggerRoot(t_list *root_b, int value, t_help *f)
+int			casebiggerroot(t_list *root_b, int value, t_help *f)
 {
 	t_list	*buff;
 	int		count;
@@ -66,4 +66,16 @@ int			CaseBiggerRoot(t_list *root_b, int value, t_help *f)
 		buff = buff->next;
 	}
 	return (count);
+}
+
+int			check_line(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	if (line[i] == '\0')
+		return (0);
+	return (1);
 }

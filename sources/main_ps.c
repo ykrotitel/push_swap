@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 20:32:33 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/14 19:33:24 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:40:50 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ int			main_for_norm(t_lst *a, t_lst *root_a, t_help *f)
 		free(f);
 		return (display_error(0));
 	}
-	MakeTwoWayList(root_a, f, 0);
+	maketwowaylist(root_a, f, 0);
 	return (0);
 }

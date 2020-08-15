@@ -6,14 +6,31 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 17:43:27 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/14 20:03:20 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:54:44 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
+void		twoway_list_if(t_list **a, t_list **root_a)
+{
+	(*a)->prev = NULL;
+	(*root_a) = (*a);
+}
 
-int		MakeTwoWayList(t_lst *root_buff, t_help *f, int t)
+void		twoway_list_else(t_list **a, t_list **prev)
+{
+	(*a)->prev = (*prev);
+	(*prev)->next = (*a);
+}
+
+int			help_for_malloc(t_list **root_a)
+{
+	free_list1((*root_a));
+	return (0);
+}
+
+int			maketwowaylist(t_lst *root_buff, t_help *f, int t)
 {
 	t_list	*a;
 	t_list	*root_a;
@@ -26,22 +43,13 @@ int		MakeTwoWayList(t_lst *root_buff, t_help *f, int t)
 	while (root_buff != NULL)
 	{
 		if (!(a = malloc(sizeof(t_list))))
-		{
-			free_list1(root_a);
-			return (0);
-		}
+			return (help_for_malloc(&root_a));
 		a->next = NULL;
 		a->value = root_buff->value;
 		if (root_a == NULL)
-		{
-			a->prev = NULL;
-			root_a = a;
-		}
+			twoway_list_if(&a, &root_a);
 		else
-		{
-			a->prev = prev;
-			prev->next = a;
-		}
+			twoway_list_else(&a, &prev);
 		prev = a;
 		root_buff = root_buff->next;
 	}
