@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:17:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/17 20:37:58 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/17 21:07:02 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int			make_sort(t_list *root_a, char *inst, t_help *f)
 			free(inst);
 			free(f);
 			write(1, "\n", 1);
-			return(display_error(1));
+			return (display_error(1));
 		}
 	}
 	free(inst);
