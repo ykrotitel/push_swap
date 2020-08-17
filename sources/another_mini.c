@@ -6,13 +6,13 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 19:07:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/15 17:07:42 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 18:44:43 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-int			another_check(t_lst *root_a, t_help *f, t_lst *a)
+int			another_check(t_lst *root_a, t_help *f)
 {
 	if (root_a == NULL)
 	{
@@ -54,7 +54,7 @@ void		right_sort_3(t_list *buff, t_list **root_a, t_help *f)
 	right_sort_3(buff, root_a, f);
 }
 
-void		help_for_sort_4_5(t_list **root_a, t_help **f, t_list **root_b)
+void		help_for_sort_4_5(t_list **root_a, t_help **f)
 {
 	takeminmaxvalue((*root_a), f);
 	(*f)->up = takenumberoperationup((*root_a), (*f)->min, (*f)->min);
@@ -72,9 +72,9 @@ void		sort_4_5(t_list **root_a, t_help *f)
 	t_list	*root_b;
 
 	root_b = NULL;
-	help_for_sort_4_5(root_a, &f, &root_b);
+	help_for_sort_4_5(root_a, &f);
 	new_push(root_a, &root_b) && write(1, "pb\n", 3);
-	help_for_sort_4_5(root_a, &f, &root_b);
+	help_for_sort_4_5(root_a, &f);
 	new_push(root_a, &root_b) && write(1, "pb\n", 3);
 	f->size -= 2;
 	sort_only_2_3_5(root_a, f);

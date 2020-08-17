@@ -6,13 +6,13 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 21:28:37 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/15 17:13:35 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 17:35:50 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-int		swap(t_list **a, t_list **b, t_list **root_a, t_list **root_b)
+int		swap(t_list **root_a, t_list **root_b)
 {
 	new_swap(root_a);
 	new_swap(root_b);

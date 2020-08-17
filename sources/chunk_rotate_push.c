@@ -6,13 +6,13 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 17:02:42 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/15 17:17:42 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 18:48:47 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-int			checksortstackb(t_list *root_b, int value)
+int			checksortstackb(t_list *root_b)
 {
 	t_list *buff;
 	t_list *buff_next;
@@ -68,12 +68,12 @@ void		onlypushb(t_list **root_a, t_list **root_b, t_help **f)
 }
 
 void		checkgoodplacetopush(t_list **root_a, t_list **root_b,
-t_help **f, int ff)
+t_help **f)
 {
 	if ((*root_b) != NULL)
 	{
 		takeminmaxvalueb((*root_b), f);
-		if ((checksortstackb((*root_b), (*root_a)->value)))
+		if ((checksortstackb((*root_b))))
 		{
 			onlypushb(root_a, root_b, f);
 		}
@@ -108,7 +108,7 @@ void		makemorerotatepush(t_list **root_b, t_help **f, t_list **root_a)
 		if ((*root_a)->value >= (*f)->local_min &&
 		(*root_a)->value <= (*f)->local_max)
 		{
-			checkgoodplacetopush(root_a, root_b, f, 0);
+			checkgoodplacetopush(root_a, root_b, f);
 			return ;
 		}
 		else
@@ -129,7 +129,7 @@ void		makemorereversepush(t_list **root_b, t_help **f, t_list **root_a)
 		}
 		if ((*root_a)->value >= (*f)->local_min &&
 		(*root_a)->value <= (*f)->local_max)
-			checkgoodplacetopush(root_a, root_b, f, 1);
+			checkgoodplacetopush(root_a, root_b, f);
 		else
 		{
 			new_reverse(root_a);

@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:17:56 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/15 17:10:35 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 18:46:41 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int			takenumberoperationdown(t_list *root_a, int min, int max)
 {
 	t_list	*buff;
 	int		i;
-	int		s;
 
 	i = 1;
 	buff = root_a;

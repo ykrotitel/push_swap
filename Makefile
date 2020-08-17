@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/08/15 17:18:08 by acarlett         ###   ########.fr        #
+#    Updated: 2020/08/17 20:38:13 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,24 +54,24 @@ all: $(NAME_P) $(NAME_C)
 
 
 $(NAME_P): $(OBJECTS)
-	@make -C libft re
+	make -C libft re
 	@echo
 	@echo "\033[0;93m     LIBFT COMPILATION ---> \033[1;92mSUCCESS !!!\033[0m"
 	@echo
-	@cc -o $(NAME_P) $(PUSH_SWAP) $(SOURCES) -I $(INCLUDES) libft/libft.a -g
+	@cc $(FLAGS) -o $(NAME_P) $(PUSH_SWAP) $(SOURCES) -I $(INCLUDES) libft/libft.a -g
 	@rm -rf push_swap.dSYM
 	@echo "\033[0;93m   PUSH_SWAR COMPILATION ---> \033[1;92mSUCCESS !!!\033[0m"
 	@echo
 
 
 $(NAME_C): $(OBJECTS)
-	@cc -o $(NAME_C) $(SOURCES) $(CHECKER) -I $(INCLUDES) libft/libft.a -g
+	@cc $(FLAGS) -o $(NAME_C) $(SOURCES) $(CHECKER) -I $(INCLUDES) libft/libft.a -g
 	@rm -rf checker.dSYM
 	@echo "\033[0;93m    CHECKER COMPILATION ---> \033[1;92mSUCCESS !!!\033[0m"
 	@echo
 
 %.o: %.c $(INCLUDES) $(INCLUDES_LIB)
-	@cc  -I $(INCLUDES) $< -c -o $@ -g
+	cc $(FLAGS) -I $(INCLUDES) $< -c -o $@ -g
 
 clean:
 	@rm -rf push_swap.dSYM

@@ -6,13 +6,13 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:18:02 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/15 17:13:55 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 17:45:13 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
 
-int		reverse(t_list **a, t_list **b, t_list **root_a, t_list **root_b)
+int		reverse(t_list **root_a, t_list **root_b)
 {
 	new_reverse(root_a);
 	new_reverse(root_b);

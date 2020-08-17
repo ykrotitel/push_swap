@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 17:43:27 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/15 16:54:44 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 18:46:04 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ int			maketwowaylist(t_lst *root_buff, t_help *f, int t)
 	}
 	a = NULL;
 	free_list2(for_free);
-	(t == 0 ? main_continue(root_a, f) : check_instruction(a, root_a, f));
+	(t == 0 ? main_continue(root_a, f) : check_instruction(root_a, f));
 	return (0);
 }

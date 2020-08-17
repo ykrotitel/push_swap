@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 20:08:19 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/15 17:06:51 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/17 20:20:39 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		free_list2(t_lst *root_a)
 	tmp = NULL;
 }
 
-int			check_instruction(t_list *aa, t_list *aa_r, t_help *f)
+int			check_instruction(t_list *aa_r, t_help *f)
 {
 	char	*inst;
 	char	buff;
@@ -48,7 +48,7 @@ int			check_instruction(t_list *aa, t_list *aa_r, t_help *f)
 	int		i;
 
 	i = 0;
-	inst = malloc(sizeof(char) * 20000);
+	inst = malloc(sizeof(char) * 100000);
 	while ((a = read(0, &buff, 1)) > 0)
 	{
 		inst[i] = buff;
@@ -60,7 +60,7 @@ int			check_instruction(t_list *aa, t_list *aa_r, t_help *f)
 		}
 	}
 	inst[i] = '\0';
-	return (make_sort(aa, aa_r, inst, f));
+	return (make_sort(aa_r, inst, f));
 }
 
 int			help_each_check(t_list *aa_r, char *inst, t_help *f)

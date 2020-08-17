@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/15 17:18:18 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 18:49:28 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,11 @@ typedef	struct		s_help
 }					t_help;
 
 int					first_check(char **argv, int argc);
-int					make_sort(t_list *a, t_list *root_a, char *inst, t_help *f);
+int					make_sort(t_list *root_a, char *inst, t_help *f);
 int					make_list_a(int argc, long long int arr[argc], char *inst);
-int					swap(t_list **a, t_list **b,
-t_list **root_a, t_list **root_b);
-int					reverse(t_list **a, t_list **b,
-t_list **root_a, t_list **root_b);
+int					swap(t_list **root_a, t_list **root_b);
+int					rotate(t_list **root_a, t_list **root_b);
+int					reverse(t_list **root_a, t_list **root_b);
 int					check_argv(char *s);
 int					display_error(int a);
 int					make_sort_continue(t_list *root_b, t_list *root_a);
@@ -110,7 +109,7 @@ int					help_first_check(char **argv, int i, int k, int g);
 void				all_free(t_list *root_a, t_list *root_b);
 void				for_make(t_help **p);
 int					help_first_check_con(char **argv, int i, int k);
-int					main_for_norm(t_lst *a, t_lst *root_a, t_help *f);
+int					main_for_norm(t_lst *root_a, t_help *f);
 void				sort_only_2_3(t_list **root_a, t_list **a, t_help *f);
 void				right_sort_3(t_list *buff, t_list **root_a, t_help *f);
 int					check_line(char *line);
@@ -123,9 +122,9 @@ void				help_for_ps_main(t_lst **root_a, t_lst **a, t_help **f);
 int					main_continue(t_list *root_a, t_help *f);
 void				free_list1(t_list *root_a);
 void				free_list2(t_lst *root_a);
-int					check_instruction(t_list *aa, t_list *aa_r, t_help *f);
+int					check_instruction(t_list *aa_r, t_help *f);
 int					each_check_inst(int i, char *inst);
-int					another_check(t_lst *root_a, t_help *f, t_lst *a);
+int					another_check(t_lst *root_a, t_help *f);
 void				second_step(t_list *root_a, t_help *f);
 int					maketwowaylist(t_lst *root_buff, t_help *f, int t);
 int					find_chunk(t_help *f, t_list *root_a);
@@ -149,7 +148,7 @@ int					new_rotate(t_list **stack);
 int					new_reverse(t_list **stack);
 int					new_swap(t_list **stack);
 void				checkgoodplacetopush(t_list **root_a, t_list **root_b,
-t_help **f, int ff);
+t_help **f);
 int					check_line(char *line);
 
 #endif

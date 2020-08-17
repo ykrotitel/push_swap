@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 20:33:42 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/09 20:34:14 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/08/15 18:45:54 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		get_array(int argc, char **argv)
 		f->i = help_main(argv, &a, &f, &root_a);
 	}
 	f->size = f->cc;
-	return (another_check(root_a, f, a));
+	return (another_check(root_a, f));
 }
 
 int		main(int argc, char **argv)
