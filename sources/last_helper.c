@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 17:26:53 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/17 21:06:50 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/09/09 21:56:23 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			continue_help_main(int k, t_lst **root_a, t_help **f)
 	if (k > 11)
 	{
 		free_list2((*root_a));
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		exit(0);
 	}
 	return ((*f)->i);

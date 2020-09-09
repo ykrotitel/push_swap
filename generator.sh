@@ -40,6 +40,6 @@ NUMBERS=500;
  # A="1 3 7 2 4 9 8 6 5 0 "
     echo ${A}
   # ./push_swap ${A} | ../visualizer ${A} # | wc -l #./checker ${A}
-  ./push_swap ${A} | wc -l
+#  ./push_swap ${A} | wc -l
  #./push_swap ${A}
-#   valgrind ./push_swap ${A} | valgrind ./checker ${A}
+valgrind --leak-check=full ./push_swap ${A} | valgrind --leak-check=full ./checker ${A}
