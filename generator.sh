@@ -25,7 +25,7 @@ MAXNUMBER=0;
 MINNUMBER=10000;
 MEDIUM=0;
 TESTNUM=1;
-NUMBERS=500;
+NUMBERS=600;
 
     while [ ${YESNO} -lt ${NUMBERS} ]; do
         TEMP=$((RANDOM%${RANGENUM}+0))" ";
@@ -42,4 +42,4 @@ NUMBERS=500;
   # ./push_swap ${A} | ../visualizer ${A} # | wc -l #./checker ${A}
 #  ./push_swap ${A} | wc -l
  #./push_swap ${A}
-valgrind --leak-check=full ./push_swap ${A} | valgrind --leak-check=full ./checker ${A}
+valgrind --leak-check=full ./push_swap ${A} | grep "definitely lost:" | valgrind --leak-check=full ./checker ${A} | grep "definitely lost:"

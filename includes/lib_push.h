@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/09/09 19:27:36 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:04:59 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,5 +150,7 @@ int					new_swap(t_list **stack);
 void				checkgoodplacetopush(t_list **root_a, t_list **root_b,
 t_help **f);
 int					check_line(char *line);
+void				privet(t_list **root_a, t_list **root_b, int com);
+void				privet_3(t_list **root_a, int com);
 
 #endif

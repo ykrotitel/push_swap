@@ -6,7 +6,7 @@
 #    By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/13 18:24:23 by acarlett          #+#    #+#              #
-#    Updated: 2020/08/17 20:38:13 by acarlett         ###   ########.fr        #
+#    Updated: 2020/09/10 16:34:12 by acarlett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SOURCES =		sources/push.c \
 				sources/take_number_operation.c \
 				sources/case_find_place.c \
 				sources/chunk_rotate_push.c \
+				sources/privet.c \
 
 SOURCES_LIB = 	libft/ft_atoi.c \
 				libft/ft_isalpha.c \

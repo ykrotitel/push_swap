@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 17:02:42 by acarlett          #+#    #+#             */
-/*   Updated: 2020/09/09 21:54:39 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/09/10 18:02:21 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,14 @@ void		onlypushb(t_list **root_a, t_list **root_b, t_help **f)
 		while (up > 0)
 		{
 			up--;
-			// new_rotate(root_b) && write(1, "rb\n", 3);
 			privet(root_a, root_b, 2);
 		}
 	else
 		while (down > 0)
 		{
 			down--;
-			// new_reverse(root_b) && write(1, "rrb\n", 4);
 			privet(root_a, root_b, 4);
 		}
-	// new_push(root_a, root_b) && write(1, "pb\n", 3);
 	privet(root_a, root_b, 0);
 	takeminmaxvalue((*root_a), f);
 	if ((*f)->local_max < (*f)->min)
@@ -81,12 +78,10 @@ t_help **f)
 			onlypushb(root_a, root_b, f);
 		}
 		else
-			// new_swap(root_b) && write(1, "sb\n", 3);
 			privet(root_a, root_b, 7);
 	}
 	else
 	{
-		// new_push(root_a, root_b) && write(1, "pb\n", 3);
 		privet(root_a, root_b, 0);
 		takeminmaxvalue((*root_a), f);
 		if ((*f)->local_max < (*f)->min)
@@ -116,7 +111,6 @@ void		makemorerotatepush(t_list **root_b, t_help **f, t_list **root_a)
 		}
 		else
 			privet(root_a, root_b, 3);
-			// new_rotate(root_a) && write(1, "ra\n", 3);
 	}
 	return ;
 }
@@ -135,11 +129,7 @@ void		makemorereversepush(t_list **root_b, t_help **f, t_list **root_a)
 		(*root_a)->value <= (*f)->local_max)
 			checkgoodplacetopush(root_a, root_b, f);
 		else
-		{
 			privet(root_a, root_b, 5);
-			// new_reverse(root_a);
-			// write(1, "rra\n", 4);
-		}
 	}
 	return ;
 }
