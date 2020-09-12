@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 20:08:19 by acarlett          #+#    #+#             */
-/*   Updated: 2020/08/17 20:20:39 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/09/10 20:53:49 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int			check_instruction(t_list *aa_r, t_help *f)
 	int		i;
 
 	i = 0;
-	inst = malloc(sizeof(char) * 100000);
+	f->mal = 400000;
+	inst = malloc(sizeof(char) * 400000);
 	while ((a = read(0, &buff, 1)) > 0)
 	{
 		inst[i] = buff;
@@ -58,6 +59,9 @@ int			check_instruction(t_list *aa_r, t_help *f)
 			if ((each_check_inst(i, inst)) == 0)
 				return (help_each_check(aa_r, inst, f));
 		}
+		f->mal--;
+		if (f->mal == 0)
+			return (all_free_check(inst, f, aa_r));
 	}
 	inst[i] = '\0';
 	return (make_sort(aa_r, inst, f));

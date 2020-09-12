@@ -6,7 +6,7 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:34:51 by acarlett          #+#    #+#             */
-/*   Updated: 2020/09/09 22:04:59 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/09/10 20:46:48 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ typedef	struct		s_help
 	int				chunk_size;
 	int				up;
 	int				down;
+	int				mal;
+	char			*ins;
 }					t_help;
 
 int					first_check(char **argv, int argc);
@@ -151,6 +153,7 @@ void				checkgoodplacetopush(t_list **root_a, t_list **root_b,
 t_help **f);
 int					check_line(char *line);
 void				privet(t_list **root_a, t_list **root_b, int com);
+int					all_free_check(char *inst, t_help *f, t_list *aa_r);
 void				privet_3(t_list **root_a, int com);
 
 #endif

@@ -6,11 +6,20 @@
 /*   By: acarlett <acarlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 21:58:45 by acarlett          #+#    #+#             */
-/*   Updated: 2020/09/10 18:03:37 by acarlett         ###   ########.fr       */
+/*   Updated: 2020/09/10 20:53:59 by acarlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib_push.h"
+
+int			all_free_check(char *inst, t_help *f, t_list *aa_r)
+{
+	ft_putstr("Sorry, but you wanna too much data\n");
+	free(inst);
+	free(f);
+	free_list1(aa_r);
+	return (0);
+}
 
 void		privet_3(t_list **root_a, int com)
 {
