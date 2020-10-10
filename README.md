@@ -49,4 +49,4 @@ Name	| Instruction			| What do
 ***rr***	| rotate `a` + rotate `b`	| ***ra*** and ***rb*** at the same time
 ***rra***	| reverse rotate `a`		| shift down all elements of stack `a` by 1
 ***rrb***	| reverse rotate `b`		| shift down all elements of stack `b` by 1
-***rrr***	| reverse rotate `a` + reverse rotate `b`	| ***rra*** and ***rrb*** at the same time
+***rrr***	| reverse `a` + reverse `b`	| ***rra*** and ***rrb*** at the same time
