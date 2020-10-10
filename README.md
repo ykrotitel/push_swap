@@ -4,7 +4,7 @@
 Push Swap is the project of ***School 42***. The aim is to sort data on stack, with the limited set of instructions, using the lowest possible number of actions.
 At this project we must produce two programms, `checker` and `push_swap`. Also, you may get acquainted with the algorithm used in that program [here](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a).
 
-The instruction set which can be used is defined bellow.
+The instruction set that can be used is defined bellow.
 
 ### Grade
 
