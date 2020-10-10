@@ -19,7 +19,7 @@ Bonus part 10/25
 
 # How to install and use #
 
-### Installation:
+### Installation
 ```
 git clone https://github.com/ykrotitel/push_swap.git
 
@@ -28,7 +28,7 @@ cd push_swap
 make
 ```
 
-### Usage:
+### Usage
 ```
 ARG=`ruby -e "puts (1..50).to_a.shuffle.join(' ')"`
 
