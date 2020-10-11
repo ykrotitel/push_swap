@@ -1,12 +1,12 @@
 # Push swap
 
-### :white_square_button: About
+### :white_square_button: ***About***
 Push Swap is the project of ***School 42***. The aim is to sort data on stack, with the limited set of instructions, using the lowest possible number of actions.
 At this project we must produce two programms, `checker` and `push_swap`. Also, you may get acquainted with the algorithm used in that program [here](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a).
 
 The instruction set that can be used is defined bellow.
 
-### :white_square_button: Grade
+### :white_square_button: ***Grade***
 
 
 ***Score 98/100***
@@ -19,7 +19,7 @@ Bonus part 10/25
 
 # How to install and use #
 
-### :white_square_button: Installation
+### :white_square_button: ***Installation***
 ```
 git clone https://github.com/ykrotitel/push_swap.git
 
@@ -28,7 +28,7 @@ cd push_swap
 make
 ```
 
-### :white_square_button: Usage
+### :white_square_button: ***Usage***
 ```
 ARG=`ruby -e "puts (1..50).to_a.shuffle.join(' ')"`
 
